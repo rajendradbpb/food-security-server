@@ -1,0 +1,17 @@
+Project Set up
+-------------
+
+food-security-server project will basically a server end code set up.
+
+prerequisite:
+1. Node js install
+2. git hub install
+3. tortoise git install (Reccomended  git client)
+
+
+Installation steps :
+
+1. go to https://github.com/rajendradbpb/food-security-server     - This represents github code repo
+2. make git clone of the above Project
+3. go to the project in command prompt and run command npm install
+4. application will hosted in localhost:3000
