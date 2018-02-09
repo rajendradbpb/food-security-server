@@ -4,10 +4,23 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var jwt     = require('jsonwebtoken');
+var passwordHash = require('password-hash-and-salt');
+var morgan = require('morgan');
+
+var jsonParser       = bodyParser.json({limit:1024*1024*20, type:'application/json'});
+var urlencodedParser = bodyParser.urlencoded({ extended:true,limit:1024*1024*20,type:'application/x-www-form-urlencoding' })
+
 
 var index = require('./server/routes/index');
 // var users = require('./routes/users');
-// var db = require('./server/db.js');
+var db = require('./server/db.js');
+var userModel = require('./server/models/userModel');
+ var response = require("./server/component/response")
+ var config = require("config")
+var logger = require("./server/component/log4j").getLogger('app');
+
 var app = express();
 app.all('/*', function (req, res, next) {
     // CORS headers
@@ -29,11 +42,105 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(morgan('dev'));
+app.use(jsonParser);
+ app.use(urlencodedParser);
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+
+
+// passport init
+app.use(passport.initialize());
+app.use(passport.session());
+passport.serializeUser(function(user, done) {
+  done(null, user._id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
+var LocalStrategy = require('passport-local').Strategy;
+var BearerStrategy = require('passport-http-bearer').Strategy;
+/*
+  * this is used to check the user in the database existence
+  used in case of the signIn and signUp user
+*/
+passport.use('login', new LocalStrategy(
+  function(username,password, done) {
+    console.log("login instercepter  ",username,password);
+    userModel.findOne({"username":username}).populate('role').exec(function (err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      // console.log("got user/pass",username,password);
+      // console.log("got user/pass >>>>>>>",user.username,user.password);
+      passwordHash(password).verifyAgainst(user.password,function(error, verified) {
+        //console.log("after verification ",error,user);
+        if (error) {
+          console.log("error");
+          return done(err); }
+        else if (!verified) {
+           console.log("not verified");
+          return done(null, false); }
+        else {
+          console.log("user validated in passport");
+          return done(null, user);
+        }
+      })
+    });
+  }
+)
+);
+//
+//
+passport.use('token',new BearerStrategy(
+  function(token, done) {
+    jwt.verify(token,config.token.secret, function(err, decoded) {
+      if (err) {
+        console.log("error in verify token  ",err);
+        return done(err,null);
+      }
+      else if(!decoded) {
+        console.log("No  token  ",err);
+        return done(null, false);
+      }
+      else {
+         // console.log("yes  token  ",decoded);
+         console.log("token true");
+        return done(null, decoded);
+      }
+     });
+
+  }
+));
+passport.use('superAdmin',new BearerStrategy(
+  function(token, done) {
+    jwt.verify(token,config.token.secret, function(err, decoded) {
+      if (err) {
+        //console.log("error in verify token  ",err);
+        return done(err,null);
+      }
+      else if(!decoded) {
+        // console.log("No  token  ",err);
+        return done(null, false);
+      }
+      else if(decoded._doc.role.type != "admin"){
+        return done(null, false);
+      }
+      else{
+        // console.log("yes  token  ",decoded._doc);
+        return done(null, decoded);
+      }
+     });
+
+  }
+));
+
+
 
 app.use('/', index);
 // app.use('/users', users);

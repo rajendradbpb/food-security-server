@@ -14,4 +14,5 @@ Installation steps :
 1. go to https://github.com/rajendradbpb/food-security-server     - This represents github code repo
 2. make git clone of the above Project
 3. go to the project in command prompt and run command npm install
-4. application will hosted in localhost:3000
+4. run command npm start from the project root folder
+5. application will hosted in localhost:3000

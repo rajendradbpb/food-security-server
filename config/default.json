@@ -1,9 +1,18 @@
 {
   "token":{
-    "secret" : "goApps-Amaresh",
+    "secret" : "food-security-dbpb#(@&)",
     "expiry":"24 hours"
   },
   "dev":{
+    "baseUrl":"http://localhost",
+    "hostName":"localhost",
+    "port":":27017",
+    "db":"food-security",
+    "dbserver":"mongodb://",
+    "logPath":"./logs/server.log",
+    "uploadPath":"./public/upload"
+  },
+  "prod":{
     "baseUrl":"http://localhost",
     "hostName":"localhost",
     "port":":27017",
@@ -12,15 +21,6 @@
     "logPath":"./logs/server.log",
     "uploadPath":"./public/upload"
   },
-  "prod":{
-    "baseUrl":"http://101.53.136.144",
-    "hostName":"101.53.136.144",
-    "port":":27017",
-    "db":"msi-goApps-dev",
-    "dbserver":"mongodb://",
-    "logPath":"./logs/server.log",
-    "uploadPath":"./public/upload"
-  },
 
-  "env" : "prod"
+  "env" : "dev"
 }

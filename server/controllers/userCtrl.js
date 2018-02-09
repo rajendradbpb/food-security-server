@@ -27,7 +27,7 @@ exports.verifiedUser = function(req, res, isError) {
     response.sendResponse(res, 200, "success", constants.messages.success.verified);
   } else {
     console.log(isError);
-    response.sendResponse(res, 200, "success", constants.messages.errors.verified);
+    response.sendResponse(res, 200, "success", constants.messages.error.verified);
   }
 }
 var refreshToken = function(_id, callback) {
@@ -74,7 +74,7 @@ exports.login = function(req, res) {
   } catch (e) {
     LOG.error(e);
     logger.error("login  " + e);
-    response.sendResponse(res, 500, "error", constants.messages.errors.login, e);
+    response.sendResponse(res, 500, "error", constants.messages.error.login, e);
   }
 }
 exports.addUser = function(req, res) {
@@ -82,14 +82,6 @@ exports.addUser = function(req, res) {
   // cheking validation
   try {
 
-    // if (
-    //   component.utility.isEmpty(req.body.password) ||
-    //   component.utility.isEmpty(req.body.email) ||
-    //   component.utility.isEmpty(req.body.mobile) ||
-    //   component.utility.isEmpty(req.body.role)
-    // ) {
-    //   return response.sendResponse(res, 400, "error", constants.statusCode['400']);
-    // }
     var rawPassword = req.body.password;
     models.roleModel.findById(req.body.role)
       .then(function(role) {
@@ -103,36 +95,18 @@ exports.addUser = function(req, res) {
             if (err) {
               LOG.error(err.message);
               logger.error("addUser  " + err);
-              return response.sendResponse(res, 500, "error", constants.messages.errors.saveUser, err);
+              return response.sendResponse(res, 500, "error", constants.messages.error.saveUser, err);
             } else {
               LOG.info("User saved !!!!");
               response.sendResponse(res, 200, "success", constants.messages.success.saveUser);
-              // sending email verification
-              var data = {
-                templateType: "new_user",
-                email: user.email,
-                mobile: user.mobile,
-                name: user.firstName && user.lastName ? user.firstName + " " + user.lastName : user.email.split("@")[0],
-                company: constants.companyDetails.name,
-                password: rawPassword
-              }
-              utility.sendVerificationMail(data, function(err, success) {
-                if (err) {
-                  LOG.error("mail error send  error" + err);
-                  logger.error("addUser  " + err);
-                  // return response.sendResponse(res, 500, "error", constants.messages.errors.forgetPasswordFailed, err);
-                } else {
-                  LOG.info("mail error send  success");
-                  // return response.sendResponse(res, 200, "success", constants.messages.success.verificationMailSent);
-                }
-              })
+
             }
           })
         })
       })
       .catch(function(err) {
         logger.error("addUser  " + err);
-        response.sendResponse(res, 500, "error", constants.messages.errors.saveUser, err);
+        response.sendResponse(res, 500, "error", constants.messages.error.saveUser, err);
       })
   } catch (e) {
     logger.error("addUser  " + e);
@@ -162,7 +136,7 @@ exports.getUser = function(req, res) {
         return response.sendResponse(res, 200, "success", constants.messages.success.getUser, user);
       })
       // .catch(function(error) {
-      //   return response.sendResponse(res, 200, "error", constants.messages.errors.getUser, error);
+      //   return response.sendResponse(res, 200, "error", constants.messages.error.getUser, error);
       // })
     } else {
       // listing service
@@ -203,7 +177,7 @@ exports.getUser = function(req, res) {
         })
         .catch(function(error) {
           logger.error("getUser  " + error);
-          return response.sendResponse(res, 200, "error", constants.messages.errors.getUser, error);
+          return response.sendResponse(res, 200, "error", constants.messages.error.getUser, error);
         })
     }
 
@@ -268,7 +242,7 @@ exports.udpateUser = function(req, res) {
             refreshToken(data._id, function(err, data) {
               if (err) {
                 logger.error("udpateUser  " + err);
-                return response.sendResponse(res, 500, "error", constants.messages.errors.saveUser, err);
+                return response.sendResponse(res, 500, "error", constants.messages.error.saveUser, err);
               } else
                 return response.sendResponse(res, 200, "success", "rrrrrrr", data);
             })
@@ -298,7 +272,7 @@ exports.deleteUser = function(req, res) {
     }, function(err, data) {
       if (err) {
         logger.error("deleteUser  " + err);
-        response.sendResponse(res, 500, "error", constants.messages.errors.deleteRole, err);
+        response.sendResponse(res, 500, "error", constants.messages.error.deleteRole, err);
       } else
         response.sendResponse(res, 200, "success", constants.messages.success.deleteRole);
     })
@@ -316,20 +290,20 @@ exports.changePassword = function(req, res) {
     userModel.findOne({"username": req.user._doc.username}).populate('role').exec(function(err, user) {
       if (err) {
         logger.error("changePassword  " + err);
-        return response.sendResponse(res, 402, "error", constants.messages.errors.changePassword, err);
+        return response.sendResponse(res, 402, "error", constants.messages.error.changePassword, err);
       }
       if (!user) {
-        return response.sendResponse(res, 401, "error", constants.messages.errors.changePassword, err);
+        return response.sendResponse(res, 401, "error", constants.messages.error.changePassword, err);
       }
       passwordHash(req.body.oldPassword).verifyAgainst(user.password, function(error, verified) {
         console.log("after verification ", error, user);
         if (error) {
           // db error
           logger.error("changePassword  " + error);
-          response.sendResponse(res, 500, "error", constants.messages.errors.changePassword, err);
+          response.sendResponse(res, 500, "error", constants.messages.error.changePassword, err);
         } else if (!verified) {
           // password not matched
-          response.sendResponse(res, 401, "error", constants.messages.errors.changePassword);
+          response.sendResponse(res, 401, "error", constants.messages.error.changePassword);
         } else {
           // update new password
           password(req.body.newPassword).hash(function(error, hash) {
@@ -342,7 +316,7 @@ exports.changePassword = function(req, res) {
             }, function(err, user) {
               if (err) {
                 logger.error("changePassword  " + error);
-                response.sendResponse(res, 500, "error", constants.messages.errors.changePassword, err);
+                response.sendResponse(res, 500, "error", constants.messages.error.changePassword, err);
               } else {
                 response.sendResponse(res, 200, "success", constants.messages.success.changePassword);
               }
@@ -371,14 +345,14 @@ exports.forgotPassword = function(req, res) {
           console.log(user);
           if (!user.length) {
             // no data found.
-            return response.sendResponse(res, 402, "warning", constants.messages.errors.emailNotFound);
+            return response.sendResponse(res, 402, "warning", constants.messages.error.emailNotFound);
           } else {
             // get the random PASSOWORD
             var alphaNumeric = utility.getAlphaNumeric();
             password(alphaNumeric).hash(function(error, hash) {
               if (error) {
                 logger.error("forgotPassword  " + error);
-                return response.sendResponse(res, 500, "error", constants.messages.errors.saveData);
+                return response.sendResponse(res, 500, "error", constants.messages.error.saveData);
               } else {
                 // saving user password with random password
                 var query = {
@@ -393,7 +367,7 @@ exports.forgotPassword = function(req, res) {
                 models.userModel.findOneAndUpdate(query, update, option, function(error, user) {
                   if (error) {
                     logger.error("forgotPassword  " + error);
-                    return response.sendResponse(res, 500, "error", constants.messages.errors.saveData);
+                    return response.sendResponse(res, 500, "error", constants.messages.error.saveData);
                   } else {
 
                     // sending email verification
@@ -411,8 +385,8 @@ exports.forgotPassword = function(req, res) {
                       if (err) {
                         logger.error("forgotPassword  " + err);
                         LOG.error("mail error send  error" + err);
-                        return response.sendResponse(res, 500, "error", constants.messages.errors.mailSend);
-                        // return response.sendResponse(res, 500, "error", constants.messages.errors.forgetPasswordFailed, err);
+                        return response.sendResponse(res, 500, "error", constants.messages.error.mailSend);
+                        // return response.sendResponse(res, 500, "error", constants.messages.error.forgetPasswordFailed, err);
                       } else {
                         LOG.info("mail error send  success");
                         return response.sendResponse(res, 200, "success", constants.messages.success.mailSend);
@@ -427,7 +401,7 @@ exports.forgotPassword = function(req, res) {
         })
         .catch(function(error) {
           logger.error("forgotPassword  " + error);
-          return response.sendResponse(res, 500, "error", constants.messages.errors.saveData, error);
+          return response.sendResponse(res, 500, "error", constants.messages.error.saveData, error);
         })
     }
   } catch (e) {

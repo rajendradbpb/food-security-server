@@ -13,23 +13,20 @@ router.post('/',function(req, res, next) {
 router.get('/', passport.authenticate('superAdmin', {session:false}),function(req, res, next) {
   controllers.userCtrl.getUser(req, res);
 });
-router.put('/', function(req, res, next) {
-  controllers.userCtrl.udpateUser(req, res);
-});
-router.put('/changePassword', passport.authenticate('token', {session:false}), function(req, res, next) {
-  controllers.userCtrl.changePassword(req, res);
-});
-router.put('/forgotPassword', function(req, res, next) {
-  controllers.userCtrl.forgotPassword(req, res);
-});
-router.delete('/:id', function(req, res, next) {
-  controllers.userCtrl.deleteUser(req, res);
-});
-router.get('/dashboard', passport.authenticate('token', {session:false}),function(req, res, next) {
-  controllers.userCtrl.getDashboardData(req, res);
-});
-// router.get('/referral', passport.authenticate('token', {session:false}), function(req, res, next) {
-//   controllers.userCtrl.getReferral(req, res);
+// router.put('/', function(req, res, next) {
+//   controllers.userCtrl.udpateUser(req, res);
+// });
+// router.put('/changePassword', passport.authenticate('token', {session:false}), function(req, res, next) {
+//   controllers.userCtrl.changePassword(req, res);
+// });
+// router.put('/forgotPassword', function(req, res, next) {
+//   controllers.userCtrl.forgotPassword(req, res);
+// });
+// router.delete('/:id', function(req, res, next) {
+//   controllers.userCtrl.deleteUser(req, res);
+// });
+// router.get('/dashboard', passport.authenticate('token', {session:false}),function(req, res, next) {
+//   controllers.userCtrl.getDashboardData(req, res);
 // });
 
 // token authentication
@@ -40,10 +37,5 @@ router.get('/token', passport.authenticate('token', {session:false}) ,function(r
 router.get('/loggedin',passport.authenticate('token', {session:false}), function(req,res) {
   console.log(">>>>>>>>>>>>>>>>");
   res.status(200).json({status:"OK",user:req.user._doc});
-  // try {
-  //   userCtrl.verifiedUser(req,res,false);
-  // } catch (e) {
-  //   userCtrl.verifiedUser(req,res,e);
-  // }
 });
 module.exports = router;

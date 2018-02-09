@@ -13,7 +13,7 @@ exports.addRole = function(req,res){
     new models.roleModel(req.body).save(function (err) {
       if(err){
         logger.error("addRole ", err);
-        return response.sendResponse(res,500,"error",constants.messages.errors.saveRole,err);
+        return response.sendResponse(res,500,"error",constants.messages.error.saveRole,err);
       }
       else {
         return response.sendResponse(res,200,"success",constants.messages.success.saveRole);
@@ -39,7 +39,7 @@ exports.getRole = function(req,res){
     models.roleModel.find(params,function(err,data){
       if(err){
         logger.error("getRole ", err);
-        return response.sendResponse(res,500,"error",constants.messages.errors.fetchRoles,err);
+        return response.sendResponse(res,500,"error",constants.messages.error.fetchRoles,err);
       }
       return response.sendResponse(res,200,"success",constants.messages.success.fetchRoles,data);
     })
@@ -77,7 +77,7 @@ exports.deleteRole = function(req,res){
     models.roleModel.findOneAndUpdate(query,{"isDelete":true},{"new" :true},function(err,data) {
       if(err){
         logger.error("deleteRole ", err);
-        return response.sendResponse(res,500,"error",constants.messages.errors.deleteRole,err);
+        return response.sendResponse(res,500,"error",constants.messages.error.deleteRole,err);
       }
       else
       return response.sendResponse(res,200,"success",constants.messages.success.deleteRole);
