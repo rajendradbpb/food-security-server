@@ -7,6 +7,12 @@ var constants = {
   urbanTypes:['Municipality','Nsc','Others'],
   messages:{
     error:{
+      // generic
+      "saveData"  : "Error in saving data",
+      "getData"  : "Error in get data",
+      "updateData"  : "Error in update data",
+      "deleteData"  : "Error in delete data",
+
       //Role
       "roleExist" : "Role Already Exists !",
       "saveRole" : "Error in saving Role",
@@ -22,6 +28,13 @@ var constants = {
 
       },
     success:{
+
+      // generic
+      "saveData"  : "Success in saving data",
+      "getData"  : "Success in get data",
+      "updateData"  : "Error in update data",
+      "deleteData"  : "Error in delete data",
+
       "saveRole" : "Role saved",
 
       //user

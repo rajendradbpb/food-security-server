@@ -4,12 +4,14 @@ var router = express.Router();
 // var testRoutes = require('./testRoutes');
 var roleRoutes = require('./roleRoutes');
 var userRoutes = require('./userRoutes');
+var configRoutes = require('./configRoutes');
 // var vleRoutes = require('./vleRoutes');
 // var commonRoutes = require('./commonRoutes');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   // res.render('index', { title: 'Express' });
+  // var db = require('./server/db.js');
   res.sendFile(path.join(__dirname, '../../public/index.html'));
 });
 router.get('/status', function(req, res, next) {
@@ -19,8 +21,12 @@ router.get('/status', function(req, res, next) {
 // router.use('/test', testRoutes);
 router.use('/role', roleRoutes);
 router.use('/user', userRoutes);
+router.use('/config', configRoutes);
 // router.use('/vle', vleRoutes);
-// router.use('/common', commonRoutes);
+router.get('/test', function(req,res) {
+  // console.log("request.headers.host   ",req.headers.host);
+  res.send({status:"ok"});
+});
 
 
 module.exports = router;
