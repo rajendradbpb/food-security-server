@@ -174,7 +174,7 @@ utility.uploadImage = function(imageDetail, callback) {
     encoding: 'base64'
   }, function(err, data) {
     if (!err) {
-      imagePath = imagePath.replace('./public', ""); // to remove . at begining of path
+      // imagePath = imagePath.replace('./public', ""); // to remove . at begining of path
       callback(false, imagePath); // sending file path
     } else {
       callback(err, false);

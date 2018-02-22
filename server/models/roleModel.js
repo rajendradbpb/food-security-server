@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var constants = require("./../../config/constants")
 var roleSchema = new mongoose.Schema({
     type              : {type: String,unique:true,trim:true},
+    menu              : [Schema.Types.Mixed],
     createdDate       : {type: Date, default: new Date()},
     isDelete          : {type: Boolean, default:false},
 });

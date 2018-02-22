@@ -18,7 +18,7 @@ var index = require('./server/routes/index');
 var db = require('./server/db.js');
 var userModel = require('./server/models/userModel');
  var response = require("./server/component/response")
- var config = require("config")
+ var config = require("config");
 var logger = require("./server/component/log4j").getLogger('app');
 
 var app = express();

@@ -8,6 +8,8 @@
   "dependencies": {
     "async": "^2.6.0",
     "async-waterfall": "^0.1.5",
+    "base64-img": "^1.0.4",
+    "base64-to-image": "^1.0.2",
     "body-parser": "^1.18.2",
     "color": "^2.0.1",
     "config": "^1.28.1",

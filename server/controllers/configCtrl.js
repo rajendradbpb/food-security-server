@@ -8,17 +8,68 @@ var response = require("./../component/response");
 var models = require("./../models/index");
 var constants = require("./../../config/constants");
 var logger = require("./../component/log4j").getLogger('configCtrl');
+ var config = require("config");
+ var component = require("./../component/index");
+ var waterfall = require('async-waterfall');
 exports.addConfig = function(req,res){
   try {
-    new models.configModel(req.body).save(function (err) {
-      if(err){
-        logger.error("addConfig ", err);
-        return response.sendResponse(res,500,"error",constants.messages.error.saveData,err);
+    // component.utility.uploadImage({base64:req.body.backgroundImg,fileName:req.body.backgroundImgName},function(err,data){
+    //   console.log("upload image ",err,data);
+    // })
+    waterfall([
+      function(callback) {
+        if(!req.body.backgroundImg || !req.body.backgroundImgName)
+        callback(null);
+        else{
+          // upload base 64 file
+          component.utility.uploadImage({base64:req.body.backgroundImg,fileName:req.body.backgroundImgName},function(err,imagePath){
+            if(err){
+              logger.error("udpateUser  "+err);
+              callback(err);
+            }
+            else{
+              req.body.backgroundImg = imagePath;
+              callback(null);
+            }
+          })
+        }
+        //callback(Error('Demo Error'), 'one', 'two');
+      },
+      function(callback) {
+        if(!req.body.logoImg || !req.body.logoImgName)
+        callback(null);
+        else{
+          // upload base 64 file
+          component.utility.uploadImage({base64:req.body.logoImg,fileName:req.body.logoImgName},function(err,imagePath){
+            if(err){
+              logger.error("udpateUser  "+err);
+              callback(err);
+            }
+            else{
+              req.body.logoImg = imagePath;
+              callback(null);
+            }
+          })
+        }
       }
-      else {
-        return response.sendResponse(res,200,"success",constants.messages.success.saveData);
+    ], function(err, result) {
+      if (err) {
+        logger.error("udpateUser  "+err);
+        LOG.error(err)
       }
-    })
+      else{
+        new models.configModel(req.body).save(function (err) {
+          if(err){
+            logger.error("addConfig ", err);
+            return response.sendResponse(res,500,"error",constants.messages.error.saveData,err);
+          }
+          else {
+            return response.sendResponse(res,200,"success",constants.messages.success.saveData);
+          }
+        })
+      }
+    });
+
 
   } catch (e) {
     logger.error("addConfig ", e);

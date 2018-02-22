@@ -11,6 +11,6 @@ var configSchema = new mongoose.Schema({
     createdDate       : {type: Date, default: new Date()},
     isDelete          : {type: Boolean, default:false},
 });
-configSchema.plugin(uniqueValidator, {message: constants.messages.error.roleExist});
+configSchema.plugin(uniqueValidator, {message: constants.messages.error.clientIdExist});
 var configModel = mongoose.model('config', configSchema);
 module.exports = configModel;

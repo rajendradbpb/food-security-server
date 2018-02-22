@@ -14,6 +14,7 @@ router.get('/', function(req, res, next) {
   // var db = require('./server/db.js');
   res.sendFile(path.join(__dirname, '../../public/index.html'));
 });
+
 router.get('/status', function(req, res, next) {
   // res.render('index', { title: 'Express' });
   res.status(200).send({status:"ok"});
@@ -23,8 +24,9 @@ router.use('/role', roleRoutes);
 router.use('/user', userRoutes);
 router.use('/config', configRoutes);
 // router.use('/vle', vleRoutes);
-router.get('/test', function(req,res) {
-  // console.log("request.headers.host   ",req.headers.host);
+router.get('/test/:id', function(req,res) {
+  console.log("req.query   ",req.query);
+  console.log("req.param   ",req.params);
   res.send({status:"ok"});
 });
 

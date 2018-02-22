@@ -10,7 +10,7 @@
     "db":"food-security",
     "dbserver":"mongodb://",
     "logPath":"./logs/server.log",
-    "uploadPath":"./public/upload"
+    "uploadPath":"./upload"
   },
   "prod":{
     "baseUrl":"http://localhost",
@@ -19,7 +19,7 @@
     "db":"msi-goApps-dev",
     "dbserver":"mongodb://",
     "logPath":"./logs/server.log",
-    "uploadPath":"./public/upload"
+    "uploadPath":"./upload"
   },
 
   "env" : "dev"
