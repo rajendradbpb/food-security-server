@@ -41,6 +41,8 @@ app.all('/*', function (req, res, next) {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use('/upload', express.static(path.join(__dirname, config.get(config.get("env")+".uploadPath") )));
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(morgan('dev'));
