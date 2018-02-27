@@ -8,7 +8,6 @@ var response = require("./../component/response");
 var models = require("./../models/index");
 var constants = require("./../../config/constants");
 var logger = require("./../component/log4j").getLogger('plantCtrl');
-console.log("hii i m here");
 
 exports.addPlant = function(req,res){
   try {
@@ -27,19 +26,12 @@ exports.addPlant = function(req,res){
   }
 }
 
-console.log("hii i m here");
 exports.getPlant = function(req,res){
   try {
     var params = {
       //isDelete:false,
-      type:{$in:["aa","consultant","bm"]}
     };
-    if(req.query._id){
-      params['_id'] = req.query._id;
-    }
-    if(req.query.type){
-      params['type'] = req.query.type;
-    }
+
     models.plantModel.find(params,function(err,data){
       if(err){
         logger.error("getplant ", err);
@@ -53,7 +45,6 @@ exports.getPlant = function(req,res){
   }
 }
 
-console.log("hii i  m here");
 
 exports.udpatePlant = function(req,res){
   try {

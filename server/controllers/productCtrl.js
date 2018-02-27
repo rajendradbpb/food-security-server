@@ -9,7 +9,6 @@ var models = require("./../models/index");
 var constants = require("./../../config/constants");
 var logger = require("./../component/log4j").getLogger('productCtrl');
 
-console.log("hii i m here");
 
 exports.addProduct = function(req,res){
   try {
@@ -28,7 +27,6 @@ exports.addProduct = function(req,res){
   }
 }
 
-console.log("hii i m here");
 
 exports.getProduct = function(req,res){
   try {
@@ -55,7 +53,6 @@ exports.getProduct = function(req,res){
   }
 }
 
-console.log("hii i here");
 
 exports.udpateProduct = function(req,res){
   try {

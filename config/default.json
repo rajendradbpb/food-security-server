@@ -16,7 +16,7 @@
     "baseUrl":"http://localhost",
     "hostName":"localhost",
     "port":":27017",
-    "db":"msi-goApps-dev",
+    "db":"food-security",
     "dbserver":"mongodb://",
     "logPath":"./logs/server.log",
     "uploadPath":"./upload"

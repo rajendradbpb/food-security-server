@@ -2,7 +2,6 @@ var express = require('express');
 var path = require('path');
 var router = express.Router();
 var controllers = require("./../controllers/index");
-console.log("hii i here");
 router.post('/',function(req, res, next) {
   controllers.productCtrl.addProduct(req, res);
 });
