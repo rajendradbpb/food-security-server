@@ -26,6 +26,17 @@ var constants = {
       "saveUser" : "Error in save user",
       "undefinedEmail" : "Email required",
 
+      //plant
+
+      "plantExist" : "Role Already Exists !",
+      "savePlant" : "Error in saving Role",
+
+      //product
+
+      "productExist" : "Role Already Exists !",
+      "saveProduct" : "Error in saving Role",
+
+
       },
     success:{
 
@@ -34,11 +45,18 @@ var constants = {
       "getData"  : "Success in get data",
       "updateData"  : "Error in update data",
       "deleteData"  : "Error in delete data",
-
+      
+      //role
       "saveRole" : "Role saved",
 
       //user
       "saveUser" : "Save User success",
+      
+      //plant
+      "savePlant" : "plant saved",
+
+      //product
+      "saveProduct" : "Product saved",
     },
   },
 

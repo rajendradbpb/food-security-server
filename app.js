@@ -21,6 +21,7 @@ var userModel = require('./server/models/userModel');
  var config = require("config");
 var logger = require("./server/component/log4j").getLogger('app');
 
+
 var app = express();
 app.all('/*', function (req, res, next) {
     // CORS headers

@@ -2,11 +2,11 @@ var express = require('express');
 var path = require('path');
 var router = express.Router();
 // var testRoutes = require('./testRoutes');
-var roleRoutes = require('./roleRoutes');
-var userRoutes = require('./userRoutes');
+var roleRoutes  = require('./roleRoutes');
+var userRoutes  = require('./userRoutes');
 var configRoutes = require('./configRoutes');
-// var vleRoutes = require('./vleRoutes');
-// var commonRoutes = require('./commonRoutes');
+var plantRoutes  = require('./plantRoutes');
+var productRoutes = require('./productRoutes');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -23,6 +23,8 @@ router.get('/status', function(req, res, next) {
 router.use('/role', roleRoutes);
 router.use('/user', userRoutes);
 router.use('/config', configRoutes);
+router.use('/plant', plantRoutes);
+router.use('/product', productRoutes);
 // router.use('/vle', vleRoutes);
 router.get('/test/:id', function(req,res) {
   console.log("req.query   ",req.query);
