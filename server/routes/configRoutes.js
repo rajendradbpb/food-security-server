@@ -8,6 +8,9 @@ router.post('/',function(req, res, next) {
 router.get('/', function(req, res, next) {
   controllers.configCtrl.getConfig(req, res);
 });
+router.get('/:id', function(req, res, next) {
+  controllers.configCtrl.getConfigById(req, res);
+});
 router.put('/', function(req, res, next) {
   controllers.configCtrl.udpateConfig(req, res);
 });
