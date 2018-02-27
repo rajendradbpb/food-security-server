@@ -28,8 +28,8 @@ var constants = {
 
       //plant
 
-      "plantExist" : "Role Already Exists !",
-      "savePlant" : "Error in saving Role",
+      "plantExist" : "Plant Already Exists !",
+      "savePlant" : "Error in saving Plant",
 
       //product
 
@@ -45,13 +45,13 @@ var constants = {
       "getData"  : "Success in get data",
       "updateData"  : "Error in update data",
       "deleteData"  : "Error in delete data",
-      
+
       //role
       "saveRole" : "Role saved",
 
       //user
       "saveUser" : "Save User success",
-      
+
       //plant
       "savePlant" : "plant saved",
 

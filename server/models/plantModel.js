@@ -8,9 +8,11 @@ var plantSchema = new mongoose.Schema({
     address       : {type:String},
     fax           : {type:String,required: true},
     phone         : {type:String,required: true},
+    isDelete      : {type:Boolean,default:false},
+    createdDate      : {type:Date,default:new Date()},
 
-    
+
 });
-plantSchema.plugin(uniqueValidator, {message: constants.messages.error.clientIdExist});
+plantSchema.plugin(uniqueValidator, {message: constants.messages.error.plantExist});
 var plantModel = mongoose.model('plant', plantSchema);
 module.exports = plantModel;

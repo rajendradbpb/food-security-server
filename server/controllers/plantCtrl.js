@@ -29,7 +29,7 @@ exports.addPlant = function(req,res){
 exports.getPlant = function(req,res){
   try {
     var params = {
-      //isDelete:false,
+      isDelete:false,
     };
 
     models.plantModel.find(params,function(err,data){
