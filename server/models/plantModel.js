@@ -4,8 +4,13 @@ var constants = require("./../../config/constants")
 var Schema = mongoose.Schema;
 var plantSchema = new mongoose.Schema({
     plantId       : {type: String,required: true,unique:true},
-    Name          : {type:String,required: true},
-    address       : {type:String},
+    name          : {type:String,required: true},
+    // address
+    country          :  {type: String, default:"NA"},
+    state          :  {type: String, default:"NA"},
+    city          :  {type: String, default:"NA"},
+    pin          :  {type: String, default:"NA"},
+
     fax           : {type:String,required: true},
     phone         : {type:String,required: true},
     isDelete      : {type:Boolean,default:false},

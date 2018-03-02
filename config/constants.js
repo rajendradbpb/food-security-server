@@ -23,8 +23,12 @@ var constants = {
       "undefinedUsername":"Undefined Username",
       "undefinedPassword":"Undefined Password",
       "clientIdExist":"Client id already exists !",
+      "customerExist":"Customer  already exists !",
       "saveUser" : "Error in save user",
       "undefinedEmail" : "Email required",
+      "undefinedPlantId" : "Plant id is required",
+      "undefinedSalutation" : "Salutation is required",
+      "undefinedFirstName" : "First Name is required",
 
       //plant
 

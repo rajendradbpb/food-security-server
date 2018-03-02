@@ -49,12 +49,10 @@ exports.getPlant = function(req,res){
 
 exports.udpatePlant = function(req,res){
   try {
-    var query = {
-      "_id":req.body._id
-    }
+    var id = req.body.id;
     delete req.body['_id'];
     var options = {new:true};
-    models.plantModel.findOneAndUpdate(query, req.body,options).exec()
+    models.plantModel.findByIdAndUpdate(id, req.body,options).exec()
     .then(function(data) {
       return response.sendResponse(res,200,"success",constants.messages.success.udpatePlant,data);
     })
