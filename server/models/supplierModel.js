@@ -5,17 +5,19 @@ var constants = require("./../../config/constants")
 var supplierSchema = new mongoose.Schema({
   plants           : [{type: Schema.Types.ObjectId, ref: 'plant'}],
   brokers          :[{type: Schema.Types.ObjectId, ref: 'broker'}],
-  
+
   name              :{type: String,required:true},
   id                :  {type: String,required:true},
-  city              : {type: String},
-  State             : {type: String},
-  Region            : {type: String},
-  pin               : {type: String},
-  country           : {type: String,required:true},
-  city              : {type: String},
-  countryOfOrigin   :[String],
   phone             :{type: String},
+  address : [
+    {
+      city              : {type: String},
+      region            : {type: String},
+      state             : {type: String},
+      pin               : {type: String},
+      country   :{type: String}
+    }
+  ],
   // point of contact details
   contactSalutation : {type: String,required:true},
   contactFirstName  : {type: String,required:true},

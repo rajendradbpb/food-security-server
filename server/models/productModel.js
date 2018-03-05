@@ -4,6 +4,7 @@ var constants = require("./../../config/constants")
 var Schema = mongoose.Schema;
 var productSchema = new mongoose.Schema({
     plants                       : [{type: Schema.Types.ObjectId, ref: 'plant'}],
+    supplier                     : [{type: Schema.Types.ObjectId, ref: 'supplier'}],
     customer                     : [{type: Schema.Types.ObjectId, ref: 'customer'}],
     productId                    : {type: String,required: true,unique:true},
     name                         : {type:String},
@@ -11,6 +12,7 @@ var productSchema = new mongoose.Schema({
     netWeight                    : {type:String},
     unit                         : {type:String},
     Description                  : {type:String},
+    countryOfOrigin   :{type:String},
     rawMatrial                   : [Schema.Types.Mixed]
 });
 

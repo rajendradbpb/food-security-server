@@ -11,6 +11,8 @@ router.get('/', function(req, res, next) {
 router.put('/', function(req, res, next) {
   controllers.plantCtrl.udpatePlant(req, res);
 });
+
+
 /*router.delete('/:id', function(req, res, next) {
   controllers.plantCtrl.deleteConfig(req, res);
 });*/
