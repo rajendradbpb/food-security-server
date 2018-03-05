@@ -344,6 +344,78 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "supplier-POST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"plants\"           : [\"5a999bf3f0e9d90c3448340a\"],\r\n  \"brokers\"          :[],\r\n  \r\n  \"name\"              :\"test2\",\r\n  \"id\"                : \"test2\",\r\n  \"address\" : [\r\n    {\r\n      \"city\"              : \"city2\",\r\n      \"region\"            : \"reg2\",\r\n      \"state\"             : \"state2\",\r\n      \"pin\"               : \"pin2\",\r\n      \"country\"   :\"country2\"\r\n    }\r\n  ],\r\n  \"phone\"             : \"12132132\",\r\n  \"contactSalutation\" :\"Mr\",\r\n  \"contactFirstName\"  : \"name2\"\r\n  \r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/supplier",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"supplier"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "supplier-GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/supplier",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"supplier"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "supplierByPlant-GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/supplier/5a999bf3f0e9d90c3448340a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"supplier",
+						"5a999bf3f0e9d90c3448340a"
+					]
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
