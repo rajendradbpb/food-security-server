@@ -6,3 +6,4 @@ exports.brokerModel    = require("./brokerModel");
 exports.constantsModel    = require("./constantsModel");
 exports.supplierModel    = require("./supplierModel");
 exports.customerModel    = require("./customerModel");
+exports.brokerModel    = require("./brokerModel");

@@ -15,7 +15,7 @@ var supplierSchema = new mongoose.Schema({
       region            : {type: String},
       state             : {type: String},
       pin               : {type: String},
-      country   :{type: String}
+      country           :{type: String}
     }
   ],
   // point of contact details
@@ -47,13 +47,13 @@ var supplierSchema = new mongoose.Schema({
   csPhone           : {type: String},
   supplierNote      : {type: String},
 
-  approval          : {type: Boolean},
-  status            : {type: String},
-  certification     : {type: String},
-  samplingMethod   : {type: String},
-  pathogenTest     : {type: String},
-  virusTest        : {type: String},
-  pesticideTest    : {type: String},
+  // approval          : {type: Boolean},
+  // status            : {type: String},
+  // certification     : {type: String},
+  // samplingMethod   : {type: String},
+  // pathogenTest     : {type: String},
+  // virusTest        : {type: String},
+  // pesticideTest    : {type: String},
 
   createdDate       : {type: Date, default: new Date()},
   isDelete          : {type: Boolean, default:false},

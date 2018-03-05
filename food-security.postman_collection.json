@@ -416,6 +416,56 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "broker-POST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"plants\"                        : [\"5a999be1f0e9d90c34483409\",\"5a999bf3f0e9d90c3448340a\"],\n  \"name\"                          :\"broker3\",\n  \"address\" : [\n    {\n      \"city\"              : \"city3\",\n      \"region\"            : \"region3\",\n      \"state\"             : \"state3\",\n      \"pin\"               : \"7545454\",\n      \"country\"           : \"India\"\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/broker",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"broker"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "broker-GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/broker",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"broker"
+					]
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

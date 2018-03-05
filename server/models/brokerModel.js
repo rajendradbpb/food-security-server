@@ -5,14 +5,22 @@ var constants = require("./../../config/constants")
 var brokerSchema = new mongoose.Schema({
   plants                        : [{type: Schema.Types.ObjectId, ref: 'plant'}],
   name                          :{type:String,required:true},
-  countryOfOrigin               :[String],
-  approval                      :{type:Boolean,default:false},
-  status                        :{type:String},
-  certification                 :{type:String},
-  samplingMethod                :{type:String},
-  pathogenTest                  :{type:String},
-  virusTest                     :{type:String},
-  pesticideTest                 :{type:String},
+  address : [
+    {
+      city              : {type: String},
+      region            : {type: String},
+      state             : {type: String},
+      pin               : {type: String},
+      country           :{type: String}
+    }
+  ],
+  // approval                      :{type:Boolean,default:false},
+  // status                        :{type:String},
+  // certification                 :{type:String},
+  // samplingMethod                :{type:String},
+  // pathogenTest                  :{type:String},
+  // virusTest                     :{type:String},
+  // pesticideTest                 :{type:String},
 
   isDelete          : {type: Boolean, default:false},
   createdDate       :{type: Date, default:new Date()},
