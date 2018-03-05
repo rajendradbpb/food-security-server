@@ -41,6 +41,11 @@ var constants = {
       "saveProduct" : "Error in saving Role",
 
 
+      //constants
+       
+      "constantIdExist" : "id Already Exists !",
+      "saveConstants" : "Error in saving Unit",
+
       },
     success:{
 
@@ -61,6 +66,9 @@ var constants = {
 
       //product
       "saveProduct" : "Product saved",
+
+       //constants
+       "saveConstants" : " Unit saved",
     },
   },
 

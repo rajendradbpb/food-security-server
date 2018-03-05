@@ -12,7 +12,7 @@ var productSchema = new mongoose.Schema({
     netWeight                    : {type:String},
     unit                         : {type:String},
     Description                  : {type:String},
-    countryOfOrigin   :{type:String},
+    countryOfOrigin              :{type:String},
     rawMatrial                   : [Schema.Types.Mixed]
 });
 

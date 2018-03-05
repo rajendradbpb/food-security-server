@@ -186,7 +186,7 @@ exports.getUser = function(req, res) {
   }
 
 }
-exports.udpateUser = function(req, res) {
+exports.updateUser = function(req, res) {
   try {
     var query = {
       "_id": req.body._id

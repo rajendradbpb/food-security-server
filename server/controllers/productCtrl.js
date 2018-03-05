@@ -54,7 +54,7 @@ exports.getProduct = function(req,res){
 }
 
 
-exports.udpateProduct = function(req,res){
+exports.updateProduct = function(req,res){
   try {
     var query = {
       "_id":req.body._id
@@ -63,14 +63,14 @@ exports.udpateProduct = function(req,res){
     var options = {new:true};
     models.productModel.findOneAndUpdate(query, req.body,options).exec()
     .then(function(data) {
-      return response.sendResponse(res,200,"success",constants.messages.success.udpateProduct,data);
+      return response.sendResponse(res,200,"success",constants.messages.success.updateProduct,data);
     })
     .catch(function(err) {
-      logger.error("udpateproduct", err);
-      return response.sendResponse(res, 500,"error",constants.messages.error.udpateProduct,err);
+      logger.error("updateproduct", err);
+      return response.sendResponse(res, 500,"error",constants.messages.error.updateProduct,err);
     })
 
   } catch (e) {
-    logger.error("udpateproduct ", e);
+    logger.error("updateproduct ", e);
   }
 }

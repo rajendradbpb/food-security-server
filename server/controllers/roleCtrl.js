@@ -48,7 +48,7 @@ exports.getRole = function(req,res){
     logger.error("getRole ", e);
   }
 }
-exports.udpateRole = function(req,res){
+exports.updateRole = function(req,res){
   try {
     var query = {
       "_id":req.body._id
@@ -60,12 +60,12 @@ exports.udpateRole = function(req,res){
       return response.sendResponse(res,200,"success",constants.messages.success.udpateRole,data);
     })
     .catch(function(err) {
-      logger.error("udpateRole ", err);
+      logger.error("updateRole ", err);
       return response.sendResponse(res, 500,"error",constants.messages.error.udpateRole,err);
     })
 
   } catch (e) {
-    logger.error("udpateRole ", e);
+    logger.error("updateRole ", e);
   }
 }
 exports.deleteRole = function(req,res){

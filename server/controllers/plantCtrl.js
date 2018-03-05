@@ -14,10 +14,10 @@ exports.addPlant = function(req,res){
     new models.plantModel(req.body).save(function (err) {
       if(err){
         logger.error("addPlant ", err);
-        return response.sendResponse(res,500,"error",constants.messages.error.savePlant,err);
+        return response.sendResponse(res,500,"error",constants.messages.error.saveData,err);
       }
       else {
-        return response.sendResponse(res,200,"success",constants.messages.success.savePlant);
+        return response.sendResponse(res,200,"success",constants.messages.success.saveData);
       }
     })
 
@@ -54,11 +54,11 @@ exports.udpatePlant = function(req,res){
     var options = {new:true};
     models.plantModel.findByIdAndUpdate(id, req.body,options).exec()
     .then(function(data) {
-      return response.sendResponse(res,200,"success",constants.messages.success.udpatePlant,data);
+      return response.sendResponse(res,200,"success",constants.messages.success.udpateData,data);
     })
     .catch(function(err) {
       logger.error("udpatePlant ", err);
-      return response.sendResponse(res, 500,"error",constants.messages.error.udpatePlant,err);
+      return response.sendResponse(res, 500,"error",constants.messages.error.udpateData,err);
     })
 
   } catch (e) {

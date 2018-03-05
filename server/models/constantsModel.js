@@ -4,9 +4,9 @@ var constants = require("./../../config/constants")
 var Schema = mongoose.Schema;
 var constantSchema = new mongoose.Schema({
     // unit configuration
-    unit      : [Schema.Types.Mixed],
+    unit             : [Schema.Types.Mixed],
 
-    isDelete      : {type:Boolean,default:false},
+    isDelete         : {type:Boolean,default:false},
     createdDate      : {type:Date,default:new Date()},
 
 

@@ -14,7 +14,7 @@ var plantSchema = new mongoose.Schema({
     fax           : {type:String,required: true},
     phone         : {type:String,required: true},
     isDelete      : {type:Boolean,default:false},
-    createdDate      : {type:Date,default:new Date()},
+    createdDate   : {type:Date,default:new Date()},
 
 
 });
