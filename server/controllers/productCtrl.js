@@ -32,7 +32,7 @@ exports.getProduct = function(req,res){
   try {
     var params = {
      // isDelete:false,
-      type:{$in:["aa","consultant","bm"]}
+     type:{$in:["aa","consultant","bm"]}
     };
     if(req.query._id){
       params['_id'] = req.query._id;
@@ -43,9 +43,9 @@ exports.getProduct = function(req,res){
     models.productModel.find(params,function(err,data){
       if(err){
         logger.error("getProduct ", err);
-        return response.sendResponse(res,500,"error",constants.messages.error.fetchProduct,err);
+        return response.sendResponse(res,500,"error",constants.messages.error.getData,err);
       }
-      return response.sendResponse(res,200,"success",constants.messages.success.fetchProduct,data);
+      return response.sendResponse(res,200,"success",constants.messages.success.getData,data);
     })
 
   } catch (e) {
@@ -63,11 +63,11 @@ exports.updateProduct = function(req,res){
     var options = {new:true};
     models.productModel.findOneAndUpdate(query, req.body,options).exec()
     .then(function(data) {
-      return response.sendResponse(res,200,"success",constants.messages.success.updateProduct,data);
+      return response.sendResponse(res,200,"success",constants.messages.success.updateData,data);
     })
     .catch(function(err) {
       logger.error("updateproduct", err);
-      return response.sendResponse(res, 500,"error",constants.messages.error.updateProduct,err);
+      return response.sendResponse(res, 500,"error",constants.messages.error.updateData,err);
     })
 
   } catch (e) {
