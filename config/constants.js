@@ -61,6 +61,8 @@ var constants = {
 
       //product
       "saveProduct" : "Product saved",
+
+       
     },
   },
 

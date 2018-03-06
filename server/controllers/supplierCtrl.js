@@ -48,7 +48,7 @@ exports.getSupplier = function(req,res){
     logger.error("getSupplier ", e);
   }
 }
-exports.udpateSupplier = function(req,res){
+exports.updateSupplier = function(req,res){
   try {
     var query = {
       "_id":req.body._id
@@ -60,12 +60,12 @@ exports.udpateSupplier = function(req,res){
       return response.sendResponse(res,200,"success",constants.messages.success.updateData,data);
     })
     .catch(function(err) {
-      logger.error("udpateSupplier ", err);
+      logger.error("updateSupplier ", err);
       return response.sendResponse(res, 500,"error",constants.messages.error.updateData,err);
     })
 
   } catch (e) {
-    logger.error("udpateSupplier ", e);
+    logger.error("updateSupplier ", e);
   }
 }
 exports.deleteSupplier = function(req,res){
@@ -102,6 +102,6 @@ exports.getSupplierByPlantId = function(req,res){
     })
 
   } catch (e) {
-    logger.error("udpateproduct ", e);
+    logger.error("updateproduct ", e);
   }
 }
