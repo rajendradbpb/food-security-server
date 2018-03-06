@@ -11,6 +11,7 @@ var logger = require("./../component/log4j").getLogger('productCtrl');
 
 
 exports.addProduct = function(req,res){
+  console.log("2222222");
   try {
     new models.productModel(req.body).save(function (err) {
       if(err){
@@ -18,11 +19,13 @@ exports.addProduct = function(req,res){
         return response.sendResponse(res,500,"error",constants.messages.error.saveProduct,err);
       }
       else {
+        console.log("33333");
         return response.sendResponse(res,200,"success",constants.messages.success.saveProduct);
       }
     })
 
   } catch (e) {
+    console.log("444444",e);
     logger.error("addProduct ", e);
   }
 }

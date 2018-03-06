@@ -9,6 +9,7 @@ var plantRoutes  = require('./plantRoutes');
 var productRoutes = require('./productRoutes');
 var supplierRoutes = require('./supplierRoutes');
 var brokerRoutes = require('./brokerRoutes');
+var rawMaterialRoutes = require('./rawMaterialRoutes');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -29,6 +30,7 @@ router.use('/plant', plantRoutes);
 router.use('/product', productRoutes);
 router.use('/supplier', supplierRoutes);
 router.use('/broker', brokerRoutes);
+router.use('/rawMaterial', rawMaterialRoutes);
 // router.use('/vle', vleRoutes);
 router.get('/test/:id', function(req,res) {
   console.log("req.query   ",req.query);

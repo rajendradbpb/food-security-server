@@ -8,12 +8,11 @@ var productSchema = new mongoose.Schema({
     customer                     : [{type: Schema.Types.ObjectId, ref: 'customer'}],
     productId                    : {type: String,required: true,unique:true},
     name                         : {type:String},
-    ProductCode                  : {type:String},
     netWeight                    : {type:String},
     unit                         : {type:String},
-    Description                  : {type:String},
-    countryOfOrigin   :{type:String},
-    rawMatrial                   : [Schema.Types.Mixed]
+    description                  : {type:String},
+    country                      :{type:String},
+    rawMatrial                   : [{type: Schema.Types.ObjectId, ref: 'rawMaterial'}]
 });
 
 // productSchema.plugin(uniqueValidator, {message: constants.messages.error.clientIdExist});
