@@ -466,6 +466,85 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "rawMaterial-POST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n     \"name\"                  : \"test03\",\n     \"rmCode\"                : \"test03\",\n     \"format\"                : \"kg\",\n     \"variety\"               : [\"v1\",\"v2\"],\n     \"address\"               : [\n       {\n         \n         \"country\"           :\"India\"\n       }\n     ],\n     \"isApproved\"            : false,\n      \"certification\"        : false,\n      \"samplingMethod\"       : false,\n      \"pathogenTest\"         : false,\n      \"virusTest\"            : false,\n      \"pesticideTest\"        : false\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/rawMaterial",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rawMaterial"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "rawMaterial-GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/rawMaterial",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rawMaterial"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "product-POST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"plants\"                       : [\"5a999be1f0e9d90c34483409\"],\n    \n    \"productId\"                    : \"p2\",\n    \"name\"                         : \"product2\",\n    \n    \"netWeight\"                    : \"100kg\",\n    \"unit\"                         : \"kg\",\n    \"description\"                  : \"description\",\n    \"country\"                      :\"India\",\n    \"rawMatrial\"                  : [\"5a9eff61e6160e152477a5ff\"]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product"
+					]
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
