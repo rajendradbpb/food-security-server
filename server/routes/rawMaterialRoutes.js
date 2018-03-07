@@ -3,17 +3,16 @@ var path = require('path');
 var router = express.Router();
 var controllers = require("./../controllers/index");
 router.post('/',function(req, res, next) {
-  controllers.productCtrl.addProduct(req, res);
+  controllers.rawMaterialCtrl.addRawMaterial(req, res);
 });
 router.get('/', function(req, res, next) {
-  
-  controllers.productCtrl.getProduct(req, res);
+  controllers.rawMaterialCtrl.getRawMaterial(req, res);
 });
 router.put('/', function(req, res, next) {
-  controllers.productCtrl.udpateProduct(req, res);
+  controllers.rawMaterialCtrl.udpateRawMaterial(req, res);
 });
-//router.delete('/:id', function(req, res, next) {
-  //controllers.configCtrl.deleteConfig(req, res);
-//});
+router.delete('/:id', function(req, res, next) {
+  controllers.rawMaterialCtrl.deleteRawMaterial(req, res);
+});
 
 module.exports = router;

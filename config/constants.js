@@ -40,6 +40,11 @@ var constants = {
       "productExist" : "Role Already Exists !",
       "saveProduct" : "Error in saving Role",
 
+      // rawMatrial
+      
+      //constants
+
+      "saveConstant" : "Error in saving unit",
 
       },
     success:{
@@ -61,7 +66,9 @@ var constants = {
 
       //product
       "saveProduct" : "Product saved",
-
+      
+      //constants
+      "saveConstant" : "unit saved",
        
     },
   },

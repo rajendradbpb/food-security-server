@@ -18,6 +18,7 @@ var supplierSchema = new mongoose.Schema({
       country           :{type: String}
     }
   ],
+  
   // point of contact details
   contactSalutation : {type: String,required:true},
   contactFirstName  : {type: String,required:true},

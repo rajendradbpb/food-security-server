@@ -7,3 +7,5 @@ exports.constantsModel    = require("./constantsModel");
 exports.supplierModel    = require("./supplierModel");
 exports.customerModel    = require("./customerModel");
 exports.brokerModel    = require("./brokerModel");
+exports.rawMaterialModel    = require("./rawMaterialModel");
+exports.productModel    = require("./productModel");

@@ -5,3 +5,5 @@ exports.plantCtrl = require("./plantCtrl");
 exports.productCtrl = require("./productCtrl");
 exports.supplierCtrl = require("./supplierCtrl");
 exports.brokerCtrl = require("./brokerCtrl");
+exports.constantsCtrl = require("./constantsCtrl");
+exports.rawMaterialCtrl = require("./rawMaterialCtrl");

@@ -11,6 +11,6 @@ var constantSchema = new mongoose.Schema({
 
 
 });
-constantSchema.plugin(uniqueValidator, {message: constants.messages.error.plantExist});
-var constantModel = mongoose.model('constant', constantSchema);
-module.exports = constantModel;
+//constantSchema.plugin(uniqueValidator, {message: constants.messages.error.plantExist});
+var constantsModel = mongoose.model('constant', constantSchema);
+module.exports = constantsModel;
