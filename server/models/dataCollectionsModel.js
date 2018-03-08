@@ -13,7 +13,7 @@ var dataCollectionSchema = new mongoose.Schema({
     variety                            : {type: String},
     //coo                                : [{type: String}],
     //productCode                        : [{type: String}],
-    //kosher                             : {type: String},
+    //cert                               : {type: String},
     containerNo                        : {type: String},
     lotNo                              : {type: String},
     nonGmo                             : {type: Boolean,default:false},

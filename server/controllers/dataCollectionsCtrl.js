@@ -7,18 +7,18 @@ var colors = require('colors');
 var response = require("./../component/response");
 var models = require("./../models/index");
 var constants = require("./../../config/constants");
-var logger = require("./../component/log4j").getLogger('dataCollectionCtrl');
+var logger = require("./../component/log4j").getLogger('dataCollectionsCtrl');
 
 
 exports.addDataCollection = function(req,res){
   try {
-    new models.dataCollectionModel(req.body).save(function (err) {
+    new models.dataCollectionsModel(req.body).save(function (err) {
       if(err){
         logger.error("addDataCollection ", err);
-        return response.sendResponse(res,500,"error",constants.messages.error.savedataCollection,err);
+        return response.sendResponse(res,500,"error",constants.messages.error.saveDataCollection,err);
       }
       else {
-        return response.sendResponse(res,200,"success",constants.messages.success.savedataCollection);
+        return response.sendResponse(res,200,"success",constants.messages.success.saveDataCollection);
       }
     })
 
@@ -41,7 +41,7 @@ exports.getDataCollection = function(req,res){
     if(req.query.type){
       params['type'] = req.query.type;
     }
-    models.dataCollectionModel.find(params,function(err,data){
+    models.dataCollectionsModel.find(params,function(err,data){
       if(err){
         logger.error("getDataCollection ", err);
         return response.sendResponse(res,500,"error",constants.messages.error.getData,err);
@@ -62,13 +62,13 @@ exports.udpateDataCollection = function(req,res){
     }
     delete req.body['_id'];
     var options = {new:true};
-    models.dataCollectionModel.findOneAndUpdate(query, req.body,options).exec()
+    models.dataCollectionsModel.findOneAndUpdate(query, req.body,options).exec()
     .then(function(data) {
-      return response.sendResponse(res,200,"success",constants.messages.success.udpatedataCollection,data);
+      return response.sendResponse(res,200,"success",constants.messages.success.udpateDataCollection,data);
     })
     .catch(function(err) {
       logger.error("updateDataCollection", err);
-      return response.sendResponse(res, 500,"error",constants.messages.error.updatedataCollection,err);
+      return response.sendResponse(res, 500,"error",constants.messages.error.updateDataCollection,err);
     })
 
   } catch (e) {
