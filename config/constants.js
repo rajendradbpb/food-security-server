@@ -46,6 +46,11 @@ var constants = {
 
       "saveConstant" : "Error in saving unit",
 
+      //dataCollection
+
+      "saveDataCollection" : "Error in saving record",
+
+
       },
     success:{
 
@@ -69,6 +74,9 @@ var constants = {
       
       //constants
       "saveConstant" : "unit saved",
+
+      //dataCollection
+      "savedataCollection" : "record saved",
        
     },
   },

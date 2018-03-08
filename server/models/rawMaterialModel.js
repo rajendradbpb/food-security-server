@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var constants = require("./../../config/constants")
 var rawMatrialSchema = new mongoose.Schema({
     plant                  :[{type: Schema.Types.ObjectId, ref: 'plant'}],
-    supplier               :  [{type: Schema.Types.ObjectId, ref: 'supplier'}],
+    supplier               : [{type: Schema.Types.ObjectId, ref: 'supplier'}],
      brokerId              :[{type: Schema.Types.ObjectId, ref: 'broker'}],
     
      name                  : {type: String , required:true},
