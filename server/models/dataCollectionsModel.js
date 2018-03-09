@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var constants = require("./../../config/constants")
 var dataCollectionSchema = new mongoose.Schema({
     id                                 : {type: String , required:true,unique:true},
-    plant                              : [{type: Schema.Types.ObjectId,required:true, ref: 'plant'}],
+    plant                              : {type: Schema.Types.ObjectId,required:true, ref: 'plant'},
     supplier                           : {type: Schema.Types.ObjectId , required:true,ref: 'supplier'},
     broker                             : [{type: Schema.Types.ObjectId,required:true, ref: 'broker'}], 
     product                            : [{type: Schema.Types.ObjectId,required:true, ref: 'product'}],
