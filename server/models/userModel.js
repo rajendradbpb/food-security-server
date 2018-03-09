@@ -7,15 +7,15 @@ var password = require('password-hash-and-salt');
 var userSchema = new mongoose.Schema({
     role                : {type: Schema.Types.ObjectId, ref: 'role',required: true},
     clientId            : {type: String, default:null},
-    plantId             :{type: Schema.Types.ObjectId, ref: 'plant',required: constants.messages.error.undefinedPlantId},
+    plantId             : {type: Schema.Types.ObjectId, ref: 'plant',required: constants.messages.error.undefinedPlantId},
     username            : {type: String,unique : true,required: constants.messages.error.undefinedUsername},
     password            : {type: String,required: constants.messages.error.undefinedPassword},
     email               : {type: String,unique : true,required: constants.messages.error.undefinedEmail},
     salutation          : {type: String, required :  constants.messages.error.undefinedSalutation},
-    firstName          : {type: String, required :  constants.messages.error.undefinedFirstName},
-    lastName          : {type: String, required :  constants.messages.error.undefinedSalutation},
-    empId              : {type: String, default:"NA"},
-    phone             :  {type: String, default:"NA"},
+    firstName           : {type: String, required :  constants.messages.error.undefinedFirstName},
+    lastName            : {type: String, required :  constants.messages.error.undefinedSalutation},
+    empId               : {type: String, default:"NA"},
+    phone               : {type: String, default:"NA"},
 
 
     // address

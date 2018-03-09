@@ -87,3 +87,35 @@ exports.deleteBroker = function(req,res){
     logger.error("deleteBroker ", e);
   }
 }
+
+exports.getBrokerByPlantId = function(req,res){
+  try {
+    // validation
+    models.brokerModel.find({plants:{"$in":[req.params.plantId]}}).exec()
+    .then(function(broker) {
+      return response.sendResponse(res,200,"success",constants.messages.success.getData,broker);
+    })
+    .catch(function(err){
+
+    })
+
+  } catch (e) {
+    logger.error("updateproduct ", e);
+  }
+}
+
+exports.getBrokerBySupplierId = function(req,res){
+  try {
+    // validation
+    models.brokerModel.find({ suppliers:{"$in":[req.params.supplierId]}}).exec()
+    .then(function(broker) {
+      return response.sendResponse(res,200,"success",constants.messages.success.getData,broker);
+    })
+    .catch(function(err){
+
+    })
+
+  } catch (e) {
+    logger.error("updateproduct ", e);
+  }
+}
