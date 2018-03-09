@@ -57,8 +57,8 @@ var constants = {
       // generic
       "saveData"  : "Success in saving data",
       "getData"  : "Success in get data",
-      "updateData"  : "Error in update data",
-      "deleteData"  : "Error in delete data",
+      "updateData"  : "success in update data",
+      "deleteData"  : "success in delete data",
 
       //role
       "saveRole" : "Role saved",
