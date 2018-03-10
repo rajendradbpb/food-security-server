@@ -8,12 +8,12 @@ router.post('/',function(req, res, next) {
 router.get('/', function(req, res, next) {
   controllers.brokerCtrl.getBroker(req, res);
 });
-router.get('/:plantId', function(req, res, next) {
-  controllers.brokerCtrl.getBrokerByPlantId(req, res);
-});
-router.get('/:supplierId', function(req, res, next) {
-  controllers.brokerCtrl.getBrokerBySupplierId(req, res);
-});
+// router.get('/:plantId', function(req, res, next) {
+//   controllers.brokerCtrl.getBrokerByPlantId(req, res);
+// });
+// router.get('/:supplierId', function(req, res, next) {
+//   controllers.brokerCtrl.getBrokerBySupplierId(req, res);
+// });
 router.put('/', function(req, res, next) {
   controllers.brokerCtrl.udpateBroker(req, res);
 });

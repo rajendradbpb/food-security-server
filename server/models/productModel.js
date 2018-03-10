@@ -12,7 +12,11 @@ var productSchema = new mongoose.Schema({
     unit                           : {type:String},
     description                    : {type:String},
     country                        : {type:String},
-    rawMatrial                     : [{type: Schema.Types.ObjectId, ref: 'rawMaterial'}]
+    rawMatrial                     : [{type: Schema.Types.ObjectId, ref: 'rawMaterial'}],
+    variety                        :[{type:String}],
+    kosher                        : {type:String},
+    organic                        : {type:String},
+    nonGmo                        : {type:String},
 });
 
 // productSchema.plugin(uniqueValidator, {message: constants.messages.error.clientIdExist});

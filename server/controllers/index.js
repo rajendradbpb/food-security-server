@@ -7,4 +7,4 @@ exports.supplierCtrl = require("./supplierCtrl");
 exports.brokerCtrl = require("./brokerCtrl");
 exports.constantsCtrl= require("./constantsCtrl");
 exports.rawMaterialCtrl = require("./rawMaterialCtrl");
-exports.dataCollectionsCtrl = require("./dataCollectionsCtrl");
+exports.recordCtrl = require("./recordCtrl");

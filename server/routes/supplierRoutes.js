@@ -9,9 +9,9 @@ router.get('/', function(req, res, next) {
   controllers.supplierCtrl.getSupplier(req, res);
 });
 //supplier
-router.get('/:plantId', function(req, res, next) {
-  controllers.supplierCtrl.getSupplierByPlantId(req, res);
-});
+// router.get('/:plantId', function(req, res, next) {
+//   controllers.supplierCtrl.getSupplierByPlantId(req, res);
+// });
 router.put('/', function(req, res, next) {
   controllers.supplierCtrl.udpateSupplier(req, res);
 });

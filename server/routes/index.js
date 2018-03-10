@@ -11,6 +11,7 @@ var productRoutes = require('./productRoutes');
 var supplierRoutes = require('./supplierRoutes');
 var brokerRoutes = require('./brokerRoutes');
 var rawMaterialRoutes = require('./rawMaterialRoutes');
+var recordRoutes = require('./recordRoutes');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -33,12 +34,12 @@ router.use('/constant', constantsRoutes);
 router.use('/supplier', supplierRoutes);
 router.use('/broker', brokerRoutes);
 router.use('/rawMaterial', rawMaterialRoutes);
+router.use('/record', recordRoutes);
 // router.use('/vle', vleRoutes);
-router.get('/test/:id', function(req,res) {
+router.get('/test/:val1/:val2', function(req,res) {
   console.log("req.query   ",req.query);
   console.log("req.param   ",req.params);
   res.send({status:"ok"});
 });
-
 
 module.exports = router;

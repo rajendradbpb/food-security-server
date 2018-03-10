@@ -264,4 +264,28 @@ utility.getAlphaNumeric = function(precision) {
      return response.sendResponse(res, 500, "error", constants.messages.errors.getData,err);
    }
  }
+
+ /**
+  * functionName : prepareQuery
+  * Info : this is to prepare query object from the request searching through the
+  params and query
+  * input : request object and query object and lookUp
+  * output :query object
+  * createdDate - 03/11/2018
+  */
+  utility.prepareQuery = function(req,queryObj,lookUp){
+    if(lookUp.indexOf("query") != -1) {
+      // prepare for the query parameters
+      Object.keys(req.query).forEach(function(key) {
+        queryObj[key] = req.query[key]
+      });
+    }
+    if(lookUp.indexOf("params") != -1) {
+      // prepare for the params
+      Object.keys(req.params).forEach(function(key) {
+        queryObj[key] = req.params[key]
+      });
+    }
+    return queryObj;
+  }
 module.exports = utility;

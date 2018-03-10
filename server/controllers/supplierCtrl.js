@@ -8,6 +8,7 @@ var response = require("./../component/response");
 var models = require("./../models/index");
 var constants = require("./../../config/constants");
 var logger = require("./../component/log4j").getLogger('supplierCtrl');
+var component = require("./../component");
 exports.addSupplier = function(req,res){
   try {
     new models.supplierModel(req.body).save(function (err) {
@@ -30,12 +31,15 @@ exports.getSupplier = function(req,res){
       isDelete:false,
       //type:{$in:["aa","consultant","bm"]}
     };
-    if(req.query._id){
-      params['_id'] = req.query._id;
+    if(req.params.plant){
+      params["plants"] = {"$in":[req.params.plant]};
     }
-    if(req.query.type){
-      params['type'] = req.query.type;
+    if(req.query.plant){
+      params["plants"] = {"$in":[req.query.plant]};
     }
+    // params = component.utility.prepareQuery(req,params,["query","params"]);
+
+    console.log("query string getSupplier----- ",params);
     models.supplierModel.find(params,function(err,data){
       if(err){
         logger.error("getSupplier ", err);
@@ -89,19 +93,19 @@ exports.deleteSupplier = function(req,res){
 }
 
 
-
-exports.getSupplierByPlantId = function(req,res){
-  try {
-    // validation
-    models.supplierModel.find({plants:{"$in":[req.params.plantId]}}).exec()
-    .then(function(supplier) {
-      return response.sendResponse(res,200,"success",constants.messages.success.getData,supplier);
-    })
-    .catch(function(err){
-
-    })
-
-  } catch (e) {
-    logger.error("updateproduct ", e);
-  }
-}
+//
+// exports.getSupplierByPlantId = function(req,res){
+//   try {
+//     // validation
+//     models.supplierModel.find({plants:{"$in":[req.params.plantId]}}).exec()
+//     .then(function(supplier) {
+//       return response.sendResponse(res,200,"success",constants.messages.success.getData,supplier);
+//     })
+//     .catch(function(err){
+//
+//     })
+//
+//   } catch (e) {
+//     logger.error("updateproduct ", e);
+//   }
+// }

@@ -41,14 +41,14 @@ var constants = {
       "saveProduct" : "Error in saving Role",
 
       // rawMatrial
-      
+
       //constants
 
       "saveConstant" : "Error in saving unit",
 
-      //dataCollection
+      //Record
 
-      "saveDataCollection" : "Error in saving record",
+      "saveRecord" : "Error in saving record",
 
 
       },
@@ -71,13 +71,13 @@ var constants = {
 
       //product
       "saveProduct" : "Product saved",
-      
+
       //constants
       "saveConstant" : "unit saved",
 
-      //dataCollection
-      "savedataCollection" : "record saved",
-       
+      //Record
+      "saveRecord" : "record saved",
+
     },
   },
 

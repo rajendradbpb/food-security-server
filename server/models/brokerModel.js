@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var constants = require("./../../config/constants")
 var brokerSchema = new mongoose.Schema({
   plants                           : [{type: Schema.Types.ObjectId, ref: 'plant'}],
-  suppliers                        : [{type: Schema.Types.ObjectId, ref: 'supplier'}],
+  suppliers                       : [{type: Schema.Types.ObjectId, ref: 'supplier'}],
   name                             : {type:String,required:true},
   address : [
     {
@@ -15,14 +15,6 @@ var brokerSchema = new mongoose.Schema({
       country           :{type: String}
     }
   ],
-  // approval                      :{type:Boolean,default:false},
-  // status                        :{type:String},
-  // certification                 :{type:String},
-  // samplingMethod                :{type:String},
-  // pathogenTest                  :{type:String},
-  // virusTest                     :{type:String},
-  // pesticideTest                 :{type:String},
-
   isDelete          : {type: Boolean, default:false},
   createdDate       :{type: Date, default:new Date()},
 });

@@ -33,9 +33,15 @@ exports.getBroker = function(req,res){
     if(req.query._id){
       params['_id'] = req.query._id;
     }
-    if(req.query.type){
-      params['type'] = req.query.type;
+    //updating query object with plant , supplier
+    if(req.query.plant) {
+      params["plants"] = {"$in":[req.query.plant]};
     }
+    if(req.query.supplier) {
+      params["suppliers"] = {"$in":[req.query.supplier]};
+    }
+
+    console.log("query string ---    ",params);
     models.brokerModel.find(params,function(err,data){
       if(err){
         logger.error("getBroker ", err);
@@ -87,35 +93,35 @@ exports.deleteBroker = function(req,res){
     logger.error("deleteBroker ", e);
   }
 }
-
-exports.getBrokerByPlantId = function(req,res){
-  try {
-    // validation
-    models.brokerModel.find({plants:{"$in":[req.params.plantId]}}).exec()
-    .then(function(broker) {
-      return response.sendResponse(res,200,"success",constants.messages.success.getData,broker);
-    })
-    .catch(function(err){
-
-    })
-
-  } catch (e) {
-    logger.error("updateproduct ", e);
-  }
-}
-
-exports.getBrokerBySupplierId = function(req,res){
-  try {
-    // validation
-    models.brokerModel.find({ suppliers:{"$in":[req.params.supplierId]}}).exec()
-    .then(function(broker) {
-      return response.sendResponse(res,200,"success",constants.messages.success.getData,broker);
-    })
-    .catch(function(err){
-
-    })
-
-  } catch (e) {
-    logger.error("updateproduct ", e);
-  }
-}
+//
+// exports.getBrokerByPlantId = function(req,res){
+//   try {
+//     // validation
+//     models.brokerModel.find({plants:{"$in":[req.params.plantId]}}).exec()
+//     .then(function(broker) {
+//       return response.sendResponse(res,200,"success",constants.messages.success.getData,broker);
+//     })
+//     .catch(function(err){
+//
+//     })
+//
+//   } catch (e) {
+//     logger.error("updateproduct ", e);
+//   }
+// }
+//
+// exports.getBrokerBySupplierId = function(req,res){
+//   try {
+//     // validation
+//     models.brokerModel.find({ suppliers:{"$in":[req.params.supplierId]}}).exec()
+//     .then(function(broker) {
+//       return response.sendResponse(res,200,"success",constants.messages.success.getData,broker);
+//     })
+//     .catch(function(err){
+//
+//     })
+//
+//   } catch (e) {
+//     logger.error("updateproduct ", e);
+//   }
+// }
