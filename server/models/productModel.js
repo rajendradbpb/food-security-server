@@ -18,6 +18,8 @@ var productSchema = new mongoose.Schema({
     kosher                         : {type:String},
     organic                        : {type:String},
     nonGmo                         : {type:String},
+
+    isDelete                       : {type:Boolean,default:false}
 });
 
 // productSchema.plugin(uniqueValidator, {message: constants.messages.error.clientIdExist});

@@ -6,8 +6,8 @@ var Schema = mongoose.Schema;
 var password = require('password-hash-and-salt');
 var userSchema = new mongoose.Schema({
     role                : {type: Schema.Types.ObjectId, ref: 'role',required: true},
-    clientId            : {type: String, default:null},
-    plantId             : {type: Schema.Types.ObjectId, ref: 'plant',required: constants.messages.error.undefinedPlantId},
+    client            : {type: String, default:null},
+    plant            : {type: Schema.Types.ObjectId, ref: 'plant',required: constants.messages.error.undefinedPlantId},
     username            : {type: String,unique : true,required: constants.messages.error.undefinedUsername},
     password            : {type: String,required: constants.messages.error.undefinedPassword},
     email               : {type: String,unique : true,required: constants.messages.error.undefinedEmail},

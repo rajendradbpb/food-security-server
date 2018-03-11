@@ -1,1 +1,1 @@
-{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"food-security.configs"},{"v":2,"unique":true,"key":{"clientId":1},"name":"clientId_1","ns":"food-security.configs","background":true}],"uuid":"5dc81f90191c45caac81ad919592d23e"}
+{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"food-security.configs"},{"v":1,"unique":true,"key":{"clientId":1},"name":"clientId_1","ns":"food-security.configs","background":true}]}
