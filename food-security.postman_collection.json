@@ -37,9 +37,9 @@
 		"2a3069ca-3001-47c4-9d91-4fee34bdce51",
 		"810a0deb-904f-453a-b6cf-31376a0b9b81",
 		"187cb9fc-b1d6-44e3-9f23-4db9cfb494d6",
-		"44ede827-9f9f-4341-bc92-c5cde253c5fc",
 		"38e0204a-3ca1-4f1b-a857-274815baddd3",
-		"2d192974-6f22-4eba-befe-8f0403c5a2c3"
+		"2d192974-6f22-4eba-befe-8f0403c5a2c3",
+		"1e63c37b-7103-4c4a-9f9d-25019ebc3f71"
 	],
 	"folders_order": [],
 	"folders": [],
@@ -74,13 +74,13 @@
 					"value": "application/json"
 				}
 			],
-			"method": "POST",
+			"method": "GET",
 			"pathVariableData": [],
 			"queryParams": [],
 			"auth": null,
 			"events": [],
 			"folder": null,
-			"rawModeData": "{\n    \"plantId\"       : \"Plant456\",\n    \"name\"          : \"Nature's Touch\",\n    \n    \"country\"       :  \"Abbotsford\",\n    \"state\"         :  \"BC\",\n    \"city\"          :  \"31122 South Fraser Way, Abbotsford, BC  V2T 6L5\",\n    \"pin\"           :  \" V2T 6L5\",\n\n    \"fax\"           : \"+nature+15147377790\",\n    \"phone\"         : \"+15147377790\"\n}",
+			"rawModeData": "{\n    \"plantId\"       : \"Plant678\",\n    \"name\"          : \"Nature's Touch\",\n    \n    \"country\"       :  \"Front Royal\",\n    \"state\"         :  \"Front Royal\",\n    \"city\"          :  \"190 Toray Drive, Front Royal, Virginia \",\n    \"pin\"           :  \" 22630\",\n\n    \"fax\"           : \"+nature+15147377790\",\n    \"phone\"         : \"+15147387790\"\n}",
 			"headers": "Content-Type: application/json\n",
 			"pathVariables": {}
 		},
@@ -104,18 +104,63 @@
 		{
 			"id": "187cb9fc-b1d6-44e3-9f23-4db9cfb494d6",
 			"name": "product-GET",
-			"url": "http://localhost:3000/product",
+			"url": "http://localhost:3000/product?plant=<5a999bf3f0e9d90c3448340a>&supplier=<5aa4cc6f5c742f291c36e2d3>&broker=<5aa4fc74f5650e1ca07ceabd>",
 			"description": "",
 			"data": null,
 			"dataMode": "params",
 			"headerData": [],
 			"method": "GET",
 			"pathVariableData": [],
-			"queryParams": [],
+			"queryParams": [
+				{
+					"key": "plant",
+					"value": "<5a999bf3f0e9d90c3448340a>",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "supplier",
+					"value": "<5aa4cc6f5c742f291c36e2d3>",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "broker",
+					"value": "<5aa4fc74f5650e1ca07ceabd>",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
 			"auth": null,
 			"events": [],
 			"folder": null,
 			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "1e63c37b-7103-4c4a-9f9d-25019ebc3f71",
+			"name": "http://localhost:3000/product\n\n",
+			"url": "http://localhost:3000/product\n\n",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n\t\"plants\"                         :[\"5aa524d0d291692fbc5f48cd\"],\n\t\"supplier\"                       :[\"5aa52666d291692fbc5f48ce\"],\n    \"broker\"                          :[\"5aa521f8d291692fbc5f48c7\"],\n    \"productId\"                      :\"SOBCRAN\",\n    \"name\"                           :\"BJO Dark Sweet Cherry - 12 x 3 lb \",\n    \"netWeight\"                      : \"3lb \",\n    \"unit\"                           : \"lb \",\n    \"description\"                    : \" Ongoing Purchase \",\n    \"country\"                        : \"United States\",\n    \"variety\"                        : \"[small,big,medium]\",\n    \"kosher\"                         : \"jhj\",\n    \"organic\"                        : \"jjn\",\n    \"nonGmo\"                         : \"vhh\"\n\t\n}",
+			"headers": "Content-Type: application/json\n",
 			"pathVariables": {}
 		},
 		{
@@ -155,7 +200,6 @@
 		{
 			"id": "2d374ab5-5ac5-48cc-a8a1-4d09e593d85b",
 			"name": "get-roleList",
-<<<<<<< HEAD
 			"url": "http://localhost:3000/role",
 			"description": null,
 			"data": [],
@@ -169,55 +213,6 @@
 			"folder": null,
 			"headers": "",
 			"pathVariables": {}
-=======
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:3000/role",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"role"
-					]
-				},
-				"description": null
-			},
-			"response": []
-		},
-		{
-			"name": "save-role",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"type\":\"operator\",\r\n  \"menu\":[{\r\n    \"label\" : \"\",\r\n    \"main\" : [{\r\n        \"state\" : \"dashboard\",\r\n        \"short_label\" : \"D\",\r\n        \"name\" : \"Dashboard\",\r\n        \"type\" : \"sub\",\r\n        \"children\" : [{\r\n            \"state\" : \"corporate\",\r\n            \"name\" : \"Corporate Dashboard\"\r\n          }, {\r\n            \"state\" : \"ecommerce\",\r\n            \"name\" : \"Plant Dashboard\"\r\n          }, {\r\n            \"state\" : \"analytics\",\r\n            \"name\" : \"My Dashboard\"\r\n          }, {\r\n            \"state\" : \"ecommerce\",\r\n            \"name\" : \"Summary\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n  ],\r\n  \"api\" : [\r\n      {\r\n        \"name\" :\"login\",\r\n        \"url\" :\"/login\",\r\n        \"method\":\"post\"\r\n      }\r\n    \r\n    ]\r\n}"
-				},
-				"url": {
-					"raw": "http://localhost:3000/role",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"role"
-					]
-				},
-				"description": "save role"
-			},
-			"response": []
->>>>>>> 75e7b20f5bbfe3fbcd585667dfeb8b4ec160a031
 		},
 		{
 			"id": "38e0204a-3ca1-4f1b-a857-274815baddd3",
@@ -256,29 +251,6 @@
 			"events": null,
 			"folder": null,
 			"rawModeData": "{\n  \"username\"            : \"admin\",\n    \"password\"            : \"admin\"\n}",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "44ede827-9f9f-4341-bc92-c5cde253c5fc",
-			"name": "plant-save",
-			"url": "http://localhost:3000/plant",
-			"description": "",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "POST",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": null,
-			"folder": null,
-			"rawModeData": "{\n    \"plantId\"       : \"testPlant12\",\n    \"name\"          : \"Canada\",\n    \n    \"country\"          :  \"countryPlant73\",\n    \"state\"          :  \"state\",\n    \"city\"          :  \"city\",\n    \"pin\"          :  \"7878787\",\n\n    \"fax\"           : \"1111111\",\n    \"phone\"         : \"22222222\"\n}",
 			"headers": "Content-Type: application/json\n",
 			"pathVariables": {}
 		},
@@ -340,13 +312,13 @@
 					"value": "application/json"
 				}
 			],
-			"method": "POST",
+			"method": "GET",
 			"pathVariableData": [],
 			"queryParams": [],
 			"auth": null,
 			"events": [],
 			"folder": null,
-			"rawModeData": "{\n  \"plants\"           : [\"5a999bf3f0e9d90c3448340a\"],\n  \"brokers\"          :[],\n  \n  \"name\"              :\"Agricola Los Medanos\",\n  \"id\"                : \"1004\",\n  \"address\" : [\n    {\n      \"city\"              : \" PANAMERICANA SUR KM 290\",\n      \"region\"            : \"GUADALUPE\",\n      \"state\"             : \"GUADALUPE\",\n      \"pin\"               : \"13841\",\n      \"country\"   :\"Peru\"\n    }\n  ],\n  \"phone\"             : \"+051 946085614\",\n  \"contactSalutation\" :\"Mr.\",\n  \"contactFirstName\"  : \"Ysabel\"\n  \n}",
+			"rawModeData": "{\n  \"plants\"           : [\"5aa524d0d291692fbc5f48cd\"],\n  \"name\"              :\"Mesa Y Letelier\",\n  \"id\"                : \"1007\",\n  \"address\" : [\n    {\n      \"city\"              : \"Longitudinal Sur Km. 189, Cruce zapallar Officina 1  \",\n      \"region\"            : \"Curico \",\n      \"state\"             : \"Curico \",\n      \"pin\"               : \" ‎3349001\",\n      \"country\"   :\"Chile \"\n    }\n  ],\n  \"phone\"             : \"(56)9 42635807 \",\n  \"contactSalutation\" :\"Mr. \",\n  \"contactFirstName\"  : \"Nelson  \"\n  \n}",
 			"headers": "Content-Type: application/json\n",
 			"pathVariables": {}
 		},
@@ -399,7 +371,6 @@
 		{
 			"id": "76b74e17-8819-404e-86f0-34a89062202d",
 			"name": "save-user",
-<<<<<<< HEAD
 			"url": "http://localhost:3000/user",
 			"description": null,
 			"data": [],
@@ -419,34 +390,6 @@
 			"rawModeData": "{\n\t\"role\"                : \"5a9999a4f0e9d90c34483407\",\n   \n    \"plantId\"             :\"5a999be1f0e9d90c34483409\",\n    \"username\"            :\"operator1\",\n    \"password\"            : \"operator1\",\n    \"email\"               : \"oerator1@yopmail.com\",\n    \"salutation\"          : \"Mr\",\n    \"firstName\"          : \"operator1\",\n    \"lastName\"          : \"operator1\",\n    \"empId\"              : \"operator1\",\n    \"phone\"             :  \"898989898\",\n\t\n    \"country\"          :  \"India\",\n    \"state\"          :  \"Odisha\",\n    \"city\"          : \"Bbsr\",\n    \"pin\"          :  \"7521002\"\n}",
 			"headers": "Content-Type: application/json\n",
 			"pathVariables": {}
-=======
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"role\"                : \"5aa4cfa3d02a120770cebe9f\",\n   \n    \"plantId\"             :\"5aa4c2c33f329c3f1c866f3e\",\n    \"username\"            :\"admin\",\n    \"password\"            : \"admin\",\n    \"email\"               : \"admin@yopmail.com\",\n    \"salutation\"          : \"Mr\",\n    \"firstName\"          : \"admin\",\n    \"lastName\"          : \"admin\",\n    \"empId\"              : \"admin\",\n    \"phone\"             :  \"898989898\",\n  \n    \"country\"          :  \"India\",\n    \"state\"          :  \"Odisha\",\n    \"city\"          : \"Bbsr\",\n    \"pin\"          :  \"7521002\"\n}"
-				},
-				"url": {
-					"raw": "http://localhost:3000/user",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"user"
-					]
-				},
-				"description": null
-			},
-			"response": []
->>>>>>> 75e7b20f5bbfe3fbcd585667dfeb8b4ec160a031
 		},
 		{
 			"id": "7a1eaa3f-36b3-49fb-b5a9-a5087c4a7a34",
@@ -501,7 +444,7 @@
 			"auth": null,
 			"events": [],
 			"folder": null,
-			"rawModeData": "\n{\n\t\"plants\"                         :[\"5a999bf3f0e9d90c3448340a\"],\n    \"suppliers\"                      :[\"5aa4cc6f5c742f291c36e2d3\"],\n    \"brokers\"                        :[\"5aa4d5025c742f291c36e2d9 \"],\n    \"productId\"                      :\"ORGBJCERI48c\",\n    \"name\"                           :\"BJO Dark Sweet Cherry - 12 x 3 lb \",\n    \"netWeight\"                      : \"3lb \",\n    \"unit\"                           : \"lb \",\n    \"description\"                    : \" Ongoing Purchase \",\n    \"country\"                        : \"United States\",\n    \"variety\"                        : \"[small,big,medium]\",\n    \"kosher\"                         : \"jhj\",\n    \"organic\"                        : \"jjn\",\n    \"nonGmo\"                         : \"vhh\"\n\t\n}",
+			"rawModeData": "\n{\n\t\"plants\"                         :[\"5a999be1f0e9d90c34483409\"],\n    \"suppliers\"                      :[\"5aa4cc6f5c742f291c36e2d3\"],\n    \"brokers\"                        :[\"5aa521f8d291692fbc5f48c7 \"],\n    \"productId\"                      :\"CLC1909705\",\n    \"name\"                           :\"CL Green Smoothie Mix - 500 g \",\n    \"netWeight\"                      : \"500g \",\n    \"unit\"                           : \"g \",\n    \"description\"                    : \" Ongoing Purchase \",\n    \"country\"                        : \"Abbotsford\",\n    \"variety\"                        : \"[small,big,medium]\",\n    \"kosher\"                         : \"jhj\",\n    \"organic\"                        : \"jjn\",\n    \"nonGmo\"                         : \"vhh\"\n\t\n}",
 			"headers": "Content-Type: application/json\n",
 			"pathVariables": {}
 		},
@@ -654,13 +597,13 @@
 					"value": "application/json"
 				}
 			],
-			"method": "POST",
+			"method": "GET",
 			"pathVariableData": [],
 			"queryParams": [],
 			"auth": null,
 			"events": [],
 			"folder": null,
-			"rawModeData": "{\n\t\"plants\"                        : [\"5a999be1f0e9d90c34483409\",\"5a999bf3f0e9d90c3448340a\"],\n    \"name\"                            :\"Virginiabroker\",\n   \"address\" : [\n    {\n      \"city\"              : \"Virginia\",\n      \"region\"            : \"Virginia\",\n      \"state\"             : \"Abbotsford, Montreal\",\n      \"pin\"               : \"gty5454\",\n      \"country\"           : \"Montreal\"\n    }\n  ]\n}\n",
+			"rawModeData": "{\n\t\"plants\"                        : [\"5aa524d0d291692fbc5f48cd\"],\n\t\"suppliers\"                     :[\"5aa52666d291692fbc5f48ce\"],\n    \"name\"                            :\"Montrealbroker\",\n   \"address\" : [\n    {\n      \"city\"              : \"Montreal\",\n      \"region\"            : \"Montreal\",\n      \"state\"             :  \" Montreal\",\n      \"pin\"               :  \"its5454\",\n      \"country\"           : \"Montreal\"\n    }\n  ]\n}\n",
 			"headers": "Content-Type: application/json\n",
 			"pathVariables": {}
 		},
@@ -801,7 +744,6 @@
 			"pathVariables": {}
 		},
 		{
-<<<<<<< HEAD
 			"id": "f879f4c4-809f-4912-9b59-2a7a3408fca2",
 			"name": "product-update",
 			"url": "http://localhost:3000/product",
@@ -862,174 +804,6 @@
 			"folder": null,
 			"headers": "Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyIkX18iOnsic3RyaWN0TW9kZSI6dHJ1ZSwic2VsZWN0ZWQiOnt9LCJnZXR0ZXJzIjp7fSwiX2lkIjoiNWE3Y2VmYTMyY2ZiYWMxNDk4YTdkYjI3IiwicG9wdWxhdGVkIjp7InJvbGUiOnsidmFsdWUiOiI1YTdjZWJlN2FkM2VjOTA2YzBiMWE1NWQiLCJvcHRpb25zIjp7InBhdGgiOiJyb2xlIiwiX2RvY3MiOnsiNWE3Y2VmYTMyY2ZiYWMxNDk4YTdkYjI3IjoiNWE3Y2ViZTdhZDNlYzkwNmMwYjFhNTVkIn0sImlzVmlydHVhbCI6ZmFsc2V9fX0sIndhc1BvcHVsYXRlZCI6ZmFsc2UsImFjdGl2ZVBhdGhzIjp7InBhdGhzIjp7ImNsaWVudElkIjoiaW5pdCIsImVtYWlsIjoiaW5pdCIsInBhc3N3b3JkIjoiaW5pdCIsInVzZXJuYW1lIjoiaW5pdCIsInJvbGUiOiJpbml0IiwiX192IjoiaW5pdCIsIl9pZCI6ImluaXQifSwic3RhdGVzIjp7Imlnbm9yZSI6e30sImRlZmF1bHQiOnt9LCJpbml0Ijp7Il9fdiI6dHJ1ZSwiY2xpZW50SWQiOnRydWUsImVtYWlsIjp0cnVlLCJwYXNzd29yZCI6dHJ1ZSwidXNlcm5hbWUiOnRydWUsInJvbGUiOnRydWUsIl9pZCI6dHJ1ZX0sIm1vZGlmeSI6e30sInJlcXVpcmUiOnt9fSwic3RhdGVOYW1lcyI6WyJyZXF1aXJlIiwibW9kaWZ5IiwiaW5pdCIsImRlZmF1bHQiLCJpZ25vcmUiXX0sInBhdGhzVG9TY29wZXMiOnt9LCJlbWl0dGVyIjp7ImRvbWFpbiI6bnVsbCwiX2V2ZW50cyI6e30sIl9ldmVudHNDb3VudCI6MCwiX21heExpc3RlbmVycyI6MH0sIiRvcHRpb25zIjp0cnVlfSwiaXNOZXciOmZhbHNlLCJfZG9jIjp7ImlzRGVsZXRlIjpmYWxzZSwiX192IjowLCJjbGllbnRJZCI6IjAiLCJlbWFpbCI6ImFkbWluQHlvcG1haWwuY29tIiwicGFzc3dvcmQiOiJwYmtkZjIkMTAwMDAkZjYyNzZiN2NiYTJkYzA3NGI0YTMxMmM1MzU0NmQwYzA2Nzk3MWFjOWMzZmE5NzM1MWJjYTE0NWUwOTE3NjdkMTk3NDFkYmEwNDNjMjliZjAxNzUzYjEzMmU1ZjU4YmRmMjYxNjQ1OTY3ZDMwZWNiNTU5MjJhZTY3M2M2MGRlNWMkOGVmNmQ5YmZhM2Y1ODg1ODhhMzNiNzNiZWYyMGMwMDczYTYwMjE2Y2FiODRkYzYzZTBjODBjM2JhNGQ1Njg4Nzg1OWU0NWFkODI5Y2VkN2E0Mzc5Mjc0Mzk4Nzg1ODljNjQ5MWY1NjFkMjE5OGQ1YTkxMWY3NGFmYThmYmQ3MDQiLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6eyJfaWQiOiI1YTdjZWJlN2FkM2VjOTA2YzBiMWE1NWQiLCJ0eXBlIjoiYWRtaW4iLCJfX3YiOjAsImlzRGVsZXRlIjpmYWxzZSwiY3JlYXRlZERhdGUiOiIyMDE4LTAyLTA5VDAwOjMxOjI4Ljc4NloifSwiX2lkIjoiNWE3Y2VmYTMyY2ZiYWMxNDk4YTdkYjI3In0sIiRpbml0Ijp0cnVlLCJpYXQiOjE1MTgxMzk2MjMsImV4cCI6MTUxODIyNjAyM30.i-SXPd_oPJoWnPQz7r8nRCdIFvfS7gt7f1T3yxw6XxQ\n",
 			"pathVariables": {}
-=======
-			"name": "constant-update",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": " {\n             \"_id\": \"5a9fc9e94d564120d0028fa0\",\n            \"__v\": 0,\n            \"createdDate\": \"2018-03-07T11:14:43.946Z\",\n            \"isDelete\": false,\n            \"unit\": []\n        }"
-				},
-				"url": {
-					"raw": "http://localhost:3000/constant",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"constant"
-					]
-				},
-				"description": null
-			},
-			"response": []
-		},
-		{
-			"name": "supplier-by-plant",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:3000/supplier?plant=5a99bb26706e471d4071c9f1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"supplier"
-					],
-					"query": [
-						{
-							"key": "plant",
-							"value": "5a99bb26706e471d4071c9f1",
-							"equals": true
-						}
-					]
-				},
-				"description": null
-			},
-			"response": []
-		},
-		{
-			"name": "broker_By_plant_supp",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:3000/broker?plant=5aa4c2c33f329c3f1c866f3e&supplier=5aa4c34d3f329c3f1c866f41",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"broker"
-					],
-					"query": [
-						{
-							"key": "plant",
-							"value": "5aa4c2c33f329c3f1c866f3e",
-							"equals": true
-						},
-						{
-							"key": "supplier",
-							"value": "5aa4c34d3f329c3f1c866f41",
-							"equals": true
-						}
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "record-Save",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyIkX18iOnsic3RyaWN0TW9kZSI6dHJ1ZSwic2VsZWN0ZWQiOnt9LCJnZXR0ZXJzIjp7fSwiX2lkIjoiNWFhNGQwMDBkMDJhMTIwNzcwY2ViZWEyIiwicG9wdWxhdGVkIjp7InJvbGUiOnsidmFsdWUiOiI1YWE0Y2ZhM2QwMmExMjA3NzBjZWJlOWYiLCJvcHRpb25zIjp7InBhdGgiOiJyb2xlIiwiX2RvY3MiOnsiNWFhNGQwMDBkMDJhMTIwNzcwY2ViZWEyIjoiNWFhNGNmYTNkMDJhMTIwNzcwY2ViZTlmIn0sImlzVmlydHVhbCI6ZmFsc2V9fX0sIndhc1BvcHVsYXRlZCI6ZmFsc2UsImFjdGl2ZVBhdGhzIjp7InBhdGhzIjp7Imxhc3ROYW1lIjoiaW5pdCIsImZpcnN0TmFtZSI6ImluaXQiLCJzYWx1dGF0aW9uIjoiaW5pdCIsImVtYWlsIjoiaW5pdCIsInBhc3N3b3JkIjoiaW5pdCIsInVzZXJuYW1lIjoiaW5pdCIsInBsYW50SWQiOiJpbml0Iiwicm9sZSI6ImluaXQiLCJjbGllbnRJZCI6ImluaXQiLCJlbXBJZCI6ImluaXQiLCJwaG9uZSI6ImluaXQiLCJjb3VudHJ5IjoiaW5pdCIsInN0YXRlIjoiaW5pdCIsImNpdHkiOiJpbml0IiwicGluIjoiaW5pdCIsImlzRGVsZXRlIjoiaW5pdCIsIl9fdiI6ImluaXQiLCJfaWQiOiJpbml0In0sInN0YXRlcyI6eyJpZ25vcmUiOnt9LCJkZWZhdWx0Ijp7fSwiaW5pdCI6eyJfX3YiOnRydWUsImNsaWVudElkIjp0cnVlLCJlbXBJZCI6dHJ1ZSwicGhvbmUiOnRydWUsImNvdW50cnkiOnRydWUsInN0YXRlIjp0cnVlLCJjaXR5Ijp0cnVlLCJwaW4iOnRydWUsImlzRGVsZXRlIjp0cnVlLCJsYXN0TmFtZSI6dHJ1ZSwiZmlyc3ROYW1lIjp0cnVlLCJzYWx1dGF0aW9uIjp0cnVlLCJlbWFpbCI6dHJ1ZSwicGFzc3dvcmQiOnRydWUsInVzZXJuYW1lIjp0cnVlLCJwbGFudElkIjp0cnVlLCJyb2xlIjp0cnVlLCJfaWQiOnRydWV9LCJtb2RpZnkiOnt9LCJyZXF1aXJlIjp7fX0sInN0YXRlTmFtZXMiOlsicmVxdWlyZSIsIm1vZGlmeSIsImluaXQiLCJkZWZhdWx0IiwiaWdub3JlIl19LCJwYXRoc1RvU2NvcGVzIjp7fSwiZW1pdHRlciI6eyJkb21haW4iOm51bGwsIl9ldmVudHMiOnt9LCJfZXZlbnRzQ291bnQiOjAsIl9tYXhMaXN0ZW5lcnMiOjB9LCIkb3B0aW9ucyI6dHJ1ZX0sImlzTmV3IjpmYWxzZSwiX2RvYyI6eyJjbGllbnRJZCI6bnVsbCwiZW1wSWQiOiJhZG1pbiIsInBob25lIjoiODk4OTg5ODk4IiwiY291bnRyeSI6IkluZGlhIiwic3RhdGUiOiJPZGlzaGEiLCJjaXR5IjoiQmJzciIsInBpbiI6Ijc1MjEwMDIiLCJpc0RlbGV0ZSI6ZmFsc2UsIl9fdiI6MCwibGFzdE5hbWUiOiJhZG1pbiIsImZpcnN0TmFtZSI6ImFkbWluIiwic2FsdXRhdGlvbiI6Ik1yIiwiZW1haWwiOiJhZG1pbkB5b3BtYWlsLmNvbSIsInBhc3N3b3JkIjoicGJrZGYyJDEwMDAwJDhhOWY5Nzk4Mjc1MmEzMTM2N2Y0OGY3MWVlYzg2ZDU1NTI0YmFlNmVmYjhhZmM5MDQ5M2I5ZTY1MzBkNmI3MzE2NmI3ODgzMGRiMmVkODJmZGNlM2RlZWYwNTI1OTRkNjQ5YTk5MzNiMjRlOGZiZDc4MjA3MmMwYWJhNDg5N2I3JGViMDUzOGZjMjg5YWY2MTI4MmJlMjNhZjcwMmM5YWNhMTdhNmVmOGZmMDUyYzUwNGJmZjY1Y2YyZDYxZGIwYjczZTU3NzUwMDUwOTg1MjU3NmE4ZGE1ZTE4YWM5MDk0YzliOTY1ZWNiMDBmNmNjMThhZGFlYjM1NDg1ZDU4Y2Q5IiwidXNlcm5hbWUiOiJhZG1pbiIsInBsYW50SWQiOiI1YWE0YzJjMzNmMzI5YzNmMWM4NjZmM2UiLCJyb2xlIjp7Il9pZCI6IjVhYTRjZmEzZDAyYTEyMDc3MGNlYmU5ZiIsInR5cGUiOiJhZG1pbiIsIl9fdiI6MCwiaXNEZWxldGUiOmZhbHNlLCJjcmVhdGVkRGF0ZSI6IjIwMTgtMDMtMTFUMDY6NDE6MjUuMTE1WiIsImFwaSI6W3sibmFtZSI6ImxvZ2luIiwidXJsIjoiL2xvZ2luIiwibWV0aG9kIjoicG9zdCJ9XSwibWVudSI6W3sibGFiZWwiOiIiLCJtYWluIjpbeyJzdGF0ZSI6ImRhc2hib2FyZCIsInNob3J0X2xhYmVsIjoiRCIsIm5hbWUiOiJEYXNoYm9hcmQiLCJ0eXBlIjoic3ViIiwiY2hpbGRyZW4iOlt7InN0YXRlIjoiY29ycG9yYXRlIiwibmFtZSI6IkNvcnBvcmF0ZSBEYXNoYm9hcmQifSx7InN0YXRlIjoiZWNvbW1lcmNlIiwibmFtZSI6IlBsYW50IERhc2hib2FyZCJ9LHsic3RhdGUiOiJhbmFseXRpY3MiLCJuYW1lIjoiTXkgRGFzaGJvYXJkIn0seyJzdGF0ZSI6ImVjb21tZXJjZSIsIm5hbWUiOiJTdW1tYXJ5In1dfV19XX0sIl9pZCI6IjVhYTRkMDAwZDAyYTEyMDc3MGNlYmVhMiJ9LCIkaW5pdCI6dHJ1ZSwiaWF0IjoxNTIwNzUzMzI3LCJleHAiOjE1MjA4Mzk3Mjd9.mtBxJ6ohtvd2MsTX1sviCEdgvu4BFdsZEWRXVb6Mhbs",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"plant\"                              : \"5aa4c2c33f329c3f1c866f3e\",\n    \"supplier\"                           : \"5aa4c34d3f329c3f1c866f41\",\n    \"broker\"                             : \"5aa4c3d43f329c3f1c866f45\",\n    \"product\"                            : \"5aa4c48a3f329c3f1c866f49\",\n    \"country\"                            : \"India\",\n    \"approved\"                           : false,\n\n\n    \"po\"                                 : \"test\",\n    \"containerNo\"                        : \"container1\",\n    \"lotNo\"                              :  \"lot1\",\n    \"variety\"                            : \"variety\",\n    \"nonGmo\"                             : false\n\n}"
-				},
-				"url": {
-					"raw": "http://localhost:3000/record",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"record"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "attachment-save",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "upload1",
-							"value": "",
-							"description": "",
-							"type": "file"
-						},
-						{
-							"key": "upload2",
-							"value": "",
-							"description": "",
-							"type": "file"
-						},
-						{
-							"key": "upload3",
-							"value": "",
-							"description": "",
-							"type": "file"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://localhost:3000/record/attachment",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"record",
-						"attachment"
-					]
-				},
-				"description": ""
-			},
-			"response": []
->>>>>>> 75e7b20f5bbfe3fbcd585667dfeb8b4ec160a031
 		}
 	]
 }
