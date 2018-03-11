@@ -197,7 +197,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"type\":\"admin\",\r\n  \"menu\":[{\r\n    \"label\" : \"\",\r\n    \"main\" : [{\r\n        \"state\" : \"dashboard\",\r\n        \"short_label\" : \"D\",\r\n        \"name\" : \"Dashboard\",\r\n        \"type\" : \"sub\",\r\n        \"children\" : [{\r\n            \"state\" : \"corporate\",\r\n            \"name\" : \"Corporate Dashboard\"\r\n          }, {\r\n            \"state\" : \"ecommerce\",\r\n            \"name\" : \"Plant Dashboard\"\r\n          }, {\r\n            \"state\" : \"analytics\",\r\n            \"name\" : \"My Dashboard\"\r\n          }, {\r\n            \"state\" : \"ecommerce\",\r\n            \"name\" : \"Summary\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n  ],\r\n  \"api\" : [\r\n      {\r\n        \"name\" :\"login\",\r\n        \"url\" :\"/login\",\r\n        \"method\":\"post\"\r\n      }\r\n    \r\n    ]\r\n}"
+					"raw": "{\r\n  \"type\":\"operator\",\r\n  \"menu\":[{\r\n    \"label\" : \"\",\r\n    \"main\" : [{\r\n        \"state\" : \"dashboard\",\r\n        \"short_label\" : \"D\",\r\n        \"name\" : \"Dashboard\",\r\n        \"type\" : \"sub\",\r\n        \"children\" : [{\r\n            \"state\" : \"corporate\",\r\n            \"name\" : \"Corporate Dashboard\"\r\n          }, {\r\n            \"state\" : \"ecommerce\",\r\n            \"name\" : \"Plant Dashboard\"\r\n          }, {\r\n            \"state\" : \"analytics\",\r\n            \"name\" : \"My Dashboard\"\r\n          }, {\r\n            \"state\" : \"ecommerce\",\r\n            \"name\" : \"Summary\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n  ],\r\n  \"api\" : [\r\n      {\r\n        \"name\" :\"login\",\r\n        \"url\" :\"/login\",\r\n        \"method\":\"post\"\r\n      }\r\n    \r\n    ]\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:3000/role",
@@ -310,7 +310,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"role\"                : \"5aa184a6ec29331a30c23e5e\",\n   \n    \"plantId\"             :\"5a999be1f0e9d90c34483409\",\n    \"username\"            :\"admin\",\n    \"password\"            : \"admin\",\n    \"email\"               : \"admin@yopmail.com\",\n    \"salutation\"          : \"Mr\",\n    \"firstName\"          : \"admin\",\n    \"lastName\"          : \"admin\",\n    \"empId\"              : \"admin\",\n    \"phone\"             :  \"898989898\",\n  \n    \"country\"          :  \"India\",\n    \"state\"          :  \"Odisha\",\n    \"city\"          : \"Bbsr\",\n    \"pin\"          :  \"7521002\"\n}"
+					"raw": "{\n  \"role\"                : \"5aa4cfa3d02a120770cebe9f\",\n   \n    \"plantId\"             :\"5aa4c2c33f329c3f1c866f3e\",\n    \"username\"            :\"admin\",\n    \"password\"            : \"admin\",\n    \"email\"               : \"admin@yopmail.com\",\n    \"salutation\"          : \"Mr\",\n    \"firstName\"          : \"admin\",\n    \"lastName\"          : \"admin\",\n    \"empId\"              : \"admin\",\n    \"phone\"             :  \"898989898\",\n  \n    \"country\"          :  \"India\",\n    \"state\"          :  \"Odisha\",\n    \"city\"          : \"Bbsr\",\n    \"pin\"          :  \"7521002\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:3000/user",
@@ -737,6 +737,84 @@
 							"value": "5aa4c34d3f329c3f1c866f41",
 							"equals": true
 						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "record-Save",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyIkX18iOnsic3RyaWN0TW9kZSI6dHJ1ZSwic2VsZWN0ZWQiOnt9LCJnZXR0ZXJzIjp7fSwiX2lkIjoiNWFhNGQwMDBkMDJhMTIwNzcwY2ViZWEyIiwicG9wdWxhdGVkIjp7InJvbGUiOnsidmFsdWUiOiI1YWE0Y2ZhM2QwMmExMjA3NzBjZWJlOWYiLCJvcHRpb25zIjp7InBhdGgiOiJyb2xlIiwiX2RvY3MiOnsiNWFhNGQwMDBkMDJhMTIwNzcwY2ViZWEyIjoiNWFhNGNmYTNkMDJhMTIwNzcwY2ViZTlmIn0sImlzVmlydHVhbCI6ZmFsc2V9fX0sIndhc1BvcHVsYXRlZCI6ZmFsc2UsImFjdGl2ZVBhdGhzIjp7InBhdGhzIjp7Imxhc3ROYW1lIjoiaW5pdCIsImZpcnN0TmFtZSI6ImluaXQiLCJzYWx1dGF0aW9uIjoiaW5pdCIsImVtYWlsIjoiaW5pdCIsInBhc3N3b3JkIjoiaW5pdCIsInVzZXJuYW1lIjoiaW5pdCIsInBsYW50SWQiOiJpbml0Iiwicm9sZSI6ImluaXQiLCJjbGllbnRJZCI6ImluaXQiLCJlbXBJZCI6ImluaXQiLCJwaG9uZSI6ImluaXQiLCJjb3VudHJ5IjoiaW5pdCIsInN0YXRlIjoiaW5pdCIsImNpdHkiOiJpbml0IiwicGluIjoiaW5pdCIsImlzRGVsZXRlIjoiaW5pdCIsIl9fdiI6ImluaXQiLCJfaWQiOiJpbml0In0sInN0YXRlcyI6eyJpZ25vcmUiOnt9LCJkZWZhdWx0Ijp7fSwiaW5pdCI6eyJfX3YiOnRydWUsImNsaWVudElkIjp0cnVlLCJlbXBJZCI6dHJ1ZSwicGhvbmUiOnRydWUsImNvdW50cnkiOnRydWUsInN0YXRlIjp0cnVlLCJjaXR5Ijp0cnVlLCJwaW4iOnRydWUsImlzRGVsZXRlIjp0cnVlLCJsYXN0TmFtZSI6dHJ1ZSwiZmlyc3ROYW1lIjp0cnVlLCJzYWx1dGF0aW9uIjp0cnVlLCJlbWFpbCI6dHJ1ZSwicGFzc3dvcmQiOnRydWUsInVzZXJuYW1lIjp0cnVlLCJwbGFudElkIjp0cnVlLCJyb2xlIjp0cnVlLCJfaWQiOnRydWV9LCJtb2RpZnkiOnt9LCJyZXF1aXJlIjp7fX0sInN0YXRlTmFtZXMiOlsicmVxdWlyZSIsIm1vZGlmeSIsImluaXQiLCJkZWZhdWx0IiwiaWdub3JlIl19LCJwYXRoc1RvU2NvcGVzIjp7fSwiZW1pdHRlciI6eyJkb21haW4iOm51bGwsIl9ldmVudHMiOnt9LCJfZXZlbnRzQ291bnQiOjAsIl9tYXhMaXN0ZW5lcnMiOjB9LCIkb3B0aW9ucyI6dHJ1ZX0sImlzTmV3IjpmYWxzZSwiX2RvYyI6eyJjbGllbnRJZCI6bnVsbCwiZW1wSWQiOiJhZG1pbiIsInBob25lIjoiODk4OTg5ODk4IiwiY291bnRyeSI6IkluZGlhIiwic3RhdGUiOiJPZGlzaGEiLCJjaXR5IjoiQmJzciIsInBpbiI6Ijc1MjEwMDIiLCJpc0RlbGV0ZSI6ZmFsc2UsIl9fdiI6MCwibGFzdE5hbWUiOiJhZG1pbiIsImZpcnN0TmFtZSI6ImFkbWluIiwic2FsdXRhdGlvbiI6Ik1yIiwiZW1haWwiOiJhZG1pbkB5b3BtYWlsLmNvbSIsInBhc3N3b3JkIjoicGJrZGYyJDEwMDAwJDhhOWY5Nzk4Mjc1MmEzMTM2N2Y0OGY3MWVlYzg2ZDU1NTI0YmFlNmVmYjhhZmM5MDQ5M2I5ZTY1MzBkNmI3MzE2NmI3ODgzMGRiMmVkODJmZGNlM2RlZWYwNTI1OTRkNjQ5YTk5MzNiMjRlOGZiZDc4MjA3MmMwYWJhNDg5N2I3JGViMDUzOGZjMjg5YWY2MTI4MmJlMjNhZjcwMmM5YWNhMTdhNmVmOGZmMDUyYzUwNGJmZjY1Y2YyZDYxZGIwYjczZTU3NzUwMDUwOTg1MjU3NmE4ZGE1ZTE4YWM5MDk0YzliOTY1ZWNiMDBmNmNjMThhZGFlYjM1NDg1ZDU4Y2Q5IiwidXNlcm5hbWUiOiJhZG1pbiIsInBsYW50SWQiOiI1YWE0YzJjMzNmMzI5YzNmMWM4NjZmM2UiLCJyb2xlIjp7Il9pZCI6IjVhYTRjZmEzZDAyYTEyMDc3MGNlYmU5ZiIsInR5cGUiOiJhZG1pbiIsIl9fdiI6MCwiaXNEZWxldGUiOmZhbHNlLCJjcmVhdGVkRGF0ZSI6IjIwMTgtMDMtMTFUMDY6NDE6MjUuMTE1WiIsImFwaSI6W3sibmFtZSI6ImxvZ2luIiwidXJsIjoiL2xvZ2luIiwibWV0aG9kIjoicG9zdCJ9XSwibWVudSI6W3sibGFiZWwiOiIiLCJtYWluIjpbeyJzdGF0ZSI6ImRhc2hib2FyZCIsInNob3J0X2xhYmVsIjoiRCIsIm5hbWUiOiJEYXNoYm9hcmQiLCJ0eXBlIjoic3ViIiwiY2hpbGRyZW4iOlt7InN0YXRlIjoiY29ycG9yYXRlIiwibmFtZSI6IkNvcnBvcmF0ZSBEYXNoYm9hcmQifSx7InN0YXRlIjoiZWNvbW1lcmNlIiwibmFtZSI6IlBsYW50IERhc2hib2FyZCJ9LHsic3RhdGUiOiJhbmFseXRpY3MiLCJuYW1lIjoiTXkgRGFzaGJvYXJkIn0seyJzdGF0ZSI6ImVjb21tZXJjZSIsIm5hbWUiOiJTdW1tYXJ5In1dfV19XX0sIl9pZCI6IjVhYTRkMDAwZDAyYTEyMDc3MGNlYmVhMiJ9LCIkaW5pdCI6dHJ1ZSwiaWF0IjoxNTIwNzUzMzI3LCJleHAiOjE1MjA4Mzk3Mjd9.mtBxJ6ohtvd2MsTX1sviCEdgvu4BFdsZEWRXVb6Mhbs",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"plant\"                              : \"5aa4c2c33f329c3f1c866f3e\",\n    \"supplier\"                           : \"5aa4c34d3f329c3f1c866f41\",\n    \"broker\"                             : \"5aa4c3d43f329c3f1c866f45\",\n    \"product\"                            : \"5aa4c48a3f329c3f1c866f49\",\n    \"country\"                            : \"India\",\n    \"approved\"                           : false,\n\n\n    \"po\"                                 : \"test\",\n    \"containerNo\"                        : \"container1\",\n    \"lotNo\"                              :  \"lot1\",\n    \"variety\"                            : \"variety\",\n    \"nonGmo\"                             : false\n\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/record",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"record"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "attachment-save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "upload1",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "upload2",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "upload3",
+							"value": "",
+							"description": "",
+							"type": "file"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/record/attachment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"record",
+						"attachment"
 					]
 				},
 				"description": ""

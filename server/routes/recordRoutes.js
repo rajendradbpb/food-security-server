@@ -2,6 +2,23 @@ var express = require('express');
 var path = require('path');
 var router = express.Router();
 var controllers = require("./../controllers/index");
+var passport = require("passport");
+var config = require("config");
+
+// multer configuration starts
+var multer = require('multer');
+var storage = multer.diskStorage({
+  // destination
+  destination: function (req, file, cb) {
+    cb(null, config.get(config.get("env")+".uploadPath") )
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+var upload = multer({ storage: storage });
+// multer configuration ends
+
 router.post('/',function(req, res, next) {
   controllers.recordCtrl.addRecord(req, res);
 });
@@ -11,6 +28,12 @@ router.get('/', function(req, res, next) {
 });
 router.put('/', function(req, res, next) {
   controllers.recordCtrl.udpateRecord(req, res);
+});
+
+router.post("/attachment", upload.any(), function (req, res) {
+  console.log('files', req.files);
+  controllers.recordCtrl.saveAttachments(req, res);
+  //res.send(req.files);
 });
 //router.delete('/:id', function(req, res, next) {
   //controllers.configCtrl.deleteConfig(req, res);

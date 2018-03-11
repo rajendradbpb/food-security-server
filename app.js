@@ -30,7 +30,7 @@ app.all('/*', function (req, res, next) {
     // Set custom headers for CORS
 
     res.header('Access-Control-Allow-Headers', 'Content-type,Accept,X-Access-Token,X-Key,If-Modified-Since,Authorization');
-
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     if (req.method == 'OPTIONS') {
         res.status(200).end();
     } else {
@@ -42,6 +42,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use('/upload', express.static(path.join(__dirname, config.get(config.get("env")+".uploadPath") )));
+// specify the folder
+app.use(express.static(path.join(__dirname, config.get(config.get("env")+".uploadPath") ))); // multer upload path
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
