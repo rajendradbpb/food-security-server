@@ -6,11 +6,10 @@ var recordSchema = new mongoose.Schema({
 
     plant                              : {type: Schema.Types.ObjectId,required:true, ref: 'plant'},
     supplier                           : {type: Schema.Types.ObjectId , required:true,ref: 'supplier'},
-    broker                             : [{type: Schema.Types.ObjectId,required:true, ref: 'broker'}],
-    product                            : [{type: Schema.Types.ObjectId,required:true, ref: 'product'}],
+    broker                             : {type: Schema.Types.ObjectId,required:true, ref: 'broker'},
     country                            : {type:String},
-    approved                           : {type:Boolean,default:false},
     product                            :{type: Schema.Types.ObjectId,required:true, ref: 'product'} ,
+    approved                           : {type:Boolean,default:false},
 
 
     po                                 : {type: String},
@@ -23,7 +22,7 @@ var recordSchema = new mongoose.Schema({
     ccpVerification                    :[{type:String}], // will contain list of image path
     environmentalMonitoring            :[{type:String}], // will contain list of image path
     otherSupporting                    :[{type:String}], // will contain list of image path
-    //approved                           : {type: Boolean,default:false},
+    approved                           : {type: Boolean,default:false},
     variety                            : {type: String},
     nonGmo                             : {type: Boolean,default:false},
 

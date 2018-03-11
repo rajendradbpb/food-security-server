@@ -3,10 +3,10 @@ var uniqueValidator = require('mongoose-unique-validator');
 var Schema = mongoose.Schema;
 var constants = require("./../../config/constants")
 var rawMatrialSchema = new mongoose.Schema({
-    plant                  :[{type: Schema.Types.ObjectId, ref: 'plant'}],
-    supplier               : [{type: Schema.Types.ObjectId, ref: 'supplier'}],
-     brokerId              :[{type: Schema.Types.ObjectId, ref: 'broker'}],
-    
+    plants                  :[{type: Schema.Types.ObjectId, ref: 'plant'}],
+    suppliers               : [{type: Schema.Types.ObjectId, ref: 'supplier'}],
+     brokers              :[{type: Schema.Types.ObjectId, ref: 'broker'}],
+
      name                  : {type: String , required:true},
      rmCode                : {type: String , required:true},
      format                : {type: String , required:true},
