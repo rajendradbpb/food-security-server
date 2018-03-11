@@ -37,8 +37,8 @@ var constants = {
 
       //product
 
-      "productExist" : "Role Already Exists !",
-      "saveProduct" : "Error in saving Role",
+      "productExist" : "product Already Exists !",
+      "saveProduct" : "Error in saving Product",
 
       // rawMatrial
 

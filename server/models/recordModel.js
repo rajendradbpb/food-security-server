@@ -8,7 +8,7 @@ var recordSchema = new mongoose.Schema({
     supplier                           : {type: Schema.Types.ObjectId , required:true,ref: 'supplier'},
     broker                             : {type: Schema.Types.ObjectId,required:true, ref: 'broker'},
     country                            : {type:String},
-    product                            :{type: Schema.Types.ObjectId,required:true, ref: 'product'} ,
+    product                            : {type: Schema.Types.ObjectId,required:true, ref: 'product'} ,
     approved                           : {type:Boolean,default:false},
 
 
@@ -22,7 +22,6 @@ var recordSchema = new mongoose.Schema({
     ccpVerification                    :[{type:String}], // will contain list of image path
     environmentalMonitoring            :[{type:String}], // will contain list of image path
     otherSupporting                    :[{type:String}], // will contain list of image path
-    approved                           : {type: Boolean,default:false},
     variety                            : {type: String},
     nonGmo                             : {type: Boolean,default:false},
 
