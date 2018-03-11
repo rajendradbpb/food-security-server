@@ -31,16 +31,11 @@ exports.addProduct = function(req,res){
 
 exports.getProduct = function(req,res){
   try {
-    var params = {
-      //isDelete:false,
-     //type:{$in:["aa","consultant","bm"]}
-    };
+    var params = {};
     if(req.query._id){
       params['_id'] = req.query._id;
     }
-    if(req.query.type){
-      params['type'] = req.query.type;
-    }
+    
     models.productModel.find(params,function(err,data){
       if(err){
         logger.error("getProduct ", err);

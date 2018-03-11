@@ -25,6 +25,14 @@ exports.addSupplier = function(req,res){
     logger.error("addSupplier ", e);
   }
 }
+
+/*
+* Name : getSupplier
+* Info : Used to get suppliers based on different parameter passed as query in url
+* Paramerers : plant , Ex - <hostName>:3000?plant=<plantId>
+
+
+*/
 exports.getSupplier = function(req,res){
   try {
     var params = {

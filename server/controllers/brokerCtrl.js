@@ -24,6 +24,14 @@ exports.addBroker = function(req,res){
     logger.error("addBroker ", e);
   }
 }
+
+/*
+* Name : getBroker
+* Info : Used to get suppliers based on different parameter passed as query in url
+* Paramerers : plant,supplier , Ex - <hostName>:3000?plant=<plantId>&supplier=<supplierId>
+
+
+*/
 exports.getBroker = function(req,res){
   try {
     var params = {
