@@ -29,19 +29,42 @@ exports.addProduct = function(req,res){
 }
 
 
+/*
+* Name : getProduct
+* Info : Used to get suppliers based on different parameter passed as query in url
+* Paramerers : plant,supplier ,broker, Ex - <hostName>:3000?plant=<plantId>&supplier=<supplierId>&broker=<brokerId>
+
+
+*/
+
 exports.getProduct = function(req,res){
   try {
-    var params = {};
+    var params = {
+      isDelete:false,
+      //type:{$in:["aa","consultant","bm"]}
+    };
     if(req.query._id){
       params['_id'] = req.query._id;
     }
-    
+    //updating query object with plant , supplier ,broker
+    if(req.query.plant) {
+      params["plants"] = {"$in":[req.query.plant]};
+    }
+    if(req.query.supplier) {
+      params["suppliers"] = {"$in":[req.query.supplier]};
+    }
+
+    if(req.query.broker) {
+      params["brokers"] = {"$in":[req.query.broker]};
+    }
+
+    console.log("query string ---    ",params);
     models.productModel.find(params,function(err,data){
       if(err){
         logger.error("getProduct ", err);
-        return response.sendResponse(res,500,"error",constants.messages.error.getProduct,err);
+        return response.sendResponse(res,500,"error",constants.messages.error.fetchData,err);
       }
-      return response.sendResponse(res,200,"success",constants.messages.success.getProduct,data);
+      return response.sendResponse(res,200,"success",constants.messages.success.fetchData,data);
     })
 
   } catch (e) {
