@@ -59,7 +59,7 @@ exports.addConfig = function(req, res) {
     ], function(err, result) {
       if (err) {
         logger.error("udpateUser  " + err);
-        LOG.error(err)
+        component.LOG.error(err)
       } else {
         new models.configModel(req.body).save(function(err) {
           if (err) {
@@ -163,7 +163,7 @@ exports.udpateConfig = function(req, res) {
     ], function(err, result) {
       if (err) {
         logger.error("udpateConfig 1 " + err);
-        LOG.error(err)
+        component.LOG.error(err)
         return response.sendResponse(res, 500, "error", constants.messages.error.saveData, err);
       } else {
         models.configModel.findOneAndUpdate(query, req.body, options).exec()
