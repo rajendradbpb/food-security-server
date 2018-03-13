@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var productSchema = new mongoose.Schema({
     plants                         : [{type: Schema.Types.ObjectId, required: true, ref: 'plant'}],
     suppliers                      : [{type: Schema.Types.ObjectId, ref: 'supplier'}],
-    brokers                      : [{type: Schema.Types.ObjectId, ref: 'broker'}],
+    //brokers                      : [{type: Schema.Types.ObjectId, ref: 'broker'}],
     customers                      : [{type: Schema.Types.ObjectId, ref: 'customer'}],
     productId                      : {type: String,required: true, unique:true},
     name                           : {type:String},

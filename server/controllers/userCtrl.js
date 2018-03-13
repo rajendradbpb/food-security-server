@@ -181,11 +181,46 @@ exports.getUser = function(req, res) {
         })
     }
 
+        //updating query object with plant
+       // Info : Used to get suppliers based on different parameter passed as query in url
+      //Paramerers :plant , Ex - <hostName>:3000?plant=<plantId>
+           
+    if(req.query.plant) {
+      params["plants"] = {"$in":[req.query.plant]};
+    }
+    console.log("query string ---    ",params);
+    models.userModel.find(params,function(err,data){
+      if(err){
+        logger.error("getUser ", err);
+        return response.sendResponse(res,500,"error",constants.messages.error.fetchData,err);
+      }
+      return response.sendResponse(res,200,"success",constants.messages.success.fetchData,data);
+    })
+
+
   } catch (e) {
     logger.error("getUser  " + error);
   }
 
 }
+//find user basicDetails
+exports.getUserBasicInfo = function(req,res){
+  try {
+    var query = {
+      "_id":req.body._id
+    }
+    delete req.body['_id'];
+    var options = {new:true};
+    models.userModel.findById({username : user.username}).select('firstname', 'lastName ', 'role', 'username',
+     function(err, txs){
+      callback(txs);
+});
+    
+  } catch (e) {
+    logger.error("getRole ", e);
+  }
+}
+
 exports.updateUser = function(req, res) {
   try {
     var query = {

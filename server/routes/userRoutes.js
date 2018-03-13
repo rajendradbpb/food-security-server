@@ -39,4 +39,10 @@ router.get('/loggedin',passport.authenticate('token', {session:false}), function
   console.log(">>>>>>>>>>>>>>>>");
   res.status(200).json({status:"OK",user:req.user._doc});
 });
+//get basic userdetails
+router.get('/id', function(req, res, next) {
+  controllers.userCtrl.getUserBasicInfo(req, res);
+});
+
+
 module.exports = router;

@@ -28,7 +28,7 @@ exports.addBroker = function(req,res){
 /*
 * Name : getBroker
 * Info : Used to get suppliers based on different parameter passed as query in url
-* Paramerers : plant,supplier , Ex - <hostName>:3000?plant=<plantId>&supplier=<supplierId>
+* Paramerers :supplier , Ex - <hostName>:3000?plant=<plantId>&supplier=<supplierId>
 
 
 */
@@ -41,10 +41,10 @@ exports.getBroker = function(req,res){
     if(req.query._id){
       params['_id'] = req.query._id;
     }
-    //updating query object with plant , supplier
-    if(req.query.plant) {
-      params["plants"] = {"$in":[req.query.plant]};
-    }
+    //updating query object with supplier
+    //if(req.query.plant) {
+     // params["plants"] = {"$in":[req.query.plant]};
+   // }
     if(req.query.supplier) {
       params["suppliers"] = {"$in":[req.query.supplier]};
     }

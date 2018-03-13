@@ -11,6 +11,7 @@ var logger = require("./../component/log4j").getLogger('configCtrl');
 var config = require("config");
 var component = require("./../component/index");
 var waterfall = require('async-waterfall');
+
 exports.addConfig = function(req, res) {
   try {
     // component.utility.uploadImage({base64:req.body.backgroundImg,fileName:req.body.backgroundImgName},function(err,data){
@@ -101,6 +102,44 @@ exports.getConfig = function(req, res) {
     logger.error("getConfig ", e);
   }
 }
+
+exports.getImageAttachments = function(req,res) {
+  var backgroundImg = [];
+  var logoImg = [];
+  console.log("req.body._id   ",req.body._id);
+  if(req.files.length) {
+    for(var i in req.files) {
+      console.log("******* ",req.files[i].fieldname.toLowerCase() ,String("backgroundImage").toLowerCase() , 
+      req.files[i].fieldname.toLowerCase().indexOf(String("backgroundImage").toLowerCase()) );
+      if(req.files[i].fieldname.toLowerCase().indexOf(String("backgroundImage").toLowerCase())  != -1){
+        console.log("backgroundImage");
+        backgroundImage.push(req.files[i].path);
+      }
+      if(req.files[i].fieldname.toLowerCase().indexOf(String("logoImage").toLowerCase())  != -1) {
+        logoImage.push(req.files[i].path);
+      }
+    }
+  }
+
+  // update record
+  models.recordModel.update({_id:req.body._id},
+    {
+      backgroundImage:backgroundImage,
+      logoImage:logoImage,
+    }  ,
+    { multi:true} ,
+    function(err,data) {
+      if(err){
+        return response.sendResponse(res, 500,"error",constants.messages.error.saveData,err);
+      }
+      else{
+        return response.sendResponse(res,200,"success",constants.messages.success.saveData,data);
+      }
+    }
+  )
+}
+
+
 exports.getConfigById = function(req, res) {
   console.log("req.params.id  ", req.params.id);
   models.configModel.findById(req.params.id, function(err, config) {
@@ -117,9 +156,7 @@ exports.udpateConfig = function(req, res) {
       "_id": req.body.id
     }
     delete req.body['_id'];
-    var options = {
-      new: true
-    };
+    var options = {new: true };
     waterfall([
       function(callback) {
         if (!req.body.backgroundImg || !req.body.backgroundImgName)
@@ -190,7 +227,7 @@ exports.udpateConfig = function(req, res) {
     return response.sendResponse(res, 500, "error", constants.messages.error.updateData, err);
   }
 }
-exports.deleteConfig = function(req, res) {
+/*exports.deleteConfig = function(req, res) {
   try {
     var query = {
       "_id": req.params.id
@@ -211,4 +248,7 @@ exports.deleteConfig = function(req, res) {
   } catch (e) {
     logger.error("deleteConfig ", e);
   }
-}
+}*/
+
+
+

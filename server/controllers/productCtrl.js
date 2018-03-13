@@ -54,9 +54,9 @@ exports.getProduct = function(req,res){
       params["suppliers"] = {"$in":[req.query.supplier]};
     }
 
-    if(req.query.broker) {
+   /* if(req.query.broker) {
       params["brokers"] = {"$in":[req.query.broker]};
-    }
+    }*/
 
     console.log("query string ---    ",params);
     models.productModel.find(params,function(err,data){
