@@ -12,13 +12,13 @@ var logger = require("./../component/log4j").getLogger('recordCtrl');
 
 exports.addRecord = function(req,res){
   try {
-    new models.recordModel(req.body).save(function (err) {
+    new models.recordModel(req.body).save(function (err,data) {
       if(err){
         logger.error("addRecord ", err);
         return response.sendResponse(res,500,"error",constants.messages.error.saveRecord,err);
       }
       else {
-        return response.sendResponse(res,200,"success",constants.messages.success.saveRecord);
+        return response.sendResponse(res,200,"success",constants.messages.success.saveRecord,data);
       }
     })
 
