@@ -26,6 +26,12 @@ router.get('/', function(req, res, next) {
 
   controllers.recordCtrl.getRecord(req, res);
 });
+
+router.get('/', function(req, res, next) {
+
+  controllers.recordCtrl.getSearchCountry(req, res);
+});
+
 router.put('/', function(req, res, next) {
   controllers.recordCtrl.udpateRecord(req, res);
 });

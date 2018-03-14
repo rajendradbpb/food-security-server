@@ -50,6 +50,35 @@ exports.getRecord = function(req,res){
     logger.error("getRecord ", e);
   }
 }
+
+//give input as country show as output that field which is related country
+exports.getSearchCountry = function(req, res) {
+  try {
+    var params = {
+      isDelete: false
+    };
+
+    if (req.query.country) {
+      params['country'] = req.query.country;
+    }
+      recordModel.findOne(params, function(err, record) {
+        return response.sendResponse(res, 200, "success", constants.messages.success.saverecord,record);
+      })
+      .select('product plant supllier broker customer')
+
+      query.exec(function (err, record) {
+        if (err) return handleError(err);
+        // Prints "all record data by same countryName "
+        console.log('%s %s %s %s %s is a %s.', record.plant,record.product,record.supplier,record.customer,record.role
+          );
+      });
+
+  } catch (e) {
+    logger.error("getrecord  " + error);
+    
+  }
+}
+
 /*
 * Name : saveAttachments
 * Info : this is used to save attachment , after multer uploaded file the server
