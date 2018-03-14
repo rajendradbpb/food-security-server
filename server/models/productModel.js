@@ -14,6 +14,7 @@ var productSchema = new mongoose.Schema({
     description                    : {type:String},
     country                        : {type:String},
     rawMatrial                     : [{type: Schema.Types.ObjectId, ref: 'rawMaterial'}],
+    productCode                    : [{type:String}],
     variety                        : [{type:String}],
     kosher                         : {type:String},
     organic                        : {type:String},
