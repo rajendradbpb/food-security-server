@@ -51,30 +51,31 @@ exports.getRecord = function(req,res){
   }
 }
 
-//give input as country show as output that field which is related country
-exports.getSearchCountry = function(req, res) {
+
+exports.getSearch = function(req, res) {
+  //give input as country show as output that field which is related country
   try {
-    var params = {
-      isDelete: false
-    };
-
-    if (req.query.country) {
-      params['country'] = req.query.country;
-    }
-      recordModel.findOne(params, function(err, record) {
-        return response.sendResponse(res, 200, "success", constants.messages.success.saverecord,record);
-      })
-      .select('product plant supllier broker customer')
-
-      query.exec(function (err, record) {
-        if (err) return handleError(err);
-        // Prints "all record data by same countryName "
-        console.log('%s %s %s %s %s is a %s.', record.plant,record.product,record.supplier,record.customer,record.role
-          );
-      });
-
+    var query = { 
+      "$or" : [
+        {country : {
+          $regex:req.params.search , $options: 'i' }
+        },
+        {containerNo : {
+          $regex:req.params.search , $options: 'i' }
+        },
+        
+      ]
+    };  
+    models.recordModel.find(query,function(err, data)  
+    {    
+                  if(err){
+                    logger.error("getSearch ", err);
+                    return response.sendResponse(res,500,"error",constants.messages.error.getData,err);
+                  }
+                  return response.sendResponse(res,200,"success",constants.messages.success.getData,data);
+                })            
   } catch (e) {
-    logger.error("getrecord  " + error);
+    logger.error("getSearch " + error);
     
   }
 }

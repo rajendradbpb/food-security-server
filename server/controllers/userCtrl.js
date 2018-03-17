@@ -167,7 +167,7 @@ exports.getUser = function(req, res) {
       // }
       userModel.find(params)
         .populate(populateObj)
-        .select('username email role mobile firstname lastname middlename status ')
+        .select('username email role mobile firstname lastname middlename ')
         .then(function(users) {
           users = users.filter(function(user) {
             if (user.role)
@@ -180,12 +180,55 @@ exports.getUser = function(req, res) {
           return response.sendResponse(res, 200, "error", constants.messages.error.getUser, error);
         })
     }
-
+     //updating query object with plant
+       // Info : Used to get suppliers based on different parameter passed as query in url
+      //Paramerers :plant , Ex - <hostName>:3000?plant=<plantId>
+           
+    /*  if(req.query.plant) {
+        params["plants"] = {"$in":[req.query.plant]};
+      }
+      console.log("query string ---    ",params);
+      models.userModel.find(params,function(err,data){
+        if(err){
+          logger.error("getUser ", err);
+          return response.sendResponse(res,500,"error",constants.messages.error.fetchData,err);
+        }
+        return response.sendResponse(res,200,"success",constants.messages.success.fetchData,data);
+      })
+          */
   } catch (e) {
     logger.error("getUser  " + error);
   }
 
 }
+
+//find user basicDetails
+ exports.getUserBasicInfo = function(req,res){
+  try {
+    var params = {
+      isDelete: false
+    };
+    if (req.params.id) {
+      var filter = {};
+      params['_id'] = req.params.id;
+    }
+    models.userModel.find(params).select('firstName lastName  role  username')
+    .exec()
+    .then(function(data){
+      return response.sendResponse(res,200,"success",constants.messages.success.getData,data);
+    })
+    .catch(function(err) {
+        logger.error("getUserBasicInfo ", err);
+        return response.sendResponse(res,500,"error",constants.messages.error.getData,err);
+    })
+                 
+         
+  } catch (e) {
+    logger.error("getUserBasicInfo ", e);
+    return response.sendResponse(res,500,"error",constants.messages.error.getData,err);
+  }
+    }
+
 exports.updateUser = function(req, res) {
   try {
     var query = {
