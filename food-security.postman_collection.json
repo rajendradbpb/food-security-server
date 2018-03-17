@@ -7,35 +7,6 @@
 	},
 	"item": [
 		{
-			"name": "save-user",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"role\"                : \"5a9999a4f0e9d90c34483407\",\n   \n    \"plantId\"             :\"5a999be1f0e9d90c34483409\",\n    \"username\"            :\"operator1\",\n    \"password\"            : \"operator1\",\n    \"email\"               : \"oerator1@yopmail.com\",\n    \"salutation\"          : \"Mr\",\n    \"firstName\"          : \"operator1\",\n    \"lastName\"          : \"operator1\",\n    \"empId\"              : \"operator1\",\n    \"phone\"             :  \"898989898\",\n\t\n    \"country\"          :  \"India\",\n    \"state\"          :  \"Odisha\",\n    \"city\"          : \"Bbsr\",\n    \"pin\"          :  \"7521002\"\n}"
-				},
-				"url": {
-					"raw": "http://localhost:3000/user",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"user"
-					]
-				},
-				"description": null
-			},
-			"response": []
-		},
-		{
 			"name": "brokerByPlant-GET",
 			"request": {
 				"method": "GET",
@@ -59,7 +30,36 @@
 						}
 					]
 				},
-				"description": ""
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "save-user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"role\"                : \"5a9999a4f0e9d90c34483407\",\n   \n    \"plantId\"             :\"5a999be1f0e9d90c34483409\",\n    \"username\"            :\"operator1\",\n    \"password\"            : \"operator1\",\n    \"email\"               : \"oerator1@yopmail.com\",\n    \"salutation\"          : \"Mr\",\n    \"firstName\"          : \"operator1\",\n    \"lastName\"          : \"operator1\",\n    \"empId\"              : \"operator1\",\n    \"phone\"             :  \"898989898\",\n  \n    \"country\"          :  \"India\",\n    \"state\"          :  \"Odisha\",\n    \"city\"          : \"Bbsr\",\n    \"pin\"          :  \"7521002\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					]
+				},
+				"description": null
 			},
 			"response": []
 		},
@@ -68,10 +68,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "http://localhost:3000/config",
 					"protocol": "http",
@@ -99,7 +96,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"type\":\"operator\",\r\n  \"menu\":[{\r\n    \"label\" : \"\",\r\n    \"main\" : [{\r\n        \"state\" : \"dashboard\",\r\n        \"short_label\" : \"D\",\r\n        \"name\" : \"Dashboard\",\r\n        \"type\" : \"sub\",\r\n        \"children\" : [{\r\n            \"state\" : \"corporate\",\r\n            \"name\" : \"Corporate Dashboard\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n  ],\r\n  \"api\" : [\r\n  \t\t{\r\n  \t\t\t\"name\" :\"login\",\r\n  \t\t\t\"url\" :\"/login\",\r\n  \t\t\t\"method\":\"post\"\r\n  \t\t}\r\n  \t\r\n  \t]\r\n}"
+					"raw": "{\r\n  \"type\":\"operator\",\r\n  \"menu\":[{\r\n    \"label\" : \"\",\r\n    \"main\" : [{\r\n        \"state\" : \"dashboard\",\r\n        \"short_label\" : \"D\",\r\n        \"name\" : \"Dashboard\",\r\n        \"type\" : \"sub\",\r\n        \"children\" : [{\r\n            \"state\" : \"corporate\",\r\n            \"name\" : \"Corporate Dashboard\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n  ],\r\n  \"api\" : [\r\n      {\r\n        \"name\" :\"login\",\r\n        \"url\" :\"/login\",\r\n        \"method\":\"post\"\r\n      }\r\n    \r\n    ]\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:3000/role",
@@ -112,7 +109,7 @@
 						"role"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -133,7 +130,7 @@
 						"role"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -149,7 +146,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "\n{\n\t   \"_id\": \"5a9fcdc7a9a14514e0aec30c\",\n            \"plantId\": \"testPlant9b\",\n            \"name\": \"canada\",\n            \"fax\": \"1111111\",\n            \"phone\": \"22222222\",\n            \"__v\": 0,\n            \"createdDate\": \"2018-03-07T11:31:12.707Z\",\n            \"isDelete\": false,\n            \"pin\": \"7878787\",\n            \"city\": \"city\",\n            \"state\": \"state\",\n            \"country\": \"countryPlant3\"\n}"
+					"raw": "\n{\n     \"_id\": \"5a9fcdc7a9a14514e0aec30c\",\n            \"plantId\": \"testPlant9b\",\n            \"name\": \"canada\",\n            \"fax\": \"1111111\",\n            \"phone\": \"22222222\",\n            \"__v\": 0,\n            \"createdDate\": \"2018-03-07T11:31:12.707Z\",\n            \"isDelete\": false,\n            \"pin\": \"7878787\",\n            \"city\": \"city\",\n            \"state\": \"state\",\n            \"country\": \"countryPlant3\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:3000/plant",
@@ -183,7 +180,7 @@
 						"supplier"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -192,10 +189,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "http://localhost:3000/plant",
 					"protocol": "http",
@@ -207,7 +201,7 @@
 						"plant"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -223,7 +217,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "  {\r\n    \"plant  \"                            : \"{type: Schema.Types.ObjectId,required:true, ref: 'plant'}\",\r\n    \"supplier\"                           : \"{type: Schema.Types.ObjectId , required:true,ref: 'supplier'}\",\r\n   \"broker\"                              : \"{type: Schema.Types.ObjectId,required:true, ref: 'broker'}\",\r\n    \"country\"                            : \"{type:String}\",\r\n    \"product \"                           : \"{type: Schema.Types.ObjectId,required:true, ref: 'product'}\" ,\r\n    \"approved \"                          : \"{type:Boolean,default:false}\",\r\n    \"po  \"                               : \"{type: String}\",\r\n    \"containerNo \"                       : \"{type: String}\",\r\n    \"lotNo \"                             : \"{type: String}\",\r\n   \" billOfLanding   \"                   : \"[{type:String}]\", \r\n   \r\n    \"commercialInvoice   \"               :\"[{type:String}]\", \r\n    \r\n    \"packingList \"                       :\"[{type:String}]\", \r\n    \r\n    \"coa  \"                              :[\"{type:String}\"], \r\n    \r\n    \"ccpVerification    \"                :[\"{type:String}\"], \r\n    \r\n    \"environmentalMonitoring \"           :[\"{type:String}\"], \r\n    \r\n    \"otherSupporting\"                    :[\"{type:String}\"], \r\n     \"variety \"                           : \"{type: String}\",\r\n    \"nonGmo \"                            : \"{type: Boolean,default:false}\",\r\n\r\n    \"isDelete\"                           : \"{type: Boolean, default:false}\",\r\n    \"createdBy\"                          : [\"{type: Schema.Types.ObjectId,required:true, ref: 'user'}\"]\r\n   \r\n   \r\n  }"
+					"raw": "  {\r\n    \"plant\"                              : \"5aa580ef326ba4040cdac584\",\r\n    \"supplier\"                           : \"5aa5824b8067d717e0108f85\",\r\n    \"broker\"                             : \"5aa582ea8067d717e0108f89\",\r\n    \"country\"                            : \"Canada\",\r\n    \"product\"                            : \"5aa583f68067d717e0108f8d\",\r\n    \r\n\r\n\r\n    \"po\"                                 : \"TestPO3\",\r\n    \"containerNo\"                        : \"containerNo3\",\r\n    \"lotNo\"                              : \"lotNo3\",\r\n    \r\n    \"variety\"                            : \"variety3\"\r\n    \r\n   \r\n   \r\n  }"
 				},
 				"url": {
 					"raw": "http://localhost:3000/record",
@@ -236,7 +230,7 @@
 						"record"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -251,19 +245,16 @@
 						{
 							"key": "kilogram",
 							"value": "kg",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "liter",
 							"value": "ltr",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "Lbs",
 							"value": "Lbss",
-							"description": "",
 							"type": "text"
 						}
 					]
@@ -279,7 +270,7 @@
 						"constant"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -308,7 +299,7 @@
 						"supplier"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -329,7 +320,7 @@
 						"plant"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -338,10 +329,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "http://localhost:3000/role",
 					"protocol": "http",
@@ -367,10 +355,7 @@
 						"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyIkX18iOnsic3RyaWN0TW9kZSI6dHJ1ZSwic2VsZWN0ZWQiOnt9LCJnZXR0ZXJzIjp7fSwiX2lkIjoiNWFhNTgxYTQ4MDY3ZDcxN2UwMTA4Zjg0IiwicG9wdWxhdGVkIjp7InJvbGUiOnsidmFsdWUiOiI1YWE1ODA0MTMyNmJhNDA0MGNkYWM1ODAiLCJvcHRpb25zIjp7InBhdGgiOiJyb2xlIiwiX2RvY3MiOnsiNWFhNTgxYTQ4MDY3ZDcxN2UwMTA4Zjg0IjoiNWFhNTgwNDEzMjZiYTQwNDBjZGFjNTgwIn0sImlzVmlydHVhbCI6ZmFsc2V9fX0sIndhc1BvcHVsYXRlZCI6ZmFsc2UsImFjdGl2ZVBhdGhzIjp7InBhdGhzIjp7Imxhc3ROYW1lIjoiaW5pdCIsImZpcnN0TmFtZSI6ImluaXQiLCJzYWx1dGF0aW9uIjoiaW5pdCIsImVtYWlsIjoiaW5pdCIsInBhc3N3b3JkIjoiaW5pdCIsInVzZXJuYW1lIjoiaW5pdCIsInBsYW50IjoiaW5pdCIsInJvbGUiOiJpbml0IiwiY2xpZW50IjoiaW5pdCIsImVtcElkIjoiaW5pdCIsInBob25lIjoiaW5pdCIsImNvdW50cnkiOiJpbml0Iiwic3RhdGUiOiJpbml0IiwiY2l0eSI6ImluaXQiLCJwaW4iOiJpbml0IiwiaXNEZWxldGUiOiJpbml0IiwiX192IjoiaW5pdCIsIl9pZCI6ImluaXQifSwic3RhdGVzIjp7Imlnbm9yZSI6e30sImRlZmF1bHQiOnt9LCJpbml0Ijp7Il9fdiI6dHJ1ZSwiY2xpZW50Ijp0cnVlLCJlbXBJZCI6dHJ1ZSwicGhvbmUiOnRydWUsImNvdW50cnkiOnRydWUsInN0YXRlIjp0cnVlLCJjaXR5Ijp0cnVlLCJwaW4iOnRydWUsImlzRGVsZXRlIjp0cnVlLCJsYXN0TmFtZSI6dHJ1ZSwiZmlyc3ROYW1lIjp0cnVlLCJzYWx1dGF0aW9uIjp0cnVlLCJlbWFpbCI6dHJ1ZSwicGFzc3dvcmQiOnRydWUsInVzZXJuYW1lIjp0cnVlLCJwbGFudCI6dHJ1ZSwicm9sZSI6dHJ1ZSwiX2lkIjp0cnVlfSwibW9kaWZ5Ijp7fSwicmVxdWlyZSI6e319LCJzdGF0ZU5hbWVzIjpbInJlcXVpcmUiLCJtb2RpZnkiLCJpbml0IiwiZGVmYXVsdCIsImlnbm9yZSJdfSwicGF0aHNUb1Njb3BlcyI6e30sImVtaXR0ZXIiOnsiZG9tYWluIjpudWxsLCJfZXZlbnRzIjp7fSwiX2V2ZW50c0NvdW50IjowLCJfbWF4TGlzdGVuZXJzIjowfSwiJG9wdGlvbnMiOnRydWV9LCJpc05ldyI6ZmFsc2UsIl9kb2MiOnsiY2xpZW50IjpudWxsLCJlbXBJZCI6ImFkbWluIiwicGhvbmUiOiI4OTg5ODk4OTgiLCJjb3VudHJ5IjoiSW5kaWEiLCJzdGF0ZSI6Ik9kaXNoYSIsImNpdHkiOiJCYnNyIiwicGluIjoiNzUyMTAwMiIsImlzRGVsZXRlIjpmYWxzZSwiX192IjowLCJsYXN0TmFtZSI6ImFkbWluIiwiZmlyc3ROYW1lIjoiYWRtaW4iLCJzYWx1dGF0aW9uIjoiTXIiLCJlbWFpbCI6ImFkbWluQHlvcG1haWwuY29tIiwicGFzc3dvcmQiOiJwYmtkZjIkMTAwMDAkZjYwODkzZTU5YTBkZDQ2NjBkNjJkYWJhNGVhNjExMGJmNjA0ZDM4Y2MxMmFlNWFmMmIxZTEzZjNmNmMzNmY1YzVkZWUxNWVhY2VhOTJmOGY5YTIyMTYzMmI5NTkzMWZkNjI3NWZkOTE3NTk1MDQxOWNkM2ViMWU3NmNhODJkZTUkMmIwNTdmMDVmMDY1MTU1ZTczODRlMjkzNGJlMzRiYjg0YjY2YWZlN2FmZTgzYjU5Mzg4MDhkZDUxNzAzZGEyM2I0OWNkYzBmNDQxYjFlYzdiNzZmMWMyZTdmYTc4YzdiNmEzZDQxZWE2MDdjOWEwODBmNzA1MWZiNmYxYTQxODAiLCJ1c2VybmFtZSI6ImFkbWluIiwicGxhbnQiOiI1YWE1ODBlZjMyNmJhNDA0MGNkYWM1ODQiLCJyb2xlIjp7Il9pZCI6IjVhYTU4MDQxMzI2YmE0MDQwY2RhYzU4MCIsInR5cGUiOiJhZG1pbiIsIl9fdiI6MCwiaXNEZWxldGUiOmZhbHNlLCJjcmVhdGVkRGF0ZSI6IjIwMTgtMDMtMTFUMTg6MTQ6MTcuNzI3WiIsImFwaSI6W3sibmFtZSI6ImxvZ2luIiwidXJsIjoiL2xvZ2luIiwibWV0aG9kIjoicG9zdCJ9XSwibWVudSI6W3sibGFiZWwiOiIiLCJtYWluIjpbeyJzdGF0ZSI6ImRhc2hib2FyZCIsInNob3J0X2xhYmVsIjoiRCIsIm5hbWUiOiJEYXNoYm9hcmQiLCJ0eXBlIjoic3ViIiwiY2hpbGRyZW4iOlt7InN0YXRlIjoiY29ycG9yYXRlIiwibmFtZSI6IkNvcnBvcmF0ZSBEYXNoYm9hcmQifSx7InN0YXRlIjoiZWNvbW1lcmNlIiwibmFtZSI6IlBsYW50IERhc2hib2FyZCJ9LHsic3RhdGUiOiJhbmFseXRpY3MiLCJuYW1lIjoiTXkgRGFzaGJvYXJkIn0seyJzdGF0ZSI6ImVjb21tZXJjZSIsIm5hbWUiOiJTdW1tYXJ5In1dfV19XX0sIl9pZCI6IjVhYTU4MWE0ODA2N2Q3MTdlMDEwOGY4NCJ9LCIkaW5pdCI6dHJ1ZSwiaWF0IjoxNTIwODg0ODYzLCJleHAiOjE1MjA5NzEyNjN9.tT0kxCxqE-CLgQ_Ino7M3RK_-VfMbwVAmoQe_dUXVOE"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "http://localhost:3000/user",
 					"protocol": "http",
@@ -403,7 +388,7 @@
 						"record"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -414,7 +399,7 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://localhost:3000/product?plant=<5a999bf3f0e9d90c3448340a>&supplier=<5aa4cc6f5c742f291c36e2d3>&broker=<5aa4fc74f5650e1ca07ceabd>",
+					"raw": "http://localhost:3000/product",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -422,26 +407,9 @@
 					"port": "3000",
 					"path": [
 						"product"
-					],
-					"query": [
-						{
-							"key": "plant",
-							"value": "<5a999bf3f0e9d90c3448340a>",
-							"equals": true
-						},
-						{
-							"key": "supplier",
-							"value": "<5aa4cc6f5c742f291c36e2d3>",
-							"equals": true
-						},
-						{
-							"key": "broker",
-							"value": "<5aa4fc74f5650e1ca07ceabd>",
-							"equals": true
-						}
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -462,7 +430,7 @@
 						"record"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -483,7 +451,7 @@
 						"broker"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -492,10 +460,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "http://localhost:3000/supplier?plant=5aa4c2c33f329c3f1c866f3e",
 					"protocol": "http",
@@ -552,7 +517,7 @@
 						}
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -568,7 +533,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"plants\"                        : [\"5aa524d0d291692fbc5f48cd\"],\n\t\"suppliers\"                     :[\"5aa52666d291692fbc5f48ce\"],\n    \"name\"                            :\"Montrealbroker\",\n   \"address\" : [\n    {\n      \"city\"              : \"Montreal\",\n      \"region\"            : \"Montreal\",\n      \"state\"             :  \" Montreal\",\n      \"pin\"               :  \"its5454\",\n      \"country\"           : \"Montreal\"\n    }\n  ]\n}\n"
+					"raw": "{\n  \"plants\"                        : [\"5aa524d0d291692fbc5f48cd\"],\n  \"suppliers\"                     :[\"5aa52666d291692fbc5f48ce\"],\n    \"name\"                            :\"Montrealbroker\",\n   \"address\" : [\n    {\n      \"city\"              : \"Montreal\",\n      \"region\"            : \"Montreal\",\n      \"state\"             :  \" Montreal\",\n      \"pin\"               :  \"its5454\",\n      \"country\"           : \"Montreal\"\n    }\n  ]\n}\n"
 				},
 				"url": {
 					"raw": "http://localhost:3000/broker",
@@ -581,7 +546,7 @@
 						"broker"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -634,13 +599,11 @@
 						{
 							"key": "kilogram",
 							"value": "kg",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "liter",
 							"value": "ltr",
-							"description": "",
 							"type": "text"
 						}
 					]
@@ -656,7 +619,7 @@
 						"constant"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -670,10 +633,7 @@
 						"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyIkX18iOnsic3RyaWN0TW9kZSI6dHJ1ZSwic2VsZWN0ZWQiOnt9LCJnZXR0ZXJzIjp7fSwiX2lkIjoiNWE3Y2VmYTMyY2ZiYWMxNDk4YTdkYjI3IiwicG9wdWxhdGVkIjp7InJvbGUiOnsidmFsdWUiOiI1YTdjZWJlN2FkM2VjOTA2YzBiMWE1NWQiLCJvcHRpb25zIjp7InBhdGgiOiJyb2xlIiwiX2RvY3MiOnsiNWE3Y2VmYTMyY2ZiYWMxNDk4YTdkYjI3IjoiNWE3Y2ViZTdhZDNlYzkwNmMwYjFhNTVkIn0sImlzVmlydHVhbCI6ZmFsc2V9fX0sIndhc1BvcHVsYXRlZCI6ZmFsc2UsImFjdGl2ZVBhdGhzIjp7InBhdGhzIjp7ImNsaWVudElkIjoiaW5pdCIsImVtYWlsIjoiaW5pdCIsInBhc3N3b3JkIjoiaW5pdCIsInVzZXJuYW1lIjoiaW5pdCIsInJvbGUiOiJpbml0IiwiX192IjoiaW5pdCIsIl9pZCI6ImluaXQifSwic3RhdGVzIjp7Imlnbm9yZSI6e30sImRlZmF1bHQiOnt9LCJpbml0Ijp7Il9fdiI6dHJ1ZSwiY2xpZW50SWQiOnRydWUsImVtYWlsIjp0cnVlLCJwYXNzd29yZCI6dHJ1ZSwidXNlcm5hbWUiOnRydWUsInJvbGUiOnRydWUsIl9pZCI6dHJ1ZX0sIm1vZGlmeSI6e30sInJlcXVpcmUiOnt9fSwic3RhdGVOYW1lcyI6WyJyZXF1aXJlIiwibW9kaWZ5IiwiaW5pdCIsImRlZmF1bHQiLCJpZ25vcmUiXX0sInBhdGhzVG9TY29wZXMiOnt9LCJlbWl0dGVyIjp7ImRvbWFpbiI6bnVsbCwiX2V2ZW50cyI6e30sIl9ldmVudHNDb3VudCI6MCwiX21heExpc3RlbmVycyI6MH0sIiRvcHRpb25zIjp0cnVlfSwiaXNOZXciOmZhbHNlLCJfZG9jIjp7ImlzRGVsZXRlIjpmYWxzZSwiX192IjowLCJjbGllbnRJZCI6IjAiLCJlbWFpbCI6ImFkbWluQHlvcG1haWwuY29tIiwicGFzc3dvcmQiOiJwYmtkZjIkMTAwMDAkZjYyNzZiN2NiYTJkYzA3NGI0YTMxMmM1MzU0NmQwYzA2Nzk3MWFjOWMzZmE5NzM1MWJjYTE0NWUwOTE3NjdkMTk3NDFkYmEwNDNjMjliZjAxNzUzYjEzMmU1ZjU4YmRmMjYxNjQ1OTY3ZDMwZWNiNTU5MjJhZTY3M2M2MGRlNWMkOGVmNmQ5YmZhM2Y1ODg1ODhhMzNiNzNiZWYyMGMwMDczYTYwMjE2Y2FiODRkYzYzZTBjODBjM2JhNGQ1Njg4Nzg1OWU0NWFkODI5Y2VkN2E0Mzc5Mjc0Mzk4Nzg1ODljNjQ5MWY1NjFkMjE5OGQ1YTkxMWY3NGFmYThmYmQ3MDQiLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6eyJfaWQiOiI1YTdjZWJlN2FkM2VjOTA2YzBiMWE1NWQiLCJ0eXBlIjoiYWRtaW4iLCJfX3YiOjAsImlzRGVsZXRlIjpmYWxzZSwiY3JlYXRlZERhdGUiOiIyMDE4LTAyLTA5VDAwOjMxOjI4Ljc4NloifSwiX2lkIjoiNWE3Y2VmYTMyY2ZiYWMxNDk4YTdkYjI3In0sIiRpbml0Ijp0cnVlLCJpYXQiOjE1MTgxMzk2MjMsImV4cCI6MTUxODIyNjAyM30.i-SXPd_oPJoWnPQz7r8nRCdIFvfS7gt7f1T3yxw6XxQ"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "http://localhost/user/loggedin",
 					"protocol": "http",
@@ -714,7 +674,7 @@
 						"constant"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -723,10 +683,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "http://localhost:3000/config/5aa6d926c597ac1728396bfb",
 					"protocol": "http",
@@ -827,7 +784,7 @@
 						"plant"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -843,7 +800,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "\n{\n\t\"plants\"                         :[\"5a999be1f0e9d90c34483409\"],\n    \"suppliers\"                      :[\"5aa4cc6f5c742f291c36e2d3\"],\n    \"brokers\"                        :[\"5aa521f8d291692fbc5f48c7 \"],\n    \"productId\"                      :\"CLC1909705\",\n    \"name\"                           :\"CL Green Smoothie Mix - 500 g \",\n    \"netWeight\"                      : \"500g \",\n    \"unit\"                           : \"g \",\n    \"description\"                    : \" Ongoing Purchase \",\n    \"country\"                        : \"Abbotsford\",\n    \"variety\"                        : \"[small,big,medium]\",\n    \"kosher\"                         : \"jhj\",\n    \"organic\"                        : \"jjn\",\n    \"nonGmo\"                         : \"vhh\"\n\t\n}"
+					"raw": "\n{\n  \"plants\"                         :[\"5a999be1f0e9d90c34483409\"],\n    \"suppliers\"                      :[\"5aa4cc6f5c742f291c36e2d3\"],\n    \"brokers\"                        :[\"5aa521f8d291692fbc5f48c7\"],\n    \"productId\"                      :\"CLC1909706\",\n    \"name\"                           :\"CL Green Smoothie Mix - 500 g \",\n    \"netWeight\"                      : \"500g \",\n    \"unit\"                           : \"g \",\n    \"description\"                    : \" Ongoing Purchase \",\n    \"country\"                        : \"Abbotsford\",\n    \"variety\"                        : [\"small\",\"big\",\"medium\"],\n    \"productCode\":[\"code21\",\"code22\",\"code23\"],\n    \"kosher\"                         : \"jhj\",\n    \"organic\"                        : \"jjn\",\n    \"nonGmo\"                         : \"vhh\"\n  \n}"
 				},
 				"url": {
 					"raw": "http://localhost:3000/product",
@@ -856,7 +813,7 @@
 						"product"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -900,7 +857,7 @@
 						"product"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -909,10 +866,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "http://localhost:3000/supplier",
 					"protocol": "http",
@@ -924,7 +878,7 @@
 						"supplier"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -952,7 +906,7 @@
 						}
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -983,6 +937,116 @@
 							"value": "5a99bb26706e471d4071c9f1",
 							"equals": true
 						}
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "attachment-save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "billOfLanding1",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "billOfLanding2",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "billOfLanding3",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "_id",
+							"value": "5aa50536a948640e9cbdb2e4",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "commercialInvoice1",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "commercialInvoice2",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "packingList1",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "packingList2",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "ccpVerification1",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "ccpVerification2",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "environmentalMonitoring1",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "environmentalMonitoring2",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "otherSupporting1",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "otherSupporting2",
+							"value": "",
+							"description": "",
+							"type": "file"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/record/attachment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"record",
+						"attachment"
 					]
 				},
 				"description": ""
