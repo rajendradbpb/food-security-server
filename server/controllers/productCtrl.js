@@ -32,7 +32,8 @@ exports.addProduct = function(req,res){
 /*
 * Name : getProduct
 * Info : Used to get suppliers based on different parameter passed as query in url
-* Paramerers : plant,supplier ,broker, Ex - <hostName>:3000?plant=<plantId>&supplier=<supplierId>&broker=<brokerId>
+* Paramerers : plant,supplier, Ex - <hostName>:3000?plant=<plantId>&supplier=<supplierId>
+
 
 
 */
@@ -54,9 +55,9 @@ exports.getProduct = function(req,res){
       params["suppliers"] = {"$in":[req.query.supplier]};
     }
 
-    if(req.query.broker) {
+    /*if(req.query.broker) {
       params["brokers"] = {"$in":[req.query.broker]};
-    }
+    }*/
 
     console.log("query string ---    ",params);
     models.productModel.find(params,function(err,data){

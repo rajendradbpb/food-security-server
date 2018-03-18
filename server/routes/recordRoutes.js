@@ -26,6 +26,12 @@ router.get('/', function(req, res, next) {
 
   controllers.recordCtrl.getRecord(req, res);
 });
+
+router.get('/search/:search', function(req, res, next) {
+
+  controllers.recordCtrl.getSearch(req, res);
+});
+
 router.put('/', function(req, res, next) {
   controllers.recordCtrl.udpateRecord(req, res);
 });

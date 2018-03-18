@@ -50,7 +50,6 @@ var constants = {
 
       "saveRecord" : "Error in saving record",
 
-
       },
     success:{
 

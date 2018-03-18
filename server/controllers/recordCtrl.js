@@ -52,6 +52,36 @@ exports.getRecord = function(req,res){
     logger.error("getRecord ", e);
   }
 }
+
+
+exports.getSearch = function(req, res) {
+  //give input as country show as output that field which is related country
+  try {
+    var query = { 
+      "$or" : [
+        {country : {
+          $regex:req.params.search , $options: 'i' }
+        },
+        {containerNo : {
+          $regex:req.params.search , $options: 'i' }
+        },
+        
+      ]
+    };  
+    models.recordModel.find(query,function(err, data)  
+    {    
+                  if(err){
+                    logger.error("getSearch ", err);
+                    return response.sendResponse(res,500,"error",constants.messages.error.getData,err);
+                  }
+                  return response.sendResponse(res,200,"success",constants.messages.success.getData,data);
+                })            
+  } catch (e) {
+    logger.error("getSearch " + error);
+    
+  }
+}
+
 /*
 * Name : saveAttachments
 * Info : this is used to save attachment , after multer uploaded file the server

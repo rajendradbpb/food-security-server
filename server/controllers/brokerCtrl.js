@@ -41,10 +41,10 @@ exports.getBroker = function(req,res){
     if(req.query._id){
       params['_id'] = req.query._id;
     }
-    //updating query object with plant , supplier
-    if(req.query.plant) {
+    //updating query object with supplier
+   /* if(req.query.plant) {
       params["plants"] = {"$in":[req.query.plant]};
-    }
+    }*/
     if(req.query.supplier) {
       params["suppliers"] = {"$in":[req.query.supplier]};
     }
