@@ -26,7 +26,7 @@ var recordSchema = new mongoose.Schema({
     nonGmo                             : {type: Boolean,default:false},
 
     isDelete                           : {type: Boolean, default:false},
-    createdBy                          : [{type: Schema.Types.ObjectId,required:true, ref: 'user'}],
+    createdBy                          : {type: Schema.Types.ObjectId,required:true, ref: 'user'},
     createdDate                        : {type: Date, default:new Date()},
 });
 //recordSchema.plugin(uniqueValidator, {message: constants.messages.error.recordExist});

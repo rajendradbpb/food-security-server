@@ -53,17 +53,58 @@ exports.getRecord = function(req,res){
 
 
 exports.getSearch = function(req, res) {
-  //give input as country show as output that field which is related country
   try {
     var query = { 
       "$or" : [
+        //give input as country show as output that field which is related country
         {country : {
           $regex:req.params.search , $options: 'i' }
         },
+        //give input as containerNo show as output that field which is related containerNo
         {containerNo : {
           $regex:req.params.search , $options: 'i' }
         },
-        
+        //give input as lotNo show as output that field which is related lotNo
+        {lotNo  : {
+          $regex:req.params.search , $options: 'i' }
+        },
+        //give input as po  show as output that field which is related po 
+        {po    : {
+          $regex:req.params.search , $options: 'i' }
+        },
+        //give input as variety show as output that field which is related variety
+        {variety  : {
+          $regex:req.params.search , $options: 'i' }
+        },
+        //give input as isApproved show as output that field which is related approved
+        {approved  : {
+             "$in": ["false",false]  }
+        },
+        //give input as isNonGmo  show as output that field which is related nonGmo 
+        {nonGmo   : {
+             "$in": ["false",false] }
+        },
+        //give input as plant show as output that field which is related plant 
+        {plant   : { 
+          "_id" : { "_bsontype" : "ObjectID", "id" : "req.params.search"}, "email" : "test", "__v" : 0 }
+        },
+        //give input as supplier show as output that field which is related supplier
+        {supplier  : {
+          "_id" : { "_bsontype" : "ObjectID", "id" : "req.params.search"}, "email" : "test", "__v" : 0  }
+        },
+        //give input as broker show as output that field which is related broker
+        {broker   : {
+          "_id" : { "_bsontype" : "ObjectID", "id" : "req.params.search"}, "email" : "test", "__v" : 0  }
+        }, 
+        //give input as product  show as output that field which is related product 
+        {product   : {
+          "_id" : { "_bsontype" : "ObjectID", "id" : "req.params.search"}, "email" : "test", "__v" : 0  }
+        }, 
+        //give input as createdBy user show as output that field which is related createdBy user
+        { createdBy  : {
+          "_id" : { "_bsontype" : "ObjectID", "id" : "req.params.search"}, "email" : "test", "__v" : 0  }
+        }, 
+
       ]
     };  
     models.recordModel.find(query,function(err, data)  
