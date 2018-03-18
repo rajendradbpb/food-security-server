@@ -38,12 +38,14 @@ exports.getRecord = function(req,res){
     if(req.query._id){
       params['_id'] = req.query._id;
     }
-    models.recordModel.find(params,function(err,data){
-      if(err){
-        logger.error("getRecord ", err);
-        return response.sendResponse(res,500,"error",constants.messages.error.getData,err);
-      }
+    models.recordModel.find(params)
+    .populate("plant supplier broker")
+    .exec()
+    .then(function(data){
       return response.sendResponse(res,200,"success",constants.messages.success.getData,data);
+    })
+    .catch(function(err) {
+        return response.sendResponse(res,500,"error",constants.messages.error.getData,err);
     })
 
   } catch (e) {
