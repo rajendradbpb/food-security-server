@@ -33,21 +33,18 @@ exports.getRawMaterial = function(req,res){
     if(req.query._id){
       params['_id'] = req.query._id;
     }
-    if(req.query.type){
-      params['type'] = req.query.type;
-    }
     //updating query object with plant , supplier ,country,broker
     if(req.query.plant) {
-      params["plants"] = {"$in":[req.query.plant]};
+      params["plant"] = req.query.plant;
     }
     if(req.query.supplier) {
-      params["suppliers"] = {"$in":[req.query.supplier]};
+      params["supplier"] = req.query.supplier;
     }
    if(req.query.country) {
-      params["country"] = {"$in":[req.query.country]};
+      params["country"] = req.query.country;
     }
     if(req.query.broker) {
-      params["brokers"] = {"$in":[req.query.broker]};
+      params["broker"] = req.query.broker;
     }
 
     models.rawMaterialModel.find(params,function(err,data){

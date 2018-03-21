@@ -32,7 +32,9 @@ exports.getPlant = function(req,res){
     var params = {
       isDelete:false,
     };
-
+    if(req.query._id){
+      params['_id'] = req.query._id;
+    }
     models.plantModel.find(params,function(err,data){
       if(err){
         logger.error("getplant ", err);

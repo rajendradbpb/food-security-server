@@ -1,11 +1,16 @@
+/**
+ * Composite key for raw materials to be created from mongo console
+ * with supplier id and country
+ */
+
 var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 var Schema = mongoose.Schema;
 var constants = require("./../../config/constants")
 var rawMatrialSchema = new mongoose.Schema({
-    plants                  :[{type: Schema.Types.ObjectId, ref: 'plant'}],
-    suppliers               :[{type: Schema.Types.ObjectId, ref: 'supplier'}],
-    brokers                 :[{type: Schema.Types.ObjectId, ref: 'broker'}],
+    plant                  :{type: Schema.Types.ObjectId, ref: 'plant'},
+    supplier               :{type: Schema.Types.ObjectId, ref: 'supplier',required:true},
+    broker                 :{type: Schema.Types.ObjectId, ref: 'broker'},
     rmGroupName		        	:{type: String , required:true},
      name                   : {type: String , required:true},
      rmCode                 : {type: String , required:true},
