@@ -6,7 +6,6 @@ router.post('/',function(req, res, next) {
   controllers.productCtrl.addProduct(req, res);
 });
 router.get('/', function(req, res, next) {
-  
   controllers.productCtrl.getProduct(req, res);
 });
 router.put('/', function(req, res, next) {

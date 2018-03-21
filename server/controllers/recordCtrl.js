@@ -70,7 +70,7 @@ exports.getSearch = function(req, res) {
         },
         //give input as po  show as output that field which is related po 
         {po    : {
-          $regex:req.params.search , $options: 'i' }
+          $regex:req.params.search , $options: '' }
         },
         //give input as variety show as output that field which is related variety
         {variety  : {
@@ -85,7 +85,7 @@ exports.getSearch = function(req, res) {
              "$in": ["false",false] }
         },
         //give input as plant show as output that field which is related plant 
-        {plant   : { 
+       /* {plant   : { 
           "_id" : { "_bsontype" : "ObjectID", "id" : "req.params.search"}, "email" : "test", "__v" : 0 }
         },
         //give input as supplier show as output that field which is related supplier
@@ -105,7 +105,12 @@ exports.getSearch = function(req, res) {
           "_id" : { "_bsontype" : "ObjectID", "id" : "req.params.search"}, "email" : "test", "__v" : 0  }
         }, 
 
-      ]
+    { createdDate  : {
+          "$match": {"$createdDate":{$gte: ISODate("req.params.search"),
+           $lt: ISODate("req.params.search")} 
+          }*/
+       ]
+      
     };  
     models.recordModel.find(query,function(err, data)  
     {    

@@ -50,7 +50,8 @@
 		"7053121b-370b-430c-b663-f7b14e8461ce",
 		"d0004ee7-1ebb-426b-b454-24c24cc08203",
 		"0fff33a1-9ea5-4bd5-a86c-fff0cef4f59f",
-		"60c85446-cfd5-42f9-b3ab-f54897559354"
+		"60c85446-cfd5-42f9-b3ab-f54897559354",
+		"686ad80c-4921-4a4d-ac4d-fb82da2cba29"
 	],
 	"folders_order": [],
 	"folders": [],
@@ -91,7 +92,7 @@
 					"value": "application/json"
 				}
 			],
-			"method": "POST",
+			"method": "GET",
 			"pathVariableData": [],
 			"queryParams": [],
 			"auth": null,
@@ -161,7 +162,7 @@
 		{
 			"id": "20804f4c-0fd4-44ea-8260-69ca82108b05",
 			"name": "http://localhost:3000/record/search/ndia",
-			"url": "http://localhost:3000/record/search/india",
+			"url": "http://localhost:3000/record/search/lotNo1",
 			"description": "",
 			"data": null,
 			"dataMode": "params",
@@ -344,7 +345,7 @@
 		{
 			"id": "45681319-70d8-4300-9c7c-9f11a902b57f",
 			"name": "supplierByPlant-GET",
-			"url": "http://localhost:3000/supplier?plant=5aa4c2c33f329c3f1c866f3e",
+			"url": "http://localhost:3000/supplier?plant=5ab09579e6cb702228b23c71",
 			"description": null,
 			"data": [],
 			"dataMode": "raw",
@@ -354,8 +355,10 @@
 			"queryParams": [
 				{
 					"key": "plant",
-					"value": "5aa4c2c33f329c3f1c866f3e",
-					"equals": true
+					"value": "5ab09579e6cb702228b23c71",
+					"equals": true,
+					"description": "",
+					"enabled": true
 				}
 			],
 			"auth": null,
@@ -436,8 +439,8 @@
 		},
 		{
 			"id": "50e31b9c-a2c7-409b-8067-1149402fa467",
-			"name": "productBySupplierPlantBroker-GET",
-			"url": "http://localhost:3000/product?supplier=plant=plantId&supplier=supplierId&broker=brokerId",
+			"name": "productBySupplierPlant-GET",
+			"url": "http://localhost:3000/product?plant=5ab09405e6cb702228b23c70&supplier=5ab09ccbe6cb702228b23c75",
 			"description": null,
 			"data": [],
 			"dataMode": null,
@@ -446,19 +449,18 @@
 			"pathVariableData": [],
 			"queryParams": [
 				{
-					"key": "supplier",
-					"value": "plant=plantId",
-					"equals": true
+					"key": "plant",
+					"value": "5ab09405e6cb702228b23c70",
+					"equals": true,
+					"description": "",
+					"enabled": true
 				},
 				{
 					"key": "supplier",
-					"value": "supplierId",
-					"equals": true
-				},
-				{
-					"key": "broker",
-					"value": "brokerId",
-					"equals": true
+					"value": "5ab09ccbe6cb702228b23c75",
+					"equals": true,
+					"description": "",
+					"enabled": true
 				}
 			],
 			"auth": null,
@@ -487,6 +489,58 @@
 			"events": [],
 			"folder": null,
 			"rawModeData": "{\n    \"plantId\"       : \"Plant789\",\n    \"name\"          : \"MontrealPlant\",\n    \n    \"country\"       :  \"canada\",\n    \"state\"         :  \"Montreal\",\n    \"city\"          :  \"5105 rue Fisher,Saint Laurent\",\n    \"pin\"           :  \"H4T1J8\",\n\n    \"fax\"           : \"+nature+151474531230\",\n    \"phone\"         : \"+156454257790\"\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "686ad80c-4921-4a4d-ac4d-fb82da2cba29",
+			"name": "rawMaterialBySupplierPlant-GET",
+			"url": "http://localhost:3000/rawMaterial?country=Mexico&plants=5ab09405e6cb702228b23c70&suppliers=5ab09e78e6cb702228b23c77&brokers=5ab0b5d3e6cb702228b23c91",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "country",
+					"value": "Mexico",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "plants",
+					"value": "5ab09405e6cb702228b23c70",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "suppliers",
+					"value": "5ab09e78e6cb702228b23c77",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "brokers",
+					"value": "5ab0b5d3e6cb702228b23c91",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\r\n\t\"plants\"                  :\"5ab09405e6cb702228b23c70\",\r\n    \"suppliers\"               :\"5ab09ccbe6cb702228b23c75\",\r\n    \"brokers\"                 :\"5ab0b3eee6cb702228b23c8f\",\r\n    \"rmGroupName\"             : \"Apple\",\r\n    \"name\"                    : \"Apple Diced\",\r\n     \"rmCode\"                 : \"APPLEDIC\",\r\n     \"format\"                 : \"Apple Diced 10mm\",\r\n     \"variety\"                : \"Fuji\",\r\n     \"country\"                : \"United States\",\r\n     \"isApproved\"               : \"yes\",\r\n     \"kosher\"                   : \"no\",\r\n     \"organic\"                  : \"yes\",\r\n     \"nonGmo\"                   : \"no\",\r\n     \"certification\"            : \"yes\",\r\n     \"samplingMethod\"           : \"yes\",\r\n     \"pathogenTest\"             : \"yes\",\r\n     \"virusTest\"                : \"yes\",\r\n     \"pesticideTest\"            : \"yes\"\r\n        \r\n      \r\n}\r\n",
 			"headers": "Content-Type: application/json\n",
 			"pathVariables": {}
 		},
@@ -532,7 +586,7 @@
 			"auth": null,
 			"events": [],
 			"folder": null,
-			"rawModeData": "{\n     \"plants\"                        : [\"5ab09405e6cb702228b23c70\"],\n    \"suppliers\"                      : [\"5ab09ccbe6cb702228b23c75\"],\n    \"productId\"                      : \"PCO1990215\",\n    \"name\"                           : \"PCO Whole Strawberries - 8 x 1.5 kg\",\n    \"netWeight\"                      : \"1500\" ,\n    \"unit\"                           : \"g\",\n    \"description\"                    : \"Ongoing Purchase\",\n    \"country\"                        : \"USA\",\n    \"rawMatrial\"                     :[\"5ab0c2e3e6cb702228b23c9e\"],\n    \"variety\"                        :[\"Gilli\"],\n    \"kosher\"                         : \"yes\",\n    \"nonGmo\"                         : \"yes\"\n\n  \n}",
+			"rawModeData": "{\n     \"plants\"                        : [\"5ab09405e6cb702228b23c70\"],\n    \"suppliers\"                      : [\"5ab09ccbe6cb702228b23c75\"],\n    \"productId\"                      : \"product4\",\n    \"name\"                           : \"Mango Chunk Organic\",\n    \"netWeight\"                      : \"600\" ,\n    \"unit\"                           : \"g\",\n    \"description\"                    : \"Ongoing Purchase\",\n    \"country\"                        : \"canada\",\n    \"rawMatrial\"                     :[\"5ab23e417b54e324dc12aafe\"],\n    \"variety\"                        :[\"Heritage\",\"Kent\"],\n    \"productCode\"                    :\"PCO0572206\"\n  \n}\n",
 			"headers": "Content-Type: application/json\n",
 			"pathVariables": {}
 		},
@@ -556,7 +610,7 @@
 		{
 			"id": "79e69f5a-13dc-4788-bc0e-99cd0854eed8",
 			"name": "http://localhost:3000/record/search/containerno",
-			"url": "http://localhost:3000/record/search/containerno",
+			"url": "http://localhost:3000/record/search/v1",
 			"description": "",
 			"data": null,
 			"dataMode": "params",
@@ -608,7 +662,7 @@
 		{
 			"id": "928ef3d4-4f58-40aa-bd95-eb5c0c986c10",
 			"name": "brokerBySupplier-GET",
-			"url": "http://localhost:3000/broker?supplier=5a99bb26706e471d4071c9f1",
+			"url": "http://localhost:3000/broker?supplier=5ab09ccbe6cb702228b23c75",
 			"description": null,
 			"data": [],
 			"dataMode": null,
@@ -618,8 +672,10 @@
 			"queryParams": [
 				{
 					"key": "supplier",
-					"value": "5a99bb26706e471d4071c9f1",
-					"equals": true
+					"value": "5ab09ccbe6cb702228b23c75",
+					"equals": true,
+					"description": "",
+					"enabled": true
 				}
 			],
 			"auth": null,

@@ -5,7 +5,6 @@ var Schema = mongoose.Schema;
 var productSchema = new mongoose.Schema({
     plants                         : [{type: Schema.Types.ObjectId, required: true, ref: 'plant'}],
     suppliers                      : [{type: Schema.Types.ObjectId, ref: 'supplier'}],
-   // brokers                      : [{type: Schema.Types.ObjectId, ref: 'broker'}],
     customers                      : [{type: Schema.Types.ObjectId, ref: 'customer'}],
     productId                      : {type: String,required: true, unique:true},
     name                           : {type:String},
@@ -15,10 +14,8 @@ var productSchema = new mongoose.Schema({
     country                        : {type:String},
     rawMatrial                     : [{type: Schema.Types.ObjectId, ref: 'rawMaterial'}],
     variety                        : [{type:String}],
-    kosher                         : {type:String},
-    organic                        : {type:String},
-    nonGmo                         : {type:String},
-
+    productCode                    : [{type:String}],
+    
     isDelete                       : {type:Boolean,default:false}
 });
 
