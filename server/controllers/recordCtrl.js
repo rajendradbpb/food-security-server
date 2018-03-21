@@ -103,12 +103,11 @@ exports.getSearch = function(req, res) {
         //give input as createdBy user show as output that field which is related createdBy user
         { createdBy  : {
           "_id" : { "_bsontype" : "ObjectID", "id" : "req.params.search"}, "email" : "test", "__v" : 0  }
-        }, 
+        }, */
 
     { createdDate  : {
-          "$match": {"$createdDate":{$gte: ISODate("req.params.search"),
-           $lt: ISODate("req.params.search")} 
-          }*/
+          $lte: new Date('2012-05-16T20:54:35.630Z') }
+    },
        ]
       
     };  

@@ -162,7 +162,7 @@
 		{
 			"id": "20804f4c-0fd4-44ea-8260-69ca82108b05",
 			"name": "http://localhost:3000/record/search/ndia",
-			"url": "http://localhost:3000/record/search/lotNo1",
+			"url": "http://localhost:3000/record",
 			"description": "",
 			"data": null,
 			"dataMode": "params",
