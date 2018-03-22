@@ -3,7 +3,7 @@ var uniqueValidator = require('mongoose-unique-validator');
 var constants = require("./../../config/constants")
 var Schema = mongoose.Schema;
 var plantSchema = new mongoose.Schema({
-    plantId       : {type: String,required: true,unique:true},
+    plantId      : {type: String,required: true,unique:true},
     name          : {type:String,required: true},
     // address
     country          :  {type: String, default:"NA"},
