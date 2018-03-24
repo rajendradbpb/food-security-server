@@ -1075,7 +1075,8 @@
 					"path": [
 						"rawMaterial"
 					]
-				}
+				},
+				"description": "http://localhost:3000/rawMaterial?plant=5ab09405e6cb702228b23c70\n\nhttp://localhost:3000/rawMaterial?plant=5ab09405e6cb702228b23c70&supplier=5ab09405e6cb702228b23c70\n\nhttp://localhost:3000/rawMaterial?plant=5ab09405e6cb702228b23c70&supplier=5ab09405e6cb702228b23c70&broker=5ab09405e6cb702228b23c70\n\nhttp://localhost:3000/rawMaterial?plant=5ab09405e6cb702228b23c70&supplier=5ab09405e6cb702228b23c70&broker=5ab09405e6cb702228b23c70&rmGroupName=Apple"
 			},
 			"response": []
 		},

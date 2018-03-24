@@ -46,6 +46,9 @@ exports.getRawMaterial = function(req,res){
     if(req.query.broker) {
       params["broker"] = req.query.broker;
     }
+    if(req.query.rmGroupName) {
+      params["rmGroupName"] = req.query.rmGroupName;
+    }
 
     models.rawMaterialModel.find(params,function(err,data){
       if(err){
