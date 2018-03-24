@@ -217,12 +217,30 @@ exports.udpateRecord = function(req,res){
  ******************  Sample preparation starts ******************
  * **************************************************************
  */
+ exports.getSample = function(req,res){
+   try {
+     if(!req.params.recordId){
+       return response.sendResponse(res, 401,"error",constants.messages.error.recordIdRequired);
+     }
+     models.sampleModel.find({record:req.params.recordId})
+     .exec()
+     .then(function(data) {
+       return response.sendResponse(res,200,"success",constants.messages.success.getData,data);
+     })
+     .catch(function(err) {
+       return response.sendResponse(res,500,"error",constants.messages.error.getData,err);
+     })
+
+   } catch (e) {
+     logger.error("updateRecord ", e);
+   }
+ }
  exports.saveSamplePreparaion = function(req,res){
    try {
      if(!req.body.record){
        return response.sendResponse(res, 401,"error",constants.messages.error.recordIdRequired);
      }
-     new models.samplePreparationModel(req.body).save(function (err) {
+     new models.sampleModel(req.body).save(function (err) {
        if(err){
          logger.error("addsamplePreparation ", err);
          return response.sendResponse(res,500,"error",constants.messages.error.saveRecord,err);
@@ -237,22 +255,44 @@ exports.udpateRecord = function(req,res){
      logger.error("updateRecord ", e);
    }
  }
- exports.getSamplePreparaion = function(req,res){
+
+ // used to save corresponding case image defined during sample preparation
+ exports.saveSampleCollection = function(req,res){
    try {
-     if(!req.params.recordId){
+     var updateRequired = false;
+     if(!req.body.record){
        return response.sendResponse(res, 401,"error",constants.messages.error.recordIdRequired);
      }
-     models.samplePreparationModel.find({reocrd:req.params.recordId})
+
+     models.sampleModel.findOne({record:req.body.record})
      .exec()
      .then(function(data) {
-       return response.sendResponse(res,200,"success",constants.messages.success.getData,data);
+       for(var i in req.files){
+         for(var j  in data.samples){
+           if(req.files[i].fieldname.indexOf(data.samples[j].supplierLot) != -1){
+             updateRequired = true ; // flag to update sample data
+             data.samples[j].caseImg = req.files[i].path;
+             break;
+           }
+         }
+       }
+       if(updateRequired){
+         return data.save();
+       }
+       // return response.sendResponse(res, 200,"success",constants.messages.success.getData,data);
+     })
+     .then(function(data) {
+       return response.sendResponse(res, 200,"success",constants.messages.success.getData,data);
      })
      .catch(function(err) {
-       return response.sendResponse(res,500,"error",constants.messages.error.getData,err);
+       console.log("updateRecord ", err);
+       logger.error("updateRecord ", err);
      })
 
-   } catch (e) {
-     logger.error("updateRecord ", e);
+   } catch (err) {
+     console.log("updateRecord ", err);
+     logger.error("updateRecord ", err);
+     return response.sendResponse(res,500,"error",constants.messages.error.saveData,err);
    }
  }
 
