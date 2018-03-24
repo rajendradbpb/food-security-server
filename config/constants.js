@@ -49,7 +49,8 @@ var constants = {
       //Record
 
       "saveRecord" : "Error in saving record",
-      "recordIdRequired" : "Record Id Required"
+      "recordIdRequired" : "Record Id Required",
+      "record_Supp_idRequired" : "Record or supplier Id required",
 
       },
     success:{

@@ -240,19 +240,28 @@ exports.udpateRecord = function(req,res){
      if(!req.body.record){
        return response.sendResponse(res, 401,"error",constants.messages.error.recordIdRequired);
      }
-     new models.sampleModel(req.body).save(function (err) {
-       if(err){
-         logger.error("addsamplePreparation ", err);
-         return response.sendResponse(res,500,"error",constants.messages.error.saveRecord,err);
-       }
-       else {
-         return response.sendResponse(res,200,"success",constants.messages.success.saveRecord);
-       }
+     new models.sampleModel(req.body).save()
+     .then(function(data) {
+       // response.sendResponse(res,200,"success",constants.messages.success.saveRecord);
+       // update record tab for sample preparation completed
+       var query = {_id:req.body.record};
+       var update = {isSamplePreparation : true};
+       var options = {multi:true};
+       return models.recordModel.findOneAndUpdate(query,update,options).exec();
+
+     })
+     .then(function(data) {
+       return response.sendResponse(res,200,"success",constants.messages.success.saveData);
+     })
+     .catch(function(err) {
+       logger.error("updateRecord ", err);
+       return response.sendResponse(res,500,"error",constants.messages.error.saveRecord,err);
      })
 
-   } catch (e) {
-     console.log("updateRecord ", e);
-     logger.error("updateRecord ", e);
+   } catch (err) {
+     console.log("updateRecord ", err);
+     logger.error("updateRecord ", err);
+     return response.sendResponse(res,500,"error",constants.messages.error.saveRecord,err);
    }
  }
 
@@ -282,7 +291,13 @@ exports.udpateRecord = function(req,res){
        // return response.sendResponse(res, 200,"success",constants.messages.success.getData,data);
      })
      .then(function(data) {
-       return response.sendResponse(res, 200,"success",constants.messages.success.getData,data);
+       var query = {_id:req.body.record};
+       var update = {isSampleCollection : true};
+       var options = {multi:true};
+       return models.recordModel.findOneAndUpdate(query,update,options).exec();
+     })
+     .then(function(data) {
+       return response.sendResponse(res, 200,"success",constants.messages.success.saveData);
      })
      .catch(function(err) {
        console.log("updateRecord ", err);
@@ -296,7 +311,12 @@ exports.udpateRecord = function(req,res){
    }
  }
 
+exports.checkSupplierLot = function(req,res){
+  if(!req.params.recordId || !req.params.supplierLot){
+    return response.sendResponse(res, 401,"error",constants.messages.error.record_Supp_idRequired);
+  }
 
+}
 
 
 

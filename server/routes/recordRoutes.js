@@ -49,9 +49,12 @@ router.post("/attachment", upload.any(), function (req, res) {
 });
 
 
-// sample preparation
+// sample
 router.get('/sample/:recordId', function(req, res, next) {
   controllers.recordCtrl.getSample(req, res);
+});
+router.get('/sample/checkSupplierLot/:recordId:/:supplierLot', function(req, res, next) {
+  controllers.recordCtrl.checkSupplierLot(req, res);
 });
 router.post('/samplePreparation', function(req, res, next) {
   controllers.recordCtrl.saveSamplePreparaion(req, res);
