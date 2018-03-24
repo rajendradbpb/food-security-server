@@ -204,7 +204,7 @@
 		{
 			"name": "record-save",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
