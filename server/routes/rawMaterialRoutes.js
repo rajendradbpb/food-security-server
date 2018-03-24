@@ -8,6 +8,9 @@ router.post('/',function(req, res, next) {
 router.get('/', function(req, res, next) {
   controllers.rawMaterialCtrl.getRawMaterial(req, res);
 });
+router.get('/groups', function(req, res, next) {
+  controllers.rawMaterialCtrl.getRawmaterialGroups(req, res);
+});
 router.put('/', function(req, res, next) {
   controllers.rawMaterialCtrl.udpateRawMaterial(req, res);
 });

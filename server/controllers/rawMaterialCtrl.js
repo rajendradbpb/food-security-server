@@ -59,6 +59,29 @@ exports.getRawMaterial = function(req,res){
     logger.error("getRawMaterial ", e);
   }
 }
+
+exports.getRawmaterialGroups = function(req,res) {
+  var query = {};
+  if(req.query.plant) {
+    query["plant"] = req.query.plant;
+  }
+  if(req.query.supplier) {
+    query["supplier"] = req.query.supplier;
+  }
+ if(req.query.country) {
+    query["country"] = req.query.country;
+  }
+  if(req.query.broker) {
+    query["broker"] = req.query.broker;
+  }
+  models.rawMaterialModel.distinct("rmGroupName",query).exec()
+  .then(function(data) {
+    return response.sendResponse(res,200,"success",constants.messages.success.getData,data);
+  })
+  .catch(function(err) {
+    return response.sendResponse(res,500,"error",constants.messages.error.getData,err);
+  })
+}
 exports.udpateRawMaterial = function(req,res){
   try {
     var query = {

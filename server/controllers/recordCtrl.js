@@ -67,7 +67,7 @@ exports.getSearch = function(req, res) {
       query["$or"] = [
          //give input as isApproved show as output that field which is related approved
          {approved  : req.params.search},
-         // //give input as isNonGmo  show as output that field which is related nonGmo 
+         // //give input as isNonGmo  show as output that field which is related nonGmo
          {nonGmo   :req.params.search},
       ]
     }
@@ -86,7 +86,7 @@ exports.getSearch = function(req, res) {
         {lotNo  : {
           $regex:req.params.search , $options: 'i' }
         },
-        //give input as po  show as output that field which is related po 
+        //give input as po  show as output that field which is related po
        {po    : {
           $regex:req.params.search , $options: '' }
         },
@@ -94,10 +94,10 @@ exports.getSearch = function(req, res) {
         {variety  : {
           $regex:req.params.search , $options: 'i' }
         }
-       
-       ]  
+
+       ]
     }
-    
+
     console.log("query  ",JSON.stringify(query))
     models.recordModel.find(query,function(err, data)
     {
@@ -165,6 +165,7 @@ exports.saveAttachments = function(req,res) {
       ccpVerification:ccpVerification,
       environmentalMonitoring:environmentalMonitoring,
       otherSupporting:otherSupporting,
+      isSetDocument: true // update flag for the document
     }  ,
     { multi:true} ,
     function(err,data) {
@@ -197,3 +198,119 @@ exports.udpateRecord = function(req,res){
     logger.error("updateRecord ", e);
   }
 }
+
+
+
+/**
+ * **************************************************************
+ ******************  Sample preparation starts ******************
+ * **************************************************************
+ */
+ exports.getSample = function(req,res){
+   try {
+     if(!req.params.recordId){
+       return response.sendResponse(res, 401,"error",constants.messages.error.recordIdRequired);
+     }
+     models.sampleModel.find({record:req.params.recordId})
+     .exec()
+     .then(function(data) {
+       return response.sendResponse(res,200,"success",constants.messages.success.getData,data);
+     })
+     .catch(function(err) {
+       return response.sendResponse(res,500,"error",constants.messages.error.getData,err);
+     })
+
+   } catch (e) {
+     logger.error("updateRecord ", e);
+   }
+ }
+ exports.saveSamplePreparaion = function(req,res){
+   try {
+     if(!req.body.record){
+       return response.sendResponse(res, 401,"error",constants.messages.error.recordIdRequired);
+     }
+     new models.sampleModel(req.body).save()
+     .then(function(data) {
+       // response.sendResponse(res,200,"success",constants.messages.success.saveRecord);
+       // update record tab for sample preparation completed
+       var query = {_id:req.body.record};
+       var update = {isSamplePreparation : true};
+       var options = {multi:true};
+       return models.recordModel.findOneAndUpdate(query,update,options).exec();
+
+     })
+     .then(function(data) {
+       return response.sendResponse(res,200,"success",constants.messages.success.saveData);
+     })
+     .catch(function(err) {
+       logger.error("updateRecord ", err);
+       return response.sendResponse(res,500,"error",constants.messages.error.saveRecord,err);
+     })
+
+   } catch (err) {
+     console.log("updateRecord ", err);
+     logger.error("updateRecord ", err);
+     return response.sendResponse(res,500,"error",constants.messages.error.saveRecord,err);
+   }
+ }
+
+ // used to save corresponding case image defined during sample preparation
+ exports.saveSampleCollection = function(req,res){
+   try {
+     var updateRequired = false;
+     if(!req.body.record){
+       return response.sendResponse(res, 401,"error",constants.messages.error.recordIdRequired);
+     }
+
+     models.sampleModel.findOne({record:req.body.record})
+     .exec()
+     .then(function(data) {
+       for(var i in req.files){
+         for(var j  in data.samples){
+           if(req.files[i].fieldname.indexOf(data.samples[j].supplierLot) != -1){
+             updateRequired = true ; // flag to update sample data
+             data.samples[j].caseImg = req.files[i].path;
+             break;
+           }
+         }
+       }
+       if(updateRequired){
+         return data.save();
+       }
+       // return response.sendResponse(res, 200,"success",constants.messages.success.getData,data);
+     })
+     .then(function(data) {
+       var query = {_id:req.body.record};
+       var update = {isSampleCollection : true};
+       var options = {multi:true};
+       return models.recordModel.findOneAndUpdate(query,update,options).exec();
+     })
+     .then(function(data) {
+       return response.sendResponse(res, 200,"success",constants.messages.success.saveData);
+     })
+     .catch(function(err) {
+       console.log("updateRecord ", err);
+       logger.error("updateRecord ", err);
+     })
+
+   } catch (err) {
+     console.log("updateRecord ", err);
+     logger.error("updateRecord ", err);
+     return response.sendResponse(res,500,"error",constants.messages.error.saveData,err);
+   }
+ }
+
+exports.checkSupplierLot = function(req,res){
+  if(!req.params.recordId || !req.params.supplierLot){
+    return response.sendResponse(res, 401,"error",constants.messages.error.record_Supp_idRequired);
+  }
+
+}
+
+
+
+ /**
+  * **************************************************************
+  ******************  Sample preparation Ends ******************
+  * **************************************************************
+  */
