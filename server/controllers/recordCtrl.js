@@ -54,7 +54,7 @@ exports.getRecord = function(req,res){
 
 exports.getSearch = function(req, res) {
   try {
-    var query = { 
+    var query = {
       "$or" : [
         //give input as country show as output that field which is related country
         {country : {
@@ -68,7 +68,7 @@ exports.getSearch = function(req, res) {
         {lotNo  : {
           $regex:req.params.search , $options: 'i' }
         },
-        //give input as po  show as output that field which is related po 
+        //give input as po  show as output that field which is related po
         {po    : {
           $regex:req.params.search , $options: '' }
         },
@@ -80,12 +80,12 @@ exports.getSearch = function(req, res) {
         {approved  : {
              "$in": ["false",false]  }
         },
-        //give input as isNonGmo  show as output that field which is related nonGmo 
+        //give input as isNonGmo  show as output that field which is related nonGmo
         {nonGmo   : {
              "$in": ["false",false] }
         },
-        //give input as plant show as output that field which is related plant 
-       /* {plant   : { 
+        //give input as plant show as output that field which is related plant
+       /* {plant   : {
           "_id" : { "_bsontype" : "ObjectID", "id" : "req.params.search"}, "email" : "test", "__v" : 0 }
         },
         //give input as supplier show as output that field which is related supplier
@@ -95,11 +95,11 @@ exports.getSearch = function(req, res) {
         //give input as broker show as output that field which is related broker
         {broker   : {
           "_id" : { "_bsontype" : "ObjectID", "id" : "req.params.search"}, "email" : "test", "__v" : 0  }
-        }, 
-        //give input as product  show as output that field which is related product 
+        },
+        //give input as product  show as output that field which is related product
         {product   : {
           "_id" : { "_bsontype" : "ObjectID", "id" : "req.params.search"}, "email" : "test", "__v" : 0  }
-        }, 
+        },
         //give input as createdBy user show as output that field which is related createdBy user
         { createdBy  : {
           "_id" : { "_bsontype" : "ObjectID", "id" : "req.params.search"}, "email" : "test", "__v" : 0  }
@@ -109,19 +109,19 @@ exports.getSearch = function(req, res) {
           $lte: new Date('2012-05-16T20:54:35.630Z') }
     },
        ]
-      
-    };  
-    models.recordModel.find(query,function(err, data)  
-    {    
+
+    };
+    models.recordModel.find(query,function(err, data)
+    {
                   if(err){
                     logger.error("getSearch ", err);
                     return response.sendResponse(res,500,"error",constants.messages.error.getData,err);
                   }
                   return response.sendResponse(res,200,"success",constants.messages.success.getData,data);
-                })            
+                })
   } catch (e) {
     logger.error("getSearch " + error);
-    
+
   }
 }
 
@@ -176,6 +176,7 @@ exports.saveAttachments = function(req,res) {
       ccpVerification:ccpVerification,
       environmentalMonitoring:environmentalMonitoring,
       otherSupporting:otherSupporting,
+      isSetDocument: true // update flag for the document
     }  ,
     { multi:true} ,
     function(err,data) {
@@ -208,3 +209,59 @@ exports.udpateRecord = function(req,res){
     logger.error("updateRecord ", e);
   }
 }
+
+
+
+/**
+ * **************************************************************
+ ******************  Sample preparation starts ******************
+ * **************************************************************
+ */
+ exports.saveSamplePreparaion = function(req,res){
+   try {
+     if(!req.body.record){
+       return response.sendResponse(res, 401,"error",constants.messages.error.recordIdRequired);
+     }
+     new models.samplePreparationModel(req.body).save(function (err) {
+       if(err){
+         logger.error("addsamplePreparation ", err);
+         return response.sendResponse(res,500,"error",constants.messages.error.saveRecord,err);
+       }
+       else {
+         return response.sendResponse(res,200,"success",constants.messages.success.saveRecord);
+       }
+     })
+
+   } catch (e) {
+     console.log("updateRecord ", e);
+     logger.error("updateRecord ", e);
+   }
+ }
+ exports.getSamplePreparaion = function(req,res){
+   try {
+     if(!req.params.recordId){
+       return response.sendResponse(res, 401,"error",constants.messages.error.recordIdRequired);
+     }
+     models.samplePreparationModel.find({reocrd:req.params.recordId})
+     .exec()
+     .then(function(data) {
+       return response.sendResponse(res,200,"success",constants.messages.success.getData,data);
+     })
+     .catch(function(err) {
+       return response.sendResponse(res,500,"error",constants.messages.error.getData,err);
+     })
+
+   } catch (e) {
+     logger.error("updateRecord ", e);
+   }
+ }
+
+
+
+
+
+ /**
+  * **************************************************************
+  ******************  Sample preparation Ends ******************
+  * **************************************************************
+  */

@@ -49,6 +49,7 @@ var constants = {
       //Record
 
       "saveRecord" : "Error in saving record",
+      "recordIdRequired" : "Record Id Required"
 
       },
     success:{

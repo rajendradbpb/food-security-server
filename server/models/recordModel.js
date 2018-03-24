@@ -8,7 +8,7 @@ var recordSchema = new mongoose.Schema({
     supplier                           : {type: Schema.Types.ObjectId , required:true,ref: 'supplier'},
     broker                             : {type: Schema.Types.ObjectId,required:true, ref: 'broker'},
     country                            : {type:String},
-    product                            : {type: Schema.Types.ObjectId,required:true, ref: 'product'} ,
+    rawMaterial                        : {type: Schema.Types.ObjectId,required:true, ref: 'rawMaterial'} ,
     approved                           : {type:Boolean,default:false},
 
 
@@ -22,11 +22,19 @@ var recordSchema = new mongoose.Schema({
     ccpVerification                    :[{type:String}], // will contain list of image path
     environmentalMonitoring            :[{type:String}], // will contain list of image path
     otherSupporting                    :[{type:String}], // will contain list of image path
-    variety                            : {type: String},
-    nonGmo                             : {type: Boolean,default:false},
+
+
+    // flags for the tabs
+    isSetDocument                      : {type: Boolean, default:false},
+    isSamplePreparation                      : {type: Boolean, default:false},
+    isSampleCollection                      : {type: Boolean, default:false},
+    isQualityAnalysis                      : {type: Boolean, default:false},
+    isSetDocument                      : {type: Boolean, default:false},
+    isSetDocument                      : {type: Boolean, default:false},
+    isSetDocument                      : {type: Boolean, default:false},
 
     isDelete                           : {type: Boolean, default:false},
-    createdBy                          : {type: Schema.Types.ObjectId,required:true, ref: 'user'},
+    createdBy                          : {type: Schema.Types.ObjectId, ref: 'user'},
     createdDate                        : {type: Date, default:new Date()},
 });
 //recordSchema.plugin(uniqueValidator, {message: constants.messages.error.recordExist});

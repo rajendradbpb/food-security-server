@@ -41,6 +41,16 @@ router.post("/attachment", upload.any(), function (req, res) {
   controllers.recordCtrl.saveAttachments(req, res);
   //res.send(req.files);
 });
+
+
+// sample preparation
+router.get('/samplePreparation/:recordId', function(req, res, next) {
+  controllers.recordCtrl.getSamplePreparaion(req, res);
+});
+router.post('/samplePreparation', function(req, res, next) {
+  controllers.recordCtrl.saveSamplePreparaion(req, res);
+});
+
 //router.delete('/:id', function(req, res, next) {
   //controllers.configCtrl.deleteConfig(req, res);
 //});
