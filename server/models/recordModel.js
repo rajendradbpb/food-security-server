@@ -22,8 +22,8 @@ var recordSchema = new mongoose.Schema({
     ccpVerification                    :[{type:String}], // will contain list of image path
     environmentalMonitoring            :[{type:String}], // will contain list of image path
     otherSupporting                    :[{type:String}], // will contain list of image path
-    variety                            : {type: String},
-    nonGmo                             : {type: Boolean,default:false},
+    variety                            : [{type: String}],
+    // nonGmo                          : {type: Boolean,default:false},
 
     isDelete                           : {type: Boolean, default:false},
     createdBy                          : {type: Schema.Types.ObjectId,required:true, ref: 'user'},

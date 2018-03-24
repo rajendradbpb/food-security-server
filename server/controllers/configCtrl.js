@@ -11,6 +11,7 @@ var logger = require("./../component/log4j").getLogger('configCtrl');
 var config = require("config");
 var component = require("./../component/index");
 var waterfall = require('async-waterfall');
+
 exports.addConfig = function(req, res) {
   try {
     // component.utility.uploadImage({base64:req.body.backgroundImg,fileName:req.body.backgroundImgName},function(err,data){

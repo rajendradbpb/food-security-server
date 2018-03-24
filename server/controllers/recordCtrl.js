@@ -12,13 +12,13 @@ var logger = require("./../component/log4j").getLogger('recordCtrl');
 
 exports.addRecord = function(req,res){
   try {
-    new models.recordModel(req.body).save(function (err) {
+    new models.recordModel(req.body).save(function (err,data) {
       if(err){
         logger.error("addRecord ", err);
         return response.sendResponse(res,500,"error",constants.messages.error.saveRecord,err);
       }
       else {
-        return response.sendResponse(res,200,"success",constants.messages.success.saveRecord);
+        return response.sendResponse(res,200,"success",constants.messages.success.saveRecord,data);
       }
     })
 
@@ -38,12 +38,14 @@ exports.getRecord = function(req,res){
     if(req.query._id){
       params['_id'] = req.query._id;
     }
-    models.recordModel.find(params,function(err,data){
-      if(err){
-        logger.error("getRecord ", err);
-        return response.sendResponse(res,500,"error",constants.messages.error.getData,err);
-      }
+    models.recordModel.find(params)
+    .populate("plant supplier broker product")
+    .exec()
+    .then(function(data){
       return response.sendResponse(res,200,"success",constants.messages.success.getData,data);
+    })
+    .catch(function(err) {
+        return response.sendResponse(res,500,"error",constants.messages.error.getData,err);
     })
 
   } catch (e) {
@@ -54,8 +56,23 @@ exports.getRecord = function(req,res){
 
 exports.getSearch = function(req, res) {
   try {
-    var query = { 
-      "$or" : [
+    var query = {};
+    if(req.params.search == "false" || req.params.search == "true") {
+      if(req.params.search == "false")
+      req.params.search = false;
+
+      if(req.params.search == "true")
+      req.params.search = true;
+
+      query["$or"] = [
+         //give input as isApproved show as output that field which is related approved
+         {approved  : req.params.search},
+         // //give input as isNonGmo  show as output that field which is related nonGmo 
+         {nonGmo   :req.params.search},
+      ]
+    }
+    else{
+      query["$or"] = [
         //give input as country show as output that field which is related country
         {country : {
           $regex:req.params.search , $options: 'i' }
@@ -64,64 +81,36 @@ exports.getSearch = function(req, res) {
         {containerNo : {
           $regex:req.params.search , $options: 'i' }
         },
+
         //give input as lotNo show as output that field which is related lotNo
         {lotNo  : {
           $regex:req.params.search , $options: 'i' }
         },
         //give input as po  show as output that field which is related po 
-        {po    : {
+       {po    : {
           $regex:req.params.search , $options: '' }
         },
         //give input as variety show as output that field which is related variety
         {variety  : {
           $regex:req.params.search , $options: 'i' }
-        },
-        //give input as isApproved show as output that field which is related approved
-        {approved  : {
-             "$in": ["false",false]  }
-        },
-        //give input as isNonGmo  show as output that field which is related nonGmo 
-        {nonGmo   : {
-             "$in": ["false",false] }
-        },
-        //give input as plant show as output that field which is related plant 
-       /* {plant   : { 
-          "_id" : { "_bsontype" : "ObjectID", "id" : "req.params.search"}, "email" : "test", "__v" : 0 }
-        },
-        //give input as supplier show as output that field which is related supplier
-        {supplier  : {
-          "_id" : { "_bsontype" : "ObjectID", "id" : "req.params.search"}, "email" : "test", "__v" : 0  }
-        },
-        //give input as broker show as output that field which is related broker
-        {broker   : {
-          "_id" : { "_bsontype" : "ObjectID", "id" : "req.params.search"}, "email" : "test", "__v" : 0  }
-        }, 
-        //give input as product  show as output that field which is related product 
-        {product   : {
-          "_id" : { "_bsontype" : "ObjectID", "id" : "req.params.search"}, "email" : "test", "__v" : 0  }
-        }, 
-        //give input as createdBy user show as output that field which is related createdBy user
-        { createdBy  : {
-          "_id" : { "_bsontype" : "ObjectID", "id" : "req.params.search"}, "email" : "test", "__v" : 0  }
-        }, */
+        }
+       
+       ]  
+    }
+    
+    console.log("query  ",JSON.stringify(query))
+    models.recordModel.find(query,function(err, data)
+    {
 
-    { createdDate  : {
-          $lte: new Date('2012-05-16T20:54:35.630Z') }
-    },
-       ]
-      
-    };  
-    models.recordModel.find(query,function(err, data)  
-    {    
                   if(err){
                     logger.error("getSearch ", err);
                     return response.sendResponse(res,500,"error",constants.messages.error.getData,err);
                   }
                   return response.sendResponse(res,200,"success",constants.messages.success.getData,data);
-                })            
+     })
   } catch (e) {
     logger.error("getSearch " + error);
-    
+
   }
 }
 
