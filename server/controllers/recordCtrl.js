@@ -229,7 +229,7 @@ exports.udpateRecord = function(req,res){
      if(!req.body.record){
        return response.sendResponse(res, 401,"error",constants.messages.error.recordIdRequired);
      }
-     new models.sampleModel(req.body).save()
+     new models.samplePreparaionModel(req.body).save()
      .then(function(data) {
        // response.sendResponse(res,200,"success",constants.messages.success.saveRecord);
        // update record tab for sample preparation completed
@@ -301,9 +301,41 @@ exports.udpateRecord = function(req,res){
  }
 
 exports.checkSupplierLot = function(req,res){
-  if(!req.params.recordId || !req.params.supplierLot){
-    return response.sendResponse(res, 401,"error",constants.messages.error.record_Supp_idRequired);
+  // validation for :recordId: and :supplierLot
+  var query = {
+    supplier:req.params.supplier,
+    lotNo:req.params.lotNo
   }
+  models.recordModel.find(query).populate("rawMaterial").exec()
+  .then(function(records) {
+    var data = {
+      newLot : true,
+      po : "",
+      pathogenTest:true,
+      virusTest:true,
+      pesticideTest:true,
+    }
+    for(var i in records){
+      if(records[i].rawMaterial.rmGroupName == req.params.rmGroupName){
+        if(data['newLot']) { // to execute one time only
+          data['newLot'] = false;
+          data['pathogenTest'] = records[i].rawMaterial.pathogenTest;
+          data['virusTest'] = records[i].rawMaterial.virusTest;
+          data['pesticideTest'] = records[i].rawMaterial.pesticideTest;
+
+        }
+        data['po'] += records[i].po+",";
+      }
+      if(!data['newLot']){
+        data['po'] = data['po'].substr(0,data['po'].length-1) ; // remove lat ,
+      }
+    }
+    return response.sendResponse(res, 200,"success",constants.messages.success.saveData,data);
+  })
+  .catch(function(err) {
+    return response.sendResponse(res,500,"error",constants.messages.error.saveData,err);
+  })
+
 
 }
 

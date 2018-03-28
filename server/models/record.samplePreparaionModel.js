@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 var Schema = mongoose.Schema;
 var constants = require("./../../config/constants")
-var sampleSchema = new mongoose.Schema({
+var samplePreparaionSchema = new mongoose.Schema({
     record              : {type: Schema.Types.ObjectId,required:true, ref: 'record'},
     samples : [
       {
@@ -18,15 +18,12 @@ var sampleSchema = new mongoose.Schema({
         pathogenTest       :{type:Boolean,default:false},
         virusTest       :{type:Boolean,default:false},
         pesticideTest       :{type:Boolean,default:false},
-
-        // picture of case, to be used in sample collection
-        caseImg           :{type:String},
-
+        comment          :{type:String},
       }
     ],
     createdDate       : {type: Date, default: new Date()},
     isDelete          : {type: Boolean, default:false},
 });
 // samplePreparationSchema.plugin(uniqueValidator, {message: constants.messages.error.roleExist});
-var sampleModel = mongoose.model('sample', sampleSchema);
-module.exports = sampleModel;
+var samplePreparaionModel = mongoose.model('samplePreparaion', samplePreparaionSchema);
+module.exports = samplePreparaionModel;

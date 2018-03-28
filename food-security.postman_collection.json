@@ -213,7 +213,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "  {\r\n    \"plant\"                              : \"5aa580ef326ba4040cdac584\",\r\n    \"supplier\"                           : \"5aa5824b8067d717e0108f85\",\r\n    \"broker\"                             : \"5aa582ea8067d717e0108f89\",\r\n    \"country\"                            : \"Canada\",\r\n    \"rawMaterial\"                            : \"5aa583f68067d717e0108f8d\",\r\n    \r\n\r\n\r\n    \"po\"                                 : \"TestPO2\",\r\n    \"containerNo\"                        : \"containerNo3\",\r\n    \"lotNo\"                              : \"lotNo3\",\r\n    \r\n    \"variety\"                            : \"variety3\"\r\n    \r\n   \r\n   \r\n  }"
+					"raw": "  {\r\n    \"plant\"                              : \"5aa580ef326ba4040cdac584\",\r\n    \"supplier\"                           : \"5aa5824b8067d717e0108f85\",\r\n    \"broker\"                             : \"5aa582ea8067d717e0108f89\",\r\n    \"country\"                            : \"Canada\",\r\n    \"rawMaterial\"                            : \"5ab60fc3ddf7d43510b2ef51\",\r\n    \r\n\r\n\r\n    \"po\"                                 : \"mango-01-chunked-02\",\r\n    \"containerNo\"                        : \"containerNo3\",\r\n    \"lotNo\"                              : \"lotNo3\",\r\n    \r\n    \"variety\"                            : [\"variety3\"]\r\n    \r\n   \r\n   \r\n  }"
 				},
 				"url": {
 					"raw": "http://localhost:3000/record",
@@ -1120,7 +1120,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"record\"              : \"5ab605b3b9b7c929f8086c6f\",\n    \"samples\" : [\n      {\n        \"supplierLot\"         :\"testLot1\",\n        \"newLot\"              :\"true\",\n        \"po\"                  :\"po1\",\n        \"totalQuantity\"       : 10,\n        \"quantityPlanned\"       :10,\n        \"qualityAnalysis\"     :false,\n\n       \n        \"indicatorTest\"       :false,\n        \"pathogenTest\"      :false,\n        \"virusTest\"      :false,\n        \"pesticideTest\"       :false\n\n        \n\n      },\n      {\n        \"supplierLot\"         :\"testLot2\",\n        \"newLot\"              :\"true\",\n        \"po\"                  :\"po2\",\n        \"totalQuantity\"       : 10,\n        \"quantityPlanned\"       :10,\n        \"qualityAnalysis\"     :false,\n\n       \n        \"indicatorTest\"       :false,\n        \"pathogenTest\"      :false,\n        \"virusTest\"      :false,\n        \"pesticideTest\"       :false\n\n        \n\n      }\n    ]\n}"
+					"raw": "{\n\t\"record\"              : \"5ab0de04e6cb702228b23cb8\",\n    \"samples\" : [\n      {\n        \"supplierLot\"         :\"testLot1\",\n        \"newLot\"              :\"true\",\n        \"po\"                  :\"po1\",\n        \"totalQuantity\"       : 10,\n        \"quantityPlanned\"       :10,\n        \"qualityAnalysis\"     :false,\n\n       \n        \"indicatorTest\"       :false,\n        \"pathogenTest\"      :false,\n        \"virusTest\"      :false,\n        \"pesticideTest\"       :false\n\n        \n\n      },\n      {\n        \"supplierLot\"         :\"testLot2\",\n        \"newLot\"              :\"true\",\n        \"po\"                  :\"po2\",\n        \"totalQuantity\"       : 10,\n        \"quantityPlanned\"       :10,\n        \"qualityAnalysis\"     :false,\n\n       \n        \"indicatorTest\"       :false,\n        \"pathogenTest\"      :false,\n        \"virusTest\"      :false,\n        \"pesticideTest\"       :false\n\n        \n\n      }\n    ]\n}"
 				},
 				"url": {
 					"raw": "http://localhost:3000/record/samplePreparation",
@@ -1214,6 +1214,31 @@
 						"record",
 						"sample",
 						"5ab605b3b9b7c929f8086c6f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check-supplier-new-lot",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/record/samplePreparation/checkSupplierLot/5aa5824b8067d717e0108f85/lotNo3/Mango",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"record",
+						"samplePreparation",
+						"checkSupplierLot",
+						"5aa5824b8067d717e0108f85",
+						"lotNo3",
+						"Mango"
 					]
 				}
 			},
