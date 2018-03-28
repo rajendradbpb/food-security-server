@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 var Schema = mongoose.Schema;
 var constants = require("./../../config/constants")
-var samplePreparaionSchema = new mongoose.Schema({
+var samplePreparationSchema = new mongoose.Schema({
     record              : {type: Schema.Types.ObjectId,required:true, ref: 'record'},
     samples : [
       {
@@ -25,5 +25,5 @@ var samplePreparaionSchema = new mongoose.Schema({
     isDelete          : {type: Boolean, default:false},
 });
 // samplePreparationSchema.plugin(uniqueValidator, {message: constants.messages.error.roleExist});
-var samplePreparaionModel = mongoose.model('samplePreparaion', samplePreparaionSchema);
-module.exports = samplePreparaionModel;
+var samplePreparationModel = mongoose.model('samplePreparation', samplePreparationSchema);
+module.exports = samplePreparationModel;

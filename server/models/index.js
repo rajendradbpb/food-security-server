@@ -10,4 +10,5 @@ exports.brokerModel            = require("./brokerModel");
 exports.rawMaterialModel       = require("./rawMaterialModel");
 exports.productModel           = require("./productModel");
 exports.recordModel            = require("./recordModel");
-exports.samplePreparaionModel            = require("./record.samplePreparaionModel");
+exports.samplePreparaionModel  = require("./record.samplePreparaionModel");
+exports.sampleCollectionModel  = require("./record.sampleCollectionModel");

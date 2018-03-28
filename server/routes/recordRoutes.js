@@ -55,15 +55,13 @@ router.post("/attachment", upload.any(), function (req, res) {
 router.post('/samplePreparation', function(req, res, next) {
   controllers.recordCtrl.saveSamplePreparaion(req, res);
 });
-router.get('/samplePreparation/:recordId', function(req, res, next) {
-  controllers.recordCtrl.getSample(req, res);
+router.get('/samplePreparation/:record', function(req, res, next) {
+  controllers.recordCtrl.getSamplePreparaion(req, res);
 });
 router.get('/samplePreparation/checkSupplierLot/:supplier/:lotNo/:rmGroupName', function(req, res, next) {
   controllers.recordCtrl.checkSupplierLot(req, res);
 });
-router.post('/sampleCollection', upload.any(),function(req, res, next) {
-  // console.log("sampleCollection "+JSON.stringify(req.files));
-  // res.send(req.files);
+router.post('/sampleCollection', function(req, res, next) {
   controllers.recordCtrl.saveSampleCollection(req, res);
 });
 

@@ -253,44 +253,34 @@ exports.udpateRecord = function(req,res){
      return response.sendResponse(res,500,"error",constants.messages.error.saveRecord,err);
    }
  }
-
+exports.getSamplePreparaion = function(req,res){
+  if(!req.params.record){
+    return response.sendResponse(res, 401,"error",constants.messages.error.recordIdRequired);
+  }
+  models.samplePreparaionModel.find({record:req.params.record}).exec()
+  .then(function(data) {
+    return response.sendResponse(res,200,"success",constants.messages.success.getData,data);
+  })
+  .catch(function(err) {
+    return response.sendResponse(res,500,"error",constants.messages.error.getData,err);
+  })
+}
  // used to save corresponding case image defined during sample preparation
  exports.saveSampleCollection = function(req,res){
    try {
-     var updateRequired = false;
-     if(!req.body.record){
+     // validation goes here
+     if(!req.body.record || !req.body.samplePreparation){
        return response.sendResponse(res, 401,"error",constants.messages.error.recordIdRequired);
      }
 
-     models.sampleModel.findOne({record:req.body.record})
-     .exec()
+     new models.sampleCollectionModel(req.body).save()
      .then(function(data) {
-       for(var i in req.files){
-         for(var j  in data.samples){
-           if(req.files[i].fieldname.indexOf(data.samples[j].supplierLot) != -1){
-             updateRequired = true ; // flag to update sample data
-             data.samples[j].caseImg = req.files[i].path;
-             break;
-           }
-         }
-       }
-       if(updateRequired){
-         return data.save();
-       }
-       // return response.sendResponse(res, 200,"success",constants.messages.success.getData,data);
-     })
-     .then(function(data) {
-       var query = {_id:req.body.record};
-       var update = {isSampleCollection : true};
-       var options = {multi:true};
-       return models.recordModel.findOneAndUpdate(query,update,options).exec();
-     })
-     .then(function(data) {
-       return response.sendResponse(res, 200,"success",constants.messages.success.saveData);
+        return response.sendResponse(res, 200,"success",constants.messages.success.saveData);
      })
      .catch(function(err) {
        console.log("updateRecord ", err);
        logger.error("updateRecord ", err);
+       return response.sendResponse(res, 500,"error",constants.messages.error.saveData);
      })
 
    } catch (err) {
@@ -322,9 +312,11 @@ exports.checkSupplierLot = function(req,res){
           data['pathogenTest'] = records[i].rawMaterial.pathogenTest;
           data['virusTest'] = records[i].rawMaterial.virusTest;
           data['pesticideTest'] = records[i].rawMaterial.pesticideTest;
-
+          data['po'] += records[i].po;
         }
-        data['po'] += records[i].po+",";
+        else{
+          data['po'] += ","+records[i].po;
+        }
       }
       if(!data['newLot']){
         data['po'] = data['po'].substr(0,data['po'].length-1) ; // remove lat ,
