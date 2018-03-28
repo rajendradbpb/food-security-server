@@ -1243,6 +1243,57 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "samplePreparation-GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/record/samplePreparation/5ab0de04e6cb702228b23cb8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"record",
+						"samplePreparation",
+						"5ab0de04e6cb702228b23cb8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "saveSampleCollection-POST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"record\"              : \"5ab0de04e6cb702228b23cb8\",\n    \"samplePreparation\"   : \"5abc074f41f7d01bb4ad5f54\",\n    \"samples\" : [\n      {\n        \"index\"               : 1,\n        \"supplierLot\"         :\"test\",\n        \n        \"qualityAnalysis\"      : false,\n        \"microTest\"      : false,\n        \"virusTest\"      : false,\n        \"pesticideTest\"      : false,\n        \"indicatorTest\"      : false,\n        \"comment\"          :\"sdsfsf\"\n      }\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/record/sampleCollection",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"record",
+						"sampleCollection"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
