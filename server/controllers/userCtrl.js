@@ -325,133 +325,169 @@ exports.deleteUser = function(req, res) {
   }
 }
 
-exports.changePassword = function(req, res) {
+// exports.changePassword = function(req, res) {
+//   try {
+//     console.log("inside change passowrd  ");
+//     component.utility.validateNull(req, res, "body", "oldPassword", "newPassword");
+//     console.log(">>>>>>>>>> change passowrd  ");
+//     userModel.findOne({"username": req.user._doc.username}).populate('role').exec(function(err, user) {
+//       if (err) {
+//         logger.error("changePassword  " + err);
+//         return response.sendResponse(res, 402, "error", constants.messages.error.changePassword, err);
+//       }
+//       if (!user) {
+//         return response.sendResponse(res, 401, "error", constants.messages.error.changePassword, err);
+//       }
+//       passwordHash(req.body.oldPassword).verifyAgainst(user.password, function(error, verified) {
+//         console.log("after verification ", error, user);
+//         if (error) {
+//           // db error
+//           logger.error("changePassword  " + error);
+//           response.sendResponse(res, 500, "error", constants.messages.error.changePassword, err);
+//         } else if (!verified) {
+//           // password not matched
+//           response.sendResponse(res, 401, "error", constants.messages.error.changePassword);
+//         } else {
+//           // update new password
+//           password(req.body.newPassword).hash(function(error, hash) {
+//             userModel.findByIdAndUpdate(user._id, {
+//               $set: {
+//                 password: hash
+//               }
+//             }, {
+//               new: true
+//             }, function(err, user) {
+//               if (err) {
+//                 logger.error("changePassword  " + error);
+//                 response.sendResponse(res, 500, "error", constants.messages.error.changePassword, err);
+//               } else {
+//                 response.sendResponse(res, 200, "success", constants.messages.success.changePassword);
+//               }
+//             });
+
+//           })
+//         }
+//       })
+//     });
+
+//   } catch (e) {
+//     logger.error("changePassword  " + e);
+//   }
+// }
+
+// exports.forgotPassword = function(req, res) {
+//   try {
+//     if(req.user.role.type == "state-admin")
+//     {
+
+//     if (!req.body.userName) {
+//       return response.sendResponse(res, 400, "error", constants.statusCode['400']);
+//     } else {
+//       models.userModel.find({
+//           email: req.body.email
+//         }).exec()
+//         .then(function(user) {
+//           console.log(user);
+//           if (!user.length) {
+//             // no data found.
+//             return response.sendResponse(res, 402, "warning", constants.messages.error.userNameNotFound);
+//           } else {
+//             // get the random PASSOWORD
+//             var alphaNumeric = utility.getAlphaNumeric();
+//             password(alphaNumeric).hash(function(error, hash) {
+//               if (error) {
+//                 logger.error("forgotPassword  " + error);
+//                 return response.sendResponse(res, 500, "error", constants.messages.error.saveData);
+//               } else {
+//                 // saving user password with random password
+//                 var query = {
+//                   email: req.body.email
+//                 }
+//                 var update = {
+//                   password: hash
+//                 }
+//                 var option = {
+//                   new: true
+//                 }
+//                 models.userModel.findOneAndUpdate(query, update, option, function(error, user) {
+//                   if (error) {
+//                     logger.error("forgotPassword  " + error);
+//                     return response.sendResponse(res, 500, "error", constants.messages.error.saveData);
+//                   } else {
+
+//                     // sending email verification
+//                     var data = {
+//                       templateType: "forgot_password",
+
+//                       email: user.email,
+//                       mobile: user.mobile,
+//                       name: user.firstName && user.lastName ? user.firstName + " " + user.lastName : user.email.split("@")[0],
+//                       company: constants.companyDetails.name,
+//                       password: alphaNumeric
+//                     }
+//                     console.log('data >>>>>>>>', data);
+//                     utility.sendVerificationMail(data, function(err, success) {
+//                       if (err) {
+//                         logger.error("forgotPassword  " + err);
+//                         LOG.error("mail error send  error" + err);
+//                         return response.sendResponse(res, 500, "error", constants.messages.error.mailSend);
+//                         // return response.sendResponse(res, 500, "error", constants.messages.error.forgetPasswordFailed, err);
+//                       } else {
+//                         LOG.info("mail error send  success");
+//                         return response.sendResponse(res, 200, "success", constants.messages.success.mailSend);
+//                         // return response.sendResponse(res, 200, "success", constants.messages.success.verificationMailSent);
+//                       }
+//                     })
+//                   }
+//                 })
+//               }
+//             })
+//           }
+//         })
+//         .catch(function(error) {
+//           logger.error("forgotPassword  " + error);
+//           return response.sendResponse(res, 500, "error", constants.messages.error.saveData, error);
+//         })
+//       }
+//     }
+//   } catch (e) {
+//     logger.error("forgotPassword  " + e);
+//   }
+// }
+
+exports.resetPassword = function(req, res) {
   try {
-    console.log("inside change passowrd  ");
-    component.utility.validateNull(req, res, "body", "oldPassword", "newPassword");
-    console.log(">>>>>>>>>> change passowrd  ");
-    userModel.findOne({"username": req.user._doc.username}).populate('role').exec(function(err, user) {
-      if (err) {
-        logger.error("changePassword  " + err);
-        return response.sendResponse(res, 402, "error", constants.messages.error.changePassword, err);
-      }
-      if (!user) {
-        return response.sendResponse(res, 401, "error", constants.messages.error.changePassword, err);
-      }
-      passwordHash(req.body.oldPassword).verifyAgainst(user.password, function(error, verified) {
-        console.log("after verification ", error, user);
-        if (error) {
-          // db error
-          logger.error("changePassword  " + error);
-          response.sendResponse(res, 500, "error", constants.messages.error.changePassword, err);
-        } else if (!verified) {
-          // password not matched
-          response.sendResponse(res, 401, "error", constants.messages.error.changePassword);
-        } else {
-          // update new password
-          password(req.body.newPassword).hash(function(error, hash) {
-            userModel.findByIdAndUpdate(user._id, {
-              $set: {
-                password: hash
-              }
-            }, {
-              new: true
-            }, function(err, user) {
-              if (err) {
-                logger.error("changePassword  " + error);
-                response.sendResponse(res, 500, "error", constants.messages.error.changePassword, err);
-              } else {
-                response.sendResponse(res, 200, "success", constants.messages.success.changePassword);
-              }
-            });
-
-          })
-        }
-      })
-    });
-
-  } catch (e) {
-    logger.error("changePassword  " + e);
-  }
-}
-
-exports.forgotPassword = function(req, res) {
-  try {
-
-    if (!req.body.email) {
-      return response.sendResponse(res, 400, "error", constants.statusCode['400']);
-    } else {
-      models.userModel.find({
-          email: req.body.email
-        }).exec()
-        .then(function(user) {
-          console.log(user);
-          if (!user.length) {
-            // no data found.
-            return response.sendResponse(res, 402, "warning", constants.messages.error.emailNotFound);
-          } else {
-            // get the random PASSOWORD
-            var alphaNumeric = utility.getAlphaNumeric();
-            password(alphaNumeric).hash(function(error, hash) {
-              if (error) {
-                logger.error("forgotPassword  " + error);
-                return response.sendResponse(res, 500, "error", constants.messages.error.saveData);
-              } else {
-                // saving user password with random password
-                var query = {
-                  email: req.body.email
-                }
-                var update = {
-                  password: hash
-                }
-                var option = {
-                  new: true
-                }
-                models.userModel.findOneAndUpdate(query, update, option, function(error, user) {
-                  if (error) {
-                    logger.error("forgotPassword  " + error);
-                    return response.sendResponse(res, 500, "error", constants.messages.error.saveData);
-                  } else {
-
-                    // sending email verification
-                    var data = {
-                      templateType: "forgot_password",
-
-                      email: user.email,
-                      mobile: user.mobile,
-                      name: user.firstName && user.lastName ? user.firstName + " " + user.lastName : user.email.split("@")[0],
-                      company: constants.companyDetails.name,
-                      password: alphaNumeric
-                    }
-                    console.log('data >>>>>>>>', data);
-                    utility.sendVerificationMail(data, function(err, success) {
-                      if (err) {
-                        logger.error("forgotPassword  " + err);
-                        LOG.error("mail error send  error" + err);
-                        return response.sendResponse(res, 500, "error", constants.messages.error.mailSend);
-                        // return response.sendResponse(res, 500, "error", constants.messages.error.forgetPasswordFailed, err);
-                      } else {
-                        LOG.info("mail error send  success");
-                        return response.sendResponse(res, 200, "success", constants.messages.success.mailSend);
-                        // return response.sendResponse(res, 200, "success", constants.messages.success.verificationMailSent);
-                      }
-                    })
-                  }
-                })
-              }
-            })
+    var rawPassword = req.params.password;
+        User.findOneByUpdate({ userName: req.params.username }, function(err, role) {
+          if (role!=admin)  {
+            return response.sendResponse(res, 400, "error", constants.statusCode['400']);
           }
-        })
-        .catch(function(error) {
-          logger.error("forgotPassword  " + error);
-          return response.sendResponse(res, 500, "error", constants.messages.error.saveData, error);
-        })
-    }
-  } catch (e) {
-    logger.error("forgotPassword  " + e);
-  }
-}
-
+      
+      password(req.body.password).hash(function(error, hash) {
+       req.body.password = hash; // encrypting the password
+       new userModel(req.params).save(function(err, user) {
+                if (err) {
+                  LOG.error(err.message);
+                  logger.error("addUser  " + err);
+                  return response.sendResponse(res, 500, "error", constants.messages.error.saveUser, err);
+                } else {
+                  LOG.info("User saved !!!!");
+                  response.sendResponse(res, 200, "success", constants.messages.success.saveUser);
+    
+                }
+              })
+            })
+          })
+          .catch(function(err) {
+            logger.error("resetPassword " + err);
+            response.sendResponse(res, 500, "error", constants.messages.error.saveUser, err);
+          })
+      } catch (e) {
+        logger.error("resetPassword " + e);
+      }
+    
+    },
+  
 exports.getDashboardData = function(req, res) {
   var responseData = {
     district: {

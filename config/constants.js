@@ -29,6 +29,7 @@ var constants = {
       "undefinedPlantId" : "Plant id is required",
       "undefinedSalutation" : "Salutation is required",
       "undefinedFirstName" : "First Name is required",
+      "saveUserName"       : "Error in save userName",
 
       //plant
 
@@ -60,7 +61,7 @@ var constants = {
       "getData"  : "Success in get data",
       "updateData"  : "success in update data",
       "deleteData"  : "success in delete data",
-
+      "saveUserName" : "success  to save password",
       //role
       "saveRole" : "Role saved",
 

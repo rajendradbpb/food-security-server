@@ -20,9 +20,13 @@ router.get('/', passport.authenticate('superAdmin', {session:false}),function(re
 // router.put('/changePassword', passport.authenticate('token', {session:false}), function(req, res, next) {
 //   controllers.userCtrl.changePassword(req, res);
 // });
-// router.put('/forgotPassword', function(req, res, next) {
-//   controllers.userCtrl.forgotPassword(req, res);
-// });
+router.get('/userName/:forgotPassword', function(req, res, next) {
+  controllers.userCtrl.resetPassword(req, res);
+ });
+ router.post('/userName/:forgotPassword', function(req, res, next) {
+  controllers.userCtrl.resetPassword(req, res);
+ });
+
 // router.delete('/:id', function(req, res, next) {
 //   controllers.userCtrl.deleteUser(req, res);
 // });
